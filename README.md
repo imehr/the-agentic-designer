@@ -6,7 +6,7 @@
 **Version:** 1.0.0
 **Date:** May 2026
 **Pages:** 251
-**Words:** ~47,000
+**Words:** ~54,000
 
 ## About
 
@@ -36,9 +36,11 @@ This book covers the emerging field of agentic design — how designers and deve
 - **Chapter 12:** Production UI from Design
 - **Chapter 13:** Real-World Case Studies
 - **Chapter 14:** The Future of Agentic Design
-- **Appendix A:** Quick Reference
-- **Appendix B:** Prompt Library
-- **Appendix C:** Glossary
+- **Chapter 15:** Building Agent Pipelines for Design
+- **Chapter 16:** DESIGN.md: Portable Design Systems
+- **Appendix A:** Tool Comparison Matrix
+- **Appendix B:** MCP Server Reference
+- **Appendix C:** Prompt Library for Design Tasks
 
 ---
 
@@ -57,7 +59,7 @@ This book covers the emerging field of agentic design — how designers and deve
 ### v1.0.0 — May 2026
 
 - Initial release
-- 14 chapters + 3 appendices
+- 16 chapters + 3 appendices
 - 251 pages, ~47,000 words
 - 80+ annotated screenshots
 - Islamic geometric cover art
