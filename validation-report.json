@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-20T01:03:20.884Z",
+  "generatedAt": "2026-05-20T01:18:54.529Z",
   "pass": true,
-  "totalPass": 53,
-  "totalChecks": 53,
+  "totalPass": 58,
+  "totalChecks": 58,
   "sections": {
     "pdf": [
       {
@@ -23,7 +23,7 @@
       {
         "name": "PDF file size > 0",
         "pass": true,
-        "detail": "2290.6 KB"
+        "detail": "12410.5 KB"
       },
       {
         "name": "PDF is valid (readable)",
@@ -43,7 +43,7 @@
       {
         "name": "PDF subject/description metadata",
         "pass": true,
-        "detail": "A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design."
+        "detail": "Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems"
       },
       {
         "name": "PDF creator metadata",
@@ -53,7 +53,7 @@
       {
         "name": "PDF has pages",
         "pass": true,
-        "detail": "262 pages"
+        "detail": "110 pages"
       },
       {
         "name": "PDF page dimensions",
@@ -74,6 +74,11 @@
         "name": "verapdf external validator",
         "pass": true,
         "detail": "verapdf not installed; skipped external validator"
+      },
+      {
+        "name": "PDF source images render correctly",
+        "pass": true,
+        "detail": "75 images resolved via file:// (PDF will include them)"
       }
     ],
     "html": [
@@ -160,12 +165,22 @@
       {
         "name": "Additional HTML pages",
         "pass": true,
-        "detail": "1 page file"
+        "detail": "2 page files"
       },
       {
         "name": "HTML local asset links resolve",
         "pass": true,
-        "detail": "75 checked"
+        "detail": "168 checked"
+      },
+      {
+        "name": "Expected book images preserved in HTML",
+        "pass": true,
+        "detail": "168/75 image refs found; state/screenshots/image-catalog.json"
+      },
+      {
+        "name": "HTML images render correctly",
+        "pass": true,
+        "detail": "75 images loaded"
       }
     ],
     "epub": [
@@ -187,7 +202,7 @@
       {
         "name": "ePub file size > 0",
         "pass": true,
-        "detail": "182.3 KB"
+        "detail": "36554.0 KB"
       },
       {
         "name": "ePub is a valid ZIP archive",
@@ -253,6 +268,16 @@
         "name": "Chapter XHTML files present",
         "pass": true,
         "detail": "21 chapter files"
+      },
+      {
+        "name": "ePub chapter image links resolve",
+        "pass": true,
+        "detail": "85 image refs checked"
+      },
+      {
+        "name": "Expected book images preserved in ePub",
+        "pass": true,
+        "detail": "85/75 image refs found; state/screenshots/image-catalog.json"
       },
       {
         "name": "stylesheet.css present",

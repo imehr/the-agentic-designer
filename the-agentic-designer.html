@@ -58,80 +58,19 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-@page {
-  size: A4;
-  margin: var(--margin-top-bottom) var(--margin-sides);
-  @top-left {
-    content: string(book-title);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-  @top-right {
-    content: string(chapter-title);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-  @bottom-center {
-    content: counter(page);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-}
 
-@page :left {
-  @top-left {
-    content: string(book-title);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-  @bottom-center {
-    content: counter(page);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-}
 
-@page :right {
-  @top-right {
-    content: string(chapter-title);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-  @bottom-center {
-    content: counter(page);
-    font-family: var(--body-font);
-    font-size: 8pt;
-    color: var(--text-secondary);
-  }
-}
 
-@page :first {
-  @top-left { content: none; }
-  @top-right { content: none; }
-  @bottom-center { content: none; }
-}
 
-@page :blank {
-  @top-left { content: none; }
-  @top-right { content: none; }
-  @bottom-center { content: none; }
-}
 
-@page cover-page {
-  size: A4;
-  margin: 0;
-}
 
-@page back-page {
-  size: A4;
-  margin: 0;
-}
+
+
+
+
+
+
+
 
 body {
   font-family: var(--body-font);
@@ -833,8 +772,380 @@ strong { font-weight: 600; }
 window.PagedConfig = { auto: false };
 </script>
 <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+<style data-book-writer-paged-contract>
+@page {
+  size: A4;
+  margin: 22mm 18mm 24mm 18mm;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+}
+
+@page :left {
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+}
+
+@page :right {
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+}
+
+@page :first {
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+}
+
+@page :blank {
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+    font-weight: 400;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+}
+
+@page cover-page {
+  size: A4;
+  margin: 14mm 14mm 18mm 14mm;
+
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+}
+
+@page toc-page {
+  size: A4;
+  margin: 22mm 18mm 24mm 18mm;
+
+  @bottom-center {
+    content: counter(page, lower-roman);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+}
+
+@page chapter-first {
+  size: A4;
+  margin: 22mm 18mm 24mm 18mm;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+}
+
+@page back-page {
+  size: A4;
+  margin: 14mm 14mm 18mm 14mm;
+
+  @top-left {
+    content: string(book-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+
+  @top-right {
+    content: string(chapter-title);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 7.5pt;
+    color: #D1D5DB;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 8.5pt;
+    color: #9CA3AF;
+  }
+}
+
+.cover {
+  page: cover-page;
+  break-after: page;
+}
+
+.toc {
+  page: toc-page;
+  break-after: page;
+}
+
+h2.section-title {
+  string-set: chapter-title content();
+  page: chapter-first;
+  break-before: right;
+}
+
+.back-page {
+  page: back-page;
+  break-before: right;
+}
+
+.book-title-setter {
+  string-set: book-title content();
+  position: absolute;
+  visibility: hidden;
+  font-size: 0;
+}
+
+.chapter-content {
+  page: auto;
+}
+
+figure {
+  break-inside: avoid;
+}
+
+table {
+  break-inside: avoid;
+}
+
+pre {
+  break-inside: avoid;
+}
+
+.callout {
+  break-inside: avoid;
+}
+
+.tip {
+  break-inside: avoid;
+}
+
+.warning {
+  break-inside: avoid;
+}
+
+.step {
+  break-inside: avoid;
+}
+
+.compare {
+  break-inside: avoid;
+}
+
+.diagram {
+  break-inside: avoid;
+}
+
+.file-tree {
+  break-inside: avoid;
+}
+
+h3 {
+  break-after: avoid;
+}
+
+h4 {
+  break-after: avoid;
+}
+
+.figure-group {
+  break-inside: avoid;
+}
+
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+h2, h3, h4 {
+  orphans: 4;
+  widows: 4;
+}
+
+a[href^="#"]::after {
+  content: " (p. " target-counter(attr(href url), page) ")";
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+
+.cover a[href^="#"]::after,
+.toc a[href^="#"]::after,
+.back-page a[href^="#"]::after {
+  content: none;
+}
+
+.toc-item .toc-page-num::after {
+  content: target-counter(attr(href url), page);
+}
+
+body {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.content {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.cover,
+.back-page {
+  min-height: auto !important;
+  height: 297mm !important;
+  max-height: 297mm !important;
+  box-sizing: border-box !important;
+}
+
+@media screen {
+  .pagedjs_page {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 12px;
+  }
+}
+
+</style>
 </head>
 <body>
+<span class="book-title-setter">The Agentic Designer</span>
 <!--
 MANIFEST
 cover.html | cover | cover
