@@ -231,8 +231,15 @@
 }
 
 .cover {
-  page: cover-page;
   break-after: page;
+}
+
+.book-page-cover {
+  break-after: page;
+}
+
+.book-page-cover .cover {
+  break-after: auto;
 }
 
 .toc {

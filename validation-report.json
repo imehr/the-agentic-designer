@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T05:10:25.012Z",
+  "generatedAt": "2026-05-20T05:18:47.830Z",
   "pass": true,
   "totalPass": 57,
   "totalChecks": 57,
@@ -23,7 +23,7 @@
       {
         "name": "PDF file size > 0",
         "pass": true,
-        "detail": "36010.6 KB"
+        "detail": "36007.4 KB"
       },
       {
         "name": "PDF is valid (readable)",
@@ -197,7 +197,7 @@
       {
         "name": "ePub file size > 0",
         "pass": true,
-        "detail": "35219.9 KB"
+        "detail": "35219.8 KB"
       },
       {
         "name": "ePub is a valid ZIP archive",
