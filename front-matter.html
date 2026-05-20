@@ -1,0 +1,191 @@
+<section class="front-matter" id="front-matter">
+
+  <div class="fm-title-block">
+    <h1 class="fm-title">The Agentic Designer</h1>
+    <p class="fm-subtitle">How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design</p>
+  </div>
+
+  <div class="fm-section fm-copyright">
+    <p class="fm-copy-line">Copyright &copy; 2026 Mehran Mozaffari. All rights reserved.</p>
+
+    <p class="fm-edition">First Edition: May 2026</p>
+
+    <h3 class="fm-heading">Personal Use License</h3>
+    <p>This book is free for personal, non-commercial use. You may read, share, and reference it for individual study, education, and research.</p>
+    <p>No part of this publication may be sold, rented, or redistributed for commercial purposes without written permission from the author.</p>
+    <p>For permissions and licensing inquiries:<br />
+      <a href="https://github.com/imehr">https://github.com/imehr</a>
+    </p>
+  </div>
+
+  <div class="fm-section fm-ai-disclosure">
+    <h3 class="fm-heading">Written with AI Assistance</h3>
+    <p>This book was written with the assistance of AI tools. The author directed, reviewed, and approved all content. AI tools were used for drafting, research, and editing. All opinions and analyses are the author's own.</p>
+    <p>All tool references and code examples reflect capabilities as of May 2026. The agentic design tool ecosystem evolves rapidly; check official documentation for the latest features and integrations.</p>
+  </div>
+
+  <div class="fm-section fm-trademarks">
+    <h3 class="fm-heading">Trademarks</h3>
+    <p>Product names, logos, and brands mentioned in this book are the property of their respective owners. Use in this book is for identification and educational purposes only and does not imply endorsement.</p>
+    <p>Claude Code and Claude Design are products of Anthropic. OpenAI, Codex, and ChatGPT are products of OpenAI. Gemini is a product of Google. Figma is a product of Figma, Inc. Miro is a product of Miro. GitHub Copilot is a product of GitHub, Inc. Vercel and v0 are products of Vercel, Inc. Bolt.new and WebContainers are products of StackBlitz. Lovable is a product of Lovable AB. Remotion is a product of Remotion GmbH. shadcn/ui is a product of shadcn. Supabase is a product of Supabase Inc. tldraw is a product of tldraw GmbH. Paper is a product of Paper Design Inc. Pencil is a product of Pencil.dev. Kiro is a product of Amazon Web Services. Hyperframes is a product of HeyGen. OpenCode is a product of OpenCode AI. ElevenLabs is a product of ElevenLabs Inc. Playwright is a project of the Microsoft team.</p>
+  </div>
+
+  <div class="fm-section fm-disclaimer">
+    <h3 class="fm-heading">Disclaimer</h3>
+    <p>This book is provided for informational and educational purposes only. Nothing in this book constitutes legal, financial, tax, or professional advice. The author makes no warranties about the accuracy or completeness of the information.</p>
+    <p>Tool capabilities, pricing, API availability, and feature sets described in this book may have changed since publication. Always consult the official documentation for each tool or platform for current information.</p>
+    <p>Code examples are provided for educational purposes and should be tested in your own environment before use in production.</p>
+  </div>
+
+  <div class="fm-section fm-edition-details">
+    <h3 class="fm-heading">Edition and Publisher Details</h3>
+    <p>Published by the author<br />
+      Sydney, Australia</p>
+    <p>Edition: First Edition, May 2026<br />
+      Version: 1.0</p>
+  </div>
+
+  <div class="fm-section fm-credits">
+    <h3 class="fm-heading">Credits</h3>
+    <p>
+      <strong>Author:</strong> Mehran Mozaffari<br />
+      <strong>Editorial review:</strong> Multi-model AI review pipeline<br />
+      <strong>Technical reviewers:</strong> Claude Opus 4.6, Gemini 3.1 Pro<br />
+      <strong>Design and production:</strong> Agentic publishing pipeline (OpenCode)
+    </p>
+  </div>
+
+  <div class="fm-section fm-oss">
+    <h3 class="fm-heading">Open Source Acknowledgments</h3>
+    <p>This book references and describes the following open-source and source-available projects. The author gratefully acknowledges the contributions of their maintainers and communities:</p>
+    <ul>
+      <li>Open Design (nexu-io) &mdash; MIT License</li>
+      <li>OpenPencil (ZSeven-W) &mdash; MIT License</li>
+      <li>Huashu Design (alchaincyf) &mdash; MIT License</li>
+      <li>Remotion (remotion-dev) &mdash; Remotion License</li>
+      <li>tldraw &mdash; Apache License 2.0</li>
+      <li>ComfyUI &mdash; GPL-3.0 License</li>
+      <li>CLI-Anything (HKUDS) &mdash; MIT License</li>
+      <li>OpenCode (anomalyco) &mdash; MIT License</li>
+    </ul>
+    <p>This book does not distribute source code from any of these projects. References are descriptive and educational.</p>
+  </div>
+
+  <div class="fm-section fm-contact">
+    <h3 class="fm-heading">Contact the Author</h3>
+    <p>
+      Blog: <a href="https://piazr.github.io/applied-ai/">https://piazr.github.io/applied-ai/</a><br />
+      GitHub: <a href="https://github.com/imehr">https://github.com/imehr</a>
+    </p>
+    <p>For corrections, errata, or licensing inquiries, please open an issue on the book's repository or contact the author through the channels above.</p>
+  </div>
+
+</section>
+
+<style>
+  .front-matter {
+    padding: 0 var(--margin-sides, 55px);
+    font-family: var(--body-font, 'Inter', -apple-system, system-ui, sans-serif);
+    font-size: var(--body-size, 10.5pt);
+    line-height: var(--line-height, 1.8);
+    color: var(--text, #1E293B);
+  }
+
+  .fm-title-block {
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--primary, #1E40AF);
+  }
+
+  .fm-title {
+    font-family: var(--display-font, 'Source Serif 4', 'Inter', serif);
+    font-size: 24pt;
+    font-weight: var(--display-weight, 800);
+    line-height: 1.2;
+    color: var(--text, #1E293B);
+    margin-bottom: 10px;
+  }
+
+  .fm-subtitle {
+    font-family: var(--body-font, 'Inter', -apple-system, system-ui, sans-serif);
+    font-size: 11pt;
+    font-weight: 300;
+    color: var(--text-secondary, #64748B);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  .fm-copy-line {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .fm-edition {
+    font-style: italic;
+    color: var(--text-secondary, #64748B);
+    margin-bottom: 16px;
+  }
+
+  .fm-section {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border, #E2E8F0);
+    page-break-inside: avoid;
+  }
+
+  .fm-heading {
+    font-family: var(--display-font, 'Source Serif 4', 'Inter', serif);
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--text, #1E293B);
+    margin-bottom: 8px;
+    margin-top: 0;
+    letter-spacing: -0.2px;
+  }
+
+  .fm-section p {
+    margin-bottom: 8px;
+    font-size: 9.5pt;
+    line-height: 1.7;
+  }
+
+  .fm-section a {
+    color: var(--primary, #1E40AF);
+    text-decoration: none;
+  }
+
+  .fm-section a:hover {
+    text-decoration: underline;
+  }
+
+  .fm-section strong {
+    font-weight: 600;
+    color: var(--text, #1E293B);
+  }
+
+  .fm-section ul {
+    margin: 6px 0 12px 20px;
+    font-size: 9.5pt;
+    line-height: 1.7;
+  }
+
+  .fm-section li {
+    margin-bottom: 2px;
+  }
+
+  .fm-copyright {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  @media print {
+    .front-matter {
+      page-break-after: always;
+    }
+
+    .fm-section {
+      page-break-inside: avoid;
+    }
+  }
+</style>

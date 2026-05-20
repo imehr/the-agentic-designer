@@ -1,0 +1,351 @@
+<section class="content" id="chapter-01">
+  <h2 class="section-title"><span class="num">01</span> The Agentic Design Paradigm</h2>
+  <p class="section-en">Why AI agents are becoming the new design tool interface</p>
+  <p class="section-intro">The way software gets designed is changing. AI coding agents --- tools built to write and ship code --- are now operating design tools, generating visual artifacts, and closing the loop from design intent to production output. This chapter explains why that shift happened, what enables it, and what it means for anyone who designs software for a living.</p>
+
+  <h3 id="01.1">The Shift from GUI to Agent</h3>
+
+  <p>For a decade, the design workflow looked the same. Open Figma or Sketch. Use a mouse-driven GUI to place elements on a canvas. Export static images or specs. Hand off to engineering. Engineering interprets the design, writes code, and ships something that approximates the original intent.</p>
+<figure class="figure--full" id="ch01-fig-01">
+  <img src="../screenshots/ch01-fig-01--print.png" alt="Comparison table of Claude Code, Codex CLI, OpenCode, and Gemini CLI showing vendor, license type, model access, and primary design capabilities" loading="lazy" />
+  <figcaption>The four major agent platforms compared by maker, core capability, and key differentiator</figcaption>
+</figure>
+
+
+  <p>That loop worked. It still works. But it has a structural problem: the design artifact and the production artifact are two different things. A Figma file is not a website. A Sketch mockup is not a component library. Every handoff introduces translation loss. The designer describes a hover state. The engineer implements a different one. The designer specifies a 12px gap. The engineer uses 16px because it looked better in code. Small divergences accumulate into a final product that only loosely resembles the original design.</p>
+
+  <p>AI coding agents change this equation. An agent can read a design file, generate code from it, write HTML back to a canvas, and iterate on visual output --- all without leaving the terminal. The design artifact and the production artifact converge toward the same thing.</p>
+
+  <p>Consider what the four major agent platforms can do as of May 2026:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>Maker</th>
+        <th>Core capability</th>
+        <th>Key differentiator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claude Code</td>
+        <td>Anthropic</td>
+        <td>Agentic coding across terminal, IDE, desktop, web</td>
+        <td>Richest skill system, most mature MCP support</td>
+      </tr>
+      <tr>
+        <td>Codex CLI</td>
+        <td>OpenAI</td>
+        <td>Cloud-based agent running tasks in isolated sandboxes</td>
+        <td>Parallel task execution, citation-backed output</td>
+      </tr>
+      <tr>
+        <td>OpenCode</td>
+        <td>Open source</td>
+        <td>Multi-provider agent with 75+ LLM options</td>
+        <td>160K GitHub stars, cross-compatible with Claude Code conventions</td>
+      </tr>
+      <tr>
+        <td>Gemini CLI</td>
+        <td>Google</td>
+        <td>Terminal agent with 1M-token context window</td>
+        <td>Free tier with 6K code requests/day</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>These tools were built for software engineering. But their capabilities --- reading files, editing code, running commands, connecting to external tools --- map directly onto design tasks. The distinction between "coding agent" and "design agent" is eroding fast.</p>
+
+  <p>Claude Code describes itself as "an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools" (source: <a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code Overview</a>, retrieved 2026-05-18). The critical word is <em>agentic</em>. It does not suggest. It does. It reads a design file, generates a visual artifact, and writes it to a canvas --- as an action, not a recommendation.</p>
+
+  <p>OpenAI frames the same shift differently: "We imagine a future where developers drive the work they want to own and delegate the rest to agents" (source: <a href="https://openai.com/index/introducing-codex/">Introducing Codex</a>, retrieved 2026-05-18). Replace "developers" with "designers" and the sentence holds. The agent handles the translation between intent and artifact.</p>
+
+  <p>OpenCode, the open-source entry with 160K GitHub stars and 7.5M monthly developers (source: <a href="https://opencode.ai">OpenCode</a>, retrieved 2026-05-18), takes the broadest approach. It supports 75+ LLM providers, making it accessible regardless of which model you prefer. Its cross-compatibility with Claude Code conventions means design skills transfer between platforms without modification. Gemini CLI rounds out the field with a 1M-token context window and a free tier that handles 6,000 code requests per day --- generous enough for design iteration.</p>
+
+  <p>The shift from GUI to agent is not about replacing visual tools. It is about adding a new interface layer. The canvas still matters. The visual preview still matters. What changes is how you operate the canvas. Instead of clicking and dragging, you describe what you want in natural language. The agent translates that description into visual output on the canvas. You review. You iterate. The loop tightens.</p>
+
+  <p>This does not mean the mouse-driven GUI disappears. Figma will continue to exist. Sketch will continue to exist. But for a growing class of design tasks --- generating prototypes, creating landing pages, building component libraries, producing motion graphics --- the agent-first workflow is faster, more consistent, and more tightly integrated with production code. The GUI becomes the review surface, not the authoring surface.</p>
+
+  <p>The economics favor the shift. A design engineer with a well-configured agent can produce in one session what used to take a designer and a front-end developer several days of back-and-forth. The agent handles the translation between design intent and code. The human provides direction and quality control. The bottleneck moves from production to decision-making --- which is where it should be.</p>
+
+  <h3 id="01.2">Why Now: The Convergence of Agents, Skills, and MCP</h3>
+
+  <p>Three independent developments converged in 2025-2026 to make agentic design possible. None of them is sufficient on its own. Together, they create something new.</p>
+<figure class="figure--full" id="ch01-fig-02">
+  <img src="../screenshots/ch01-fig-02--print.png" alt="Layered architecture diagram showing agentic coding tools, the MCP standard, and design skill systems converging to create the agentic design ecosystem" loading="lazy" />
+  <figcaption>Three independent developments converging to enable agentic design in 2025-2026</figcaption>
+</figure>
+
+
+  <div class="flow">
+    <div class="flow-item">
+      <strong>Agentic Coding Tools</strong>
+      <p>Claude Code, Codex CLI, OpenCode, Gemini CLI reached production quality</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>MCP Standard</strong>
+      <p>Universal connector between agents and external tools</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Design-as-Code Formats</strong>
+      <p>.pen files, .op files, design tokens --- all diffable, versionable, agent-readable</p>
+    </div>
+  </div>
+
+  <p><strong>Agentic coding tools reached production quality.</strong> Claude Code matured through 2025, adding skill systems, agent teams, and MCP support. Codex CLI launched with isolated cloud sandboxes and parallel task execution. OpenCode crossed 160K GitHub stars with 900 contributors and 7.5M monthly developers. Gemini CLI entered the field with a generous free tier and 1M-token context window. For the first time, designers had multiple production-grade agents to choose from.</p>
+
+  <p>The key milestone was the transition from suggestion-based tools to action-based tools. GitHub Copilot suggests code completions. Cursor suggests edits. These are useful. But they require the designer to drive every action. An agentic tool takes a goal and executes the steps to achieve it. Claude Code reads a codebase, plans an approach, edits multiple files, runs tests, and verifies the result --- all autonomously. That shift from suggestion to action is what enables design workflows.</p>
+
+  <p><strong>MCP (Model Context Protocol) became the universal connector.</strong> Claude Code documentation describes MCP as "an open standard for connecting AI tools to external data sources" (source: <a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code Overview</a>, retrieved 2026-05-18). MCP lets an agent connect to Figma, Paper, Pencil, Miro --- any tool that exposes an MCP server. The agent reads designs, exports code, and writes artifacts back to the canvas. All through a standard protocol.</p>
+
+  <p>Before MCP, every agent needed custom integrations for every tool. Claude Code would need a Figma integration, a Paper integration, a Pencil integration. Each built differently. Each maintained separately. MCP turns that N&times;M problem into an N+M problem. Any agent can connect to any tool that exposes an MCP server. This standardization is what makes multi-tool design workflows practical.</p>
+
+  <p><strong>Design-as-code formats emerged.</strong> Pencil's .pen files represent vector designs as JSON --- diffable in git, readable by agents, editable in an IDE. OpenPencil's .op files follow the same principle. Design tokens expressed as CSS custom properties or JSON variables become code artifacts that agents can read, transform, and write. The design file is no longer a binary blob. It is a text file the agent can understand, modify, and version.</p>
+
+  <pre><code># MCP configuration for a design tool (OpenCode example)
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "my-design-tool": {
+      "type": "local",
+      "command": ["npx", "-y", "@my-design-mcp/server"],
+      "enabled": true,
+      "environment": {
+        "DESIGN_API_KEY": "your-key"
+      }
+    }
+  }
+}</code></pre>
+
+  <p>This snippet shows how an MCP server gets configured. The agent connects to the design tool at session start. Every tool operation --- reading designs, writing artifacts, exporting code --- flows through this standard interface.</p>
+
+  <div class="callout">
+    <p><strong>My take:</strong> MCP is the most under-hyped development in this space. Skills and agents get the attention, but MCP is what makes the whole thing work. Without a standard protocol for connecting to design tools, every agent would need custom integrations for every tool. MCP turns that N&times;M problem into an N+M problem. Any agent can connect to any tool that exposes an MCP server. This is why I dedicate an entire chapter to MCP integrations later (see <a href="#10.1">section 10.1</a>).</p>
+  </div>
+
+  <p>There is a fourth factor: skill system standardization. Claude Code uses SKILL.md files in <code>.claude/skills/</code>. OpenCode uses SKILL.md in <code>.opencode/skills/</code>, <code>.claude/skills/</code>, or <code>.agents/skills/</code>. Both follow the Agent Skills open standard at agentskills.io. This means a design skill written for Claude Code works in OpenCode with zero modification. Skills are portable across agent platforms. I cover this in depth in <a href="#03.3">section 03.3</a>.</p>
+
+  <h3 id="01.3">The Agentic Design Loop: Prompt &rarr; Artifact &rarr; Iterate &rarr; Ship</h3>
+
+  <p>Every agent platform implements the same fundamental loop. The details differ, but the pattern is consistent across Claude Code, Codex CLI, OpenCode, and Gemini CLI.</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <strong>Prompt</strong>
+      <p>Describe design intent in natural language</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Artifact</strong>
+      <p>Agent generates visual output: HTML, .pen file, canvas</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Iterate</strong>
+      <p>Review, refine, correct via conversation</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Ship</strong>
+      <p>Export to production code</p>
+    </div>
+  </div>
+
+  <p>In Claude Code, the loop works like this: describe what you want. The agent reads the codebase, picks a design system from the skill configuration, and generates a visual artifact. You review it --- via screenshot, browser preview, or canvas view. You iterate with natural language corrections. The agent updates the artifact. When the output matches the intent, you export to production code.</p>
+
+  <p>Codex runs the same loop in a cloud sandbox. Each task runs for 1-30 minutes, depending on complexity (source: <a href="https://openai.com/index/introducing-codex/">Introducing Codex</a>, retrieved 2026-05-18). The agent provides "verifiable evidence of its actions through citations of terminal logs and test outputs." You review the citations, approve or revise, and merge.</p>
+
+  <p>OpenCode splits the loop into two modes. Press Tab to enter Plan mode --- the agent analyzes the request and proposes an approach without making changes. Switch back to Build mode and the agent implements the plan. Use <code>/undo</code> to revert bad iterations (source: <a href="https://opencode.ai/docs/">OpenCode Docs</a>, retrieved 2026-05-18). This two-phase approach reduces wasted work on design tasks where the direction is uncertain.</p>
+
+  <p>The design-specific variant of this loop adds a critical layer: the agent reads design system tokens and brand guidelines before generating output. This produces more consistent results and reduces the iteration cycle dramatically. A bare agent might need 5-8 iterations to converge on brand-consistent output. A configured agent --- one that has read your design tokens, color palette, and typography rules --- often gets it right in 1-2 iterations. More on this in <a href="#03.5">section 03.5</a>.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th>Prompt method</th>
+        <th>Iteration</th>
+        <th>Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claude Code</td>
+        <td>Interactive chat or pipe (<code>claude -p</code>)</td>
+        <td>Conversational refinement</td>
+        <td>Screenshot, browser, MCP canvas</td>
+      </tr>
+      <tr>
+        <td>Codex CLI</td>
+        <td>Single prompt, sandbox execution</td>
+        <td>Revise prompt, re-run</td>
+        <td>Citations: terminal logs, test output</td>
+      </tr>
+      <tr>
+        <td>OpenCode</td>
+        <td>Plan mode (Tab) then Build mode</td>
+        <td><code>/undo</code>, <code>/redo</code>, conversational</td>
+        <td>Screenshot, share link (<code>/share</code>)</td>
+      </tr>
+      <tr>
+        <td>Gemini CLI</td>
+        <td>Terminal prompt</td>
+        <td>Conversational refinement</td>
+        <td>Human-in-the-Loop (HiTL) oversight</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Notice the pattern. Every agent starts with a prompt. Every agent produces an artifact. Every agent supports iteration. The differences are in how each step works, not in whether the step exists. This consistency is what makes it possible to learn one agent and transfer that knowledge to another.</p>
+
+  <div class="callout">
+    <p><strong>My take:</strong> The Prompt &rarr; Artifact &rarr; Iterate &rarr; Ship loop sounds simple. In practice, the iteration phase is where most of the time goes. An agent that generates a perfect artifact on the first try does not exist. The quality of the output depends on how well you configure the agent's context --- the design system, the brand guidelines, the skill files. Chapters 03 and 08 cover this in detail. Skip those and you will spend your iteration budget on problems the agent could have avoided.</p>
+  </div>
+
+  <h3 id="01.4">Who This Book Is For and What You Will Learn</h3>
+
+  <p>This book is for product designers, design engineers, and creative technologists who want to use AI agents as design tools. Not as novelties. Not as experiments. As production tools that ship real work.</p>
+
+  <p>The prerequisites are modest. You should be comfortable in a terminal --- navigating directories, running commands, piping output. You should know HTML and CSS fundamentals. You should have used at least one design tool, whether Figma, Sketch, or something else. You do not need to be a software engineer. You do not need to know React deeply, though basic familiarity with JSX concepts helps in later chapters.</p>
+
+  <p>What you do not need: a computer science degree, experience with machine learning, or familiarity with prompt engineering as a discipline. The agents handle the technical complexity. Your job is to provide design direction and quality standards.</p>
+
+  <p>By the end of this book, you will know how to:</p>
+
+  <ul>
+    <li>Install and configure the four major AI coding agent platforms.</li>
+    <li>Write design instructions in CLAUDE.md and AGENTS.md.</li>
+    <li>Install, compose, and create design skills using the SKILL.md convention.</li>
+    <li>Connect design tools (Figma, Paper, Pencil, Miro) via MCP servers.</li>
+    <li>Use connected canvas tools for agent-driven design workflows.</li>
+    <li>Build custom design harnesses that enforce brand consistency.</li>
+    <li>Generate production-ready UI code from design artifacts.</li>
+    <li>Orchestrate multiple agents for parallel design tasks.</li>
+    <li>Create programmatic video and motion graphics with agents.</li>
+    <li>Maintain design systems across code and design surfaces.</li>
+  </ul>
+
+  <p>The book assumes you have access to at least one agent platform. If cost is a concern, OpenCode with a free API key or Gemini CLI's free tier will work for most exercises. The skills and techniques transfer across platforms.</p>
+
+  <h3 id="01.5">A Map of the Agentic Design Ecosystem</h3>
+
+  <p>The agentic design ecosystem has five layers. Each layer builds on the one below it. Understanding the layers is more important than memorizing any individual tool.</p>
+<figure class="figure--full" id="ch01-fig-03">
+  <img src="../screenshots/ch01-fig-03--print.png" alt="Radial ecosystem map of agentic design tools grouped into five categories: agent platforms, canvas tools, skill frameworks, motion and video tools, and MCP integrations" loading="lazy" />
+  <figcaption>The agentic design ecosystem organized by tool category and function</figcaption>
+</figure>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Components</th>
+        <th>Examples</th>
+        <th>Covered in</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Agent platforms</td>
+        <td>CLI and IDE agents that execute tasks</td>
+        <td>Claude Code, Codex CLI, OpenCode, Gemini CLI</td>
+        <td><a href="#02.1">Chapter 02</a></td>
+      </tr>
+      <tr>
+        <td>Configuration and skills</td>
+        <td>Instructions, skills, harnesses</td>
+        <td>CLAUDE.md, AGENTS.md, SKILL.md, design harnesses</td>
+        <td><a href="#03.1">Chapter 03</a></td>
+      </tr>
+      <tr>
+        <td>Design canvas tools</td>
+        <td>Visual surfaces agents can read and write</td>
+        <td>Paper, Pencil, OpenPencil</td>
+        <td><a href="#05.1">Chapters 05-06</a></td>
+      </tr>
+      <tr>
+        <td>Design skill frameworks</td>
+        <td>Composable skills for specific design outputs</td>
+        <td>Open Design, Huashu Design</td>
+        <td><a href="#06.1">Chapters 06-07</a></td>
+      </tr>
+      <tr>
+        <td>MCP integrations</td>
+        <td>Protocol connectors to external design tools</td>
+        <td>Figma MCP, Miro MCP, MagicPattern MCP</td>
+        <td><a href="#10.1">Chapter 10</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>This book proceeds through these layers from bottom to top. Chapters 02-03 cover agent platforms and configuration. Chapters 04-07 cover design-as-code concepts, canvas tools, and skill frameworks. Chapters 08-10 cover design systems, motion, and MCP integrations. Chapters 11-12 cover multi-agent patterns and the production pipeline. Chapters 13-14 close with case studies and predictions.</p>
+
+  <p>A sixth layer exists below these five: the design-as-code formats themselves. .pen files, .op files, HTML as a design surface, design tokens as code variables. These formats are what make the entire stack possible. Without formats that agents can read, write, and diff, none of the layers above would function. I cover this foundational layer in <a href="#04.1">Chapter 04</a>.</p>
+
+  <p>The ecosystem also includes motion and video tools. Remotion (47.1k+ GitHub stars) makes videos programmatically with React. Hyperframes (19k+ stars, by HeyGen) uses HTML + GSAP as the authoring format, built specifically for AI agents. These tools extend the agentic design loop beyond static artifacts into time-based media. Chapter 09 covers both in depth.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Type</th>
+        <th>Scale (May 2026)</th>
+        <th>Key format</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Open Design</td>
+        <td>Design skill framework</td>
+        <td>43K+ GitHub stars, 31 skills, 129 design systems</td>
+        <td>DESIGN.md, SKILL.md</td>
+      </tr>
+      <tr>
+        <td>Huashu Design</td>
+        <td>HTML-native design skill</td>
+        <td>14K+ stars, 20 design philosophies</td>
+        <td>HTML, SKILL.md</td>
+      </tr>
+      <tr>
+        <td>Pencil</td>
+        <td>Vector design tool (IDE)</td>
+        <td>Commercial, .pen format</td>
+        <td>.pen (JSON)</td>
+      </tr>
+      <tr>
+        <td>OpenPencil</td>
+        <td>Open-source vector design</td>
+        <td>3K+ stars, concurrent Agent Teams</td>
+        <td>.op (JSON)</td>
+      </tr>
+      <tr>
+        <td>Remotion</td>
+        <td>Programmatic video (React)</td>
+        <td>47.1k+ stars</td>
+        <td>React/TSX compositions</td>
+      </tr>
+      <tr>
+        <td>Hyperframes</td>
+        <td>Programmatic video (HTML+GSAP)</td>
+        <td>19k+ stars, by HeyGen</td>
+        <td>HTML, GSAP</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>My take:</strong> Most people entering this space focus on the agent platform layer. That is the wrong place to start. The agent is a commodity --- Claude Code and OpenCode and Gemini CLI all do roughly the same things. The differentiator is the configuration and skills layer. A well-configured agent with a good skill file will outperform a bare agent every time. Invest your time in chapters 03 and 08 before you invest in learning every agent platform's quirks.</p>
+  </div>
+
+  <p>The ecosystem is young and evolving fast. New tools appear monthly. Existing tools add features weekly. The specific tools and numbers in this chapter will age. The mental model --- agents, configuration, canvas, skills, MCP --- will hold. Understanding the layers is more durable than memorizing any tool's feature list.</p>
+
+  <p>One more thing worth noting: this ecosystem rewards generalists. The tools are too new for deep specialization. A designer who can configure an agent, write a skill file, and connect an MCP server will outperform a designer who only knows one of those things. This book aims to make you that generalist.</p>
+
+  <div class="callout tip">
+    <p><strong>Next:</strong> Chapter 02 compares the four major agent platforms in detail. You will learn how to install each one, what makes it different, and which one to pick for design workflows.</p>
+  </div>
+</section>

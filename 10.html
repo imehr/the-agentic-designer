@@ -1,0 +1,619 @@
+<section class="content" id="chapter-10">
+  <h2 class="section-title"><span class="num">10</span> MCP Integrations</h2>
+  <p class="section-en">Connecting Figma, Miro, MagicPattern, and other tools via MCP</p>
+  <p class="section-intro">MCP (Model Context Protocol) is the connective tissue between AI agents and design tools. This chapter covers every MCP server that matters for agentic design: how to configure them across agent platforms, how to chain them for multi-tool workflows, and what to do when they break.</p>
+
+  <h3 id="10.1">MCP: The Universal Design Tool Connector</h3>
+
+  <p>MCP is a standardized protocol that lets AI agents talk to external tools. Think of it as an authenticated API that an LLM can call during a conversation. Instead of copying design specs between tools by hand, the agent reads from one MCP server and writes to another. All in a single session.</p>
+
+  <p>MCP servers expose three things: <strong>tools</strong> (functions the agent can call), <strong>resources</strong> (data the agent can read), and <strong>prompts</strong> (guided workflows). For design work, tools are what matter most. A tool like <code>get_jsx</code> on the Paper MCP server is the difference between manually translating a design and having the agent do it in seconds.</p>
+
+  <p>Two transport types exist. <strong>HTTP</strong> (remote) connects to a URL like <code>https://mcp.figma.com/mcp</code>. <strong>stdio</strong> (local) spawns a process on your machine. Figma uses HTTP. Paper uses HTTP too, but the server runs locally inside the Paper Desktop app at <code>http://127.0.0.1:29979/mcp</code>. The transport type matters for configuration, which I cover next.</p>
+
+  <p>As of May 2026, MCP is supported by every major agent platform: Claude Code, Codex CLI, Cursor, VS Code Copilot, OpenCode, Windsurf, Gemini CLI, Warp, Kiro, Factory, Firebender, Replit, Amazon Q, and Android Studio. The ecosystem is mature enough that MCP support is table stakes for any agent tool.</p>
+
+  <h3 id="10.2">Configuring MCP Servers in Each Agent Platform</h3>
+
+  <p>Every agent platform has its own MCP configuration syntax. Some use CLI commands. Others use JSON config files. A few support both. Here is the complete reference for the three agents this book focuses on, plus VS Code and Cursor for teams using those editors.</p>
+<figure class="figure--full" id="ch10-fig-01">
+  <img src="../screenshots/ch10-fig-01--print.png" alt="VS Code split editor view showing three MCP configuration files side by side: Claude Code settings with Paper and Figma HTTP servers, OpenCode JSON config with remote type, and VS Code mcp.json with server definitions" loading="lazy" />
+  <figcaption>MCP configuration across Claude Code, OpenCode, and VS Code showing different syntaxes</figcaption>
+</figure>
+
+
+  <h4 id="10.2.1">Claude Code</h4>
+
+  <p>Claude Code supports two approaches: the <code>mcp add</code> CLI command and the plugin system. Plugins are preferred because they include skill files that teach the agent how to use the MCP tools effectively.</p>
+
+  <pre><code># Plugin approach (preferred for Figma)
+$ claude plugin install figma@claude-plugins-official
+
+# Plugin approach for Paper
+$ claude plugin install paper-desktop@paper
+
+# Manual remote server (Figma)
+$ claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp
+
+# Manual local server (Paper via stdio bridge)
+$ claude mcp add --transport stdio paper -- npx mcp-remote http://127.0.0.1:29979/mcp
+
+# Verify: type /mcp in Claude Code
+# You should see figma and paper listed
+# Authenticate when prompted</code></pre>
+
+  <p>The <code>--scope user</code> flag makes the MCP server available across all projects. Without it, the server is scoped to the current project only. For design tools you use daily, user-scoped is the right default.</p>
+
+  <h4 id="10.2.2">Codex CLI</h4>
+
+  <p>Codex uses a simpler configuration model. The <code>mcp add</code> command takes a name and URL. For tools that need plugins (like Figma), use the app settings UI.</p>
+
+  <pre><code># CLI: add Figma remote server
+$ codex mcp add figma --url https://mcp.figma.com/mcp
+
+# App: Settings > Plugins > + Figma > Install > Authenticate
+
+# App: Settings > MCP Servers > Streamable HTTP
+# Name: paper, URL: http://127.0.0.1:29979/mcp</code></pre>
+
+  <h4 id="10.2.3">OpenCode</h4>
+
+  <p>OpenCode configures MCP servers in <code>opencode.json</code>. The configuration is declarative JSON, which makes it versionable and shareable across a team.</p>
+
+  <pre><code>// opencode.json
+{
+  "mcp": {
+    "paper": {
+      "type": "remote",
+      "url": "http://127.0.0.1:29979/mcp",
+      "enabled": true
+    },
+    "figma": {
+      "type": "remote",
+      "url": "https://mcp.figma.com/mcp",
+      "enabled": true
+    }
+  }
+}</code></pre>
+
+  <h4 id="10.2.4">VS Code and Cursor</h4>
+
+  <p>VS Code and Cursor both use JSON config for MCP servers, placed in <code>.vscode/mcp.json</code> at the project root. Cursor additionally supports a plugin deep-link format.</p>
+
+  <pre><code>// .vscode/mcp.json
+{
+  "servers": {
+    "figma": {
+      "url": "https://mcp.figma.com/mcp",
+      "type": "http"
+    },
+    "paper": {
+      "type": "http",
+      "url": "http://127.0.0.1:29979/mcp"
+    }
+  }
+}</code></pre>
+
+  <p>For Cursor, the plugin approach is cleaner:</p>
+
+  <pre><code># Cursor plugins
+/add-plugin figma
+/add-plugin paper-desktop
+
+# Cursor deep link for Figma (one-click setup)
+cursor://anysphere.cursor-deeplink/mcp/install?name=Figma&amp;config=...</code></pre>
+
+  <p>The following table summarizes the configuration approach for each agent platform.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Platform</th>
+        <th>Config Method</th>
+        <th>Remote Servers</th>
+        <th>Local Servers</th>
+        <th>Plugin Support</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claude Code</td>
+        <td>CLI + <code>opencode.json</code></td>
+        <td><code>mcp add --transport http</code></td>
+        <td><code>mcp add --transport stdio</code></td>
+        <td>Yes (<code>claude plugin</code>)</td>
+      </tr>
+      <tr>
+        <td>Codex CLI</td>
+        <td>CLI + App Settings</td>
+        <td><code>mcp add --url</code></td>
+        <td>App Settings only</td>
+        <td>Yes (Skills)</td>
+      </tr>
+      <tr>
+        <td>OpenCode</td>
+        <td><code>opencode.json</code></td>
+        <td><code>"type": "remote"</code></td>
+        <td><code>"type": "local"</code></td>
+        <td>Yes (Skills)</td>
+      </tr>
+      <tr>
+        <td>VS Code</td>
+        <td><code>.vscode/mcp.json</code></td>
+        <td><code>"type": "http"</code></td>
+        <td><code>"type": "stdio"</code></td>
+        <td>Yes (Extensions)</td>
+      </tr>
+      <tr>
+        <td>Cursor</td>
+        <td><code>.vscode/mcp.json</code> + plugins</td>
+        <td><code>"type": "http"</code></td>
+        <td><code>"type": "stdio"</code></td>
+        <td>Yes (<code>/add-plugin</code>)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>My take:</strong> Claude Code's plugin system is the most mature MCP configuration experience as of May 2026. The plugin includes both the server connection and the skill file that teaches the agent how to use the tools. With Codex and OpenCode, you get the connection but need to write your own skill context. This gap will close, but right now Claude Code has the edge for MCP-heavy workflows.</p>
+  </div>
+
+  <h3 id="10.3">Figma MCP Server: Reading Designs Programmatically</h3>
+
+  <p>Figma offers two MCP server types: <strong>Remote</strong> at <code>https://mcp.figma.com/mcp</code> (available to all plans) and <strong>Desktop</strong> (runs inside the Figma desktop app, available on Dev or Full seats for paid plans). The remote server is the one to use. It supports write-to-canvas, code-to-canvas, and diagram generation. The desktop server is limited to read operations for most users.</p>
+<figure class="figure--full" id="ch10-fig-02">
+  <img src="../screenshots/ch10-fig-02--print.png" alt="Figma design editor showing a product design file with the canvas, layers panel, and an agent terminal reading design node data through the Figma MCP server including component names and properties" loading="lazy" />
+  <figcaption>Figma design file with agent reading design data through the Figma MCP server connection</figcaption>
+</figure>
+
+
+  <p>Authentication is OAuth-based. When you first connect, a browser window opens for the Figma sign-in flow. After that, the token is cached. No API keys to manage.</p>
+
+  <p>Figma's MCP server exposes 18 tools. Here is the complete reference.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Remote</th>
+        <th>Desktop</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>get_design_context</code></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>React+Tailwind code from selection (or custom framework)</td>
+      </tr>
+      <tr>
+        <td><code>get_screenshot</code></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Screenshot of current selection</td>
+      </tr>
+      <tr>
+        <td><code>get_variable_defs</code></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Variables and styles used in selection</td>
+      </tr>
+      <tr>
+        <td><code>get_metadata</code></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Sparse XML of selection (IDs, names, types, positions, sizes)</td>
+      </tr>
+      <tr>
+        <td><code>get_figjam</code></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>FigJam diagrams as XML with screenshots</td>
+      </tr>
+      <tr>
+        <td><code>get_code_connect_map</code></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Figma node to code component mappings</td>
+      </tr>
+      <tr>
+        <td><code>use_figma</code></td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>General-purpose write to canvas (create, edit, delete)</td>
+      </tr>
+      <tr>
+        <td><code>create_new_file</code></td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Create new Figma Design or FigJam file</td>
+      </tr>
+      <tr>
+        <td><code>generate_diagram</code></td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Generate FigJam diagram from Mermaid or natural language</td>
+      </tr>
+      <tr>
+        <td><code>generate_figma_design</code></td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Send live UI to Figma as design layers (code to canvas)</td>
+      </tr>
+      <tr>
+        <td><code>search_design_system</code></td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Search libraries for components, variables, styles</td>
+      </tr>
+      <tr>
+        <td><code>whoami</code></td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Authenticated user identity</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The primary workflow is link-based. You select a layer in Figma, copy the URL from the browser address bar, and paste it into your agent prompt. The agent extracts the node ID and calls <code>get_design_context</code>. The tool returns React+Tailwind code by default, or you can specify a custom framework output.</p>
+
+  <p>Write-to-canvas capabilities are more ambitious. The agent can create, edit, and delete pages, frames, components, variants, variables, styles, text, and images. For FigJam, it can create stickies, sections, connectors, shapes, tables, and code blocks. The agent is supposed to check the design system before creating elements from scratch. In practice, this works best when paired with a skill file that enforces design system constraints.</p>
+
+  <p>Supported diagram types for <code>generate_diagram</code>: flowchart, Gantt chart, state diagram, sequence diagram, architecture diagram, and ERD. Useful for having an agent generate architecture documentation directly in FigJam.</p>
+
+  <p>Figma also provides built-in skills for the plugin system: Code Connect, Build/Update Screens from Design System, and Create New File. These skills teach the agent specific Figma workflows beyond raw tool access.</p>
+
+  <p>Client support varies by feature. The following table shows which agent platforms support which Figma MCP capabilities as of May 2026.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Desktop</th>
+        <th>Remote</th>
+        <th>Write to Canvas</th>
+        <th>Code to Canvas</th>
+        <th>Plugin/Skills</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claude Code</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes (Figma plugin)</td>
+      </tr>
+      <tr>
+        <td>Codex</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes (Codex Skills)</td>
+      </tr>
+      <tr>
+        <td>Cursor</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes (Figma plugin)</td>
+      </tr>
+      <tr>
+        <td>VS Code Copilot</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes (Figma plugin)</td>
+      </tr>
+      <tr>
+        <td>Gemini CLI</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>No</td>
+        <td>Yes (Extension)</td>
+      </tr>
+      <tr>
+        <td>Warp</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="10.4">Miro MCP Server: AI-Powered Whiteboarding</h3>
+
+  <p>Miro has been developing MCP integrations that give agents access to boards. The server enables reading board content, creating shapes and stickies, and making connections between elements. Typical use cases include automated diagram generation, turning meeting notes into structured boards, and architecture documentation.</p>
+<figure class="figure--full" id="ch10-fig-03">
+  <img src="../screenshots/ch10-fig-03--print.png" alt="Miro whiteboard showing an AI-agent-generated design workshop board with color-coded sticky notes arranged in columns, flow connectors between ideas, and section headers for different design phases" loading="lazy" />
+  <figcaption>Miro board with agent-generated whiteboard content created through the Miro MCP server</figcaption>
+</figure>
+
+
+  <p>The Miro MCP server follows standard MCP server configuration patterns. Configuration for each agent platform uses the same approaches covered in <a href="#10.2">section 10.2</a>. The key difference is that Miro boards are freeform canvases, not structured design files, so agent outputs tend to be more exploratory and less pixel-precise than Figma or Paper outputs.</p>
+
+  <p>As of May 2026, Miro's MCP documentation is limited compared to Figma and Paper. The tool list and configuration details may evolve. Check <a href="https://developers.miro.com/docs/mcp">the official Miro developer docs</a> for the current state.</p>
+
+  <h3 id="10.5">MagicPattern MCP: Generative Design Patterns</h3>
+
+  <p>MagicPattern provides generative design patterns --- gradients, mesh gradients, blobs, patterns, and other decorative elements. The MCP server lets agents generate SVG and CSS patterns programmatically rather than browsing a UI library by hand.</p>
+<figure class="figure--half-right" id="ch10-fig-04">
+  <img src="../screenshots/ch10-fig-04--print.png" alt="Terminal output showing Paper MCP server token synchronization reading 47 design tokens from the Paper canvas and writing them to a local tokens.json file with confirmation of each token category" loading="lazy" />
+  <figcaption>Paper MCP token sync pulling design tokens from canvas to a local JSON file</figcaption>
+</figure>
+
+
+  <p>This is a niche tool in the MCP ecosystem, but it solves a real problem. Background patterns, decorative dividers, and visual texture are the kinds of tasks that slow down a design workflow. Having the agent generate these on demand, with parameters you control via prompt, is faster than any manual approach.</p>
+
+  <p>Configuration follows the standard MCP server pattern. The server exposes tools for generating specific pattern types with parameters like color, scale, density, and seed value. Each call returns SVG or CSS that the agent can write into a design file or codebase.</p>
+
+  <h3 id="10.6">Paper MCP Server: 22 Tools for Connected Canvas</h3>
+
+  <p>Paper's MCP server runs inside the Paper Desktop app. When a file is open, the server listens at <code>http://127.0.0.1:29979/mcp</code>. It connects to Cursor, Claude Code, Claude Desktop, Codex, Copilot, OpenCode, and Antigravity. The setup for each platform is covered in <a href="#10.2">section 10.2</a>.</p>
+<figure class="figure--full" id="ch10-fig-05">
+  <img src="../screenshots/ch10-fig-05--print.png" alt="Flow diagram showing an AI agent chaining two MCP servers: reading design specifications from Figma MCP, processing and normalizing design tokens, then writing the transformed output to Paper MCP canvas in a single agent session" loading="lazy" />
+  <figcaption>Multi-MCP chain: agent reads from Figma, processes tokens, and writes to Paper in one session</figcaption>
+</figure>
+
+
+  <p>Paper exposes 22 tools --- the largest surface of any design tool MCP server. Here is the complete reference.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>get_basic_info</code></td>
+        <td>Read</td>
+        <td>File name, page name, node count, artboard list with dimensions</td>
+      </tr>
+      <tr>
+        <td><code>get_selection</code></td>
+        <td>Read</td>
+        <td>Selected nodes (IDs, names, types, size, artboard)</td>
+      </tr>
+      <tr>
+        <td><code>get_node_info</code></td>
+        <td>Read</td>
+        <td>Node details by ID (size, visibility, lock, parent, children, text)</td>
+      </tr>
+      <tr>
+        <td><code>get_children</code></td>
+        <td>Read</td>
+        <td>Direct children of a node</td>
+      </tr>
+      <tr>
+        <td><code>get_tree_summary</code></td>
+        <td>Read</td>
+        <td>Compact text summary of subtree (optional depth limit)</td>
+      </tr>
+      <tr>
+        <td><code>get_screenshot</code></td>
+        <td>Read</td>
+        <td>Screenshot by ID (base64, optional 1x or 2x scale)</td>
+      </tr>
+      <tr>
+        <td><code>get_jsx</code></td>
+        <td>Export</td>
+        <td>JSX for node+descendants (Tailwind or inline-styles format)</td>
+      </tr>
+      <tr>
+        <td><code>get_computed_styles</code></td>
+        <td>Read</td>
+        <td>Computed CSS styles for nodes (batch)</td>
+      </tr>
+      <tr>
+        <td><code>get_fill_image</code></td>
+        <td>Read</td>
+        <td>Image data from image fill node (base64 JPEG)</td>
+      </tr>
+      <tr>
+        <td><code>get_font_family_info</code></td>
+        <td>Read</td>
+        <td>Font availability check (local or Google Fonts)</td>
+      </tr>
+      <tr>
+        <td><code>get_guide</code></td>
+        <td>Workflow</td>
+        <td>Guided workflows (e.g., figma-import)</td>
+      </tr>
+      <tr>
+        <td><code>export</code></td>
+        <td>Export</td>
+        <td>Export nodes as PNG, JPG, SVG, MP4 with scale overrides</td>
+      </tr>
+      <tr>
+        <td><code>create_artboard</code></td>
+        <td>Write</td>
+        <td>Create new artboard with name and styles</td>
+      </tr>
+      <tr>
+        <td><code>write_html</code></td>
+        <td>Write</td>
+        <td>Parse HTML and add/replace nodes</td>
+      </tr>
+      <tr>
+        <td><code>set_text_content</code></td>
+        <td>Write</td>
+        <td>Set text of Text nodes (batch)</td>
+        </tr>
+      <tr>
+        <td><code>rename_nodes</code></td>
+        <td>Write</td>
+        <td>Rename layers (batch)</td>
+      </tr>
+      <tr>
+        <td><code>duplicate_nodes</code></td>
+        <td>Write</td>
+        <td>Deep-clone nodes with descendant ID map</td>
+      </tr>
+      <tr>
+        <td><code>move_nodes</code></td>
+        <td>Write</td>
+        <td>Reposition or reparent nodes</td>
+      </tr>
+      <tr>
+        <td><code>update_styles</code></td>
+        <td>Write</td>
+        <td>Update CSS styles on nodes</td>
+      </tr>
+      <tr>
+        <td><code>delete_nodes</code></td>
+        <td>Write</td>
+        <td>Delete nodes and descendants</td>
+      </tr>
+      <tr>
+        <td><code>finish_working_on_nodes</code></td>
+        <td>Signal</td>
+        <td>Clear working indicator from artboards</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The <code>get_jsx</code> tool is Paper's killer feature for the design-to-code pipeline. It returns production-ready JSX with Tailwind classes directly from the canvas. No translation layer. No approximation. Paper is HTML/CSS natively, so the JSX output is a faithful representation of what is on screen. Chapter 12 covers this pipeline in depth.</p>
+
+  <p>The <code>write_html</code> tool enables the reverse direction: code to canvas. The agent generates HTML, calls <code>write_html</code>, and the content appears on the Paper canvas. This bi-directional flow is unique to Paper. Figma can write to canvas via <code>use_figma</code>, but the input format is a structured API call, not raw HTML.</p>
+
+  <div class="callout">
+    <p><strong>My take:</strong> Paper's 22-tool MCP surface is the most complete in the ecosystem. The <code>get_jsx</code> tool alone saves hours of translating design to code. But the Desktop app requirement is a real limitation for Linux users and CI environments. If Paper offered a headless server mode, it would be the clear default for agentic design workflows.</p>
+  </div>
+
+  <h3 id="10.7">Chaining MCP Servers: Multi-Tool Workflows</h3>
+
+  <p>Multiple MCP servers can run simultaneously in a single agent session. The agent orchestrates between them using sequential tool calls. This is where MCP gets powerful --- a single agent prompt can trigger a workflow that spans Figma, Paper, Notion, and your codebase.</p>
+
+  <p>Three chaining patterns show up repeatedly in production use.</p>
+
+  <p><strong>Pattern 1: Figma to Paper token sync.</strong> Open the design system file in Figma. Open the Paper file where you want the design system. Prompt the agent: "Create a design system in Paper that matches the Figma file." The agent calls <code>get_variable_defs</code> on the Figma MCP server to read colors, spacing, and typography. Then it calls <code>create_artboard</code> and <code>write_html</code> on the Paper MCP server to create the design system elements. Finally it calls <code>update_styles</code> to apply the tokens from Figma.</p>
+
+  <pre><code># Figma → Paper token sync workflow
+# Both MCP servers active in same agent session
+
+# Step 1: Agent reads Figma design system
+# Figma MCP: get_variable_defs() → colors, spacing, typography
+# Figma MCP: get_screenshot() → visual reference
+
+# Step 2: Agent creates Paper design system
+# Paper MCP: create_artboard({ name: "Design System" })
+# Paper MCP: write_html({ html: "&lt;div&gt;...design system elements...&lt;/div&gt;" })
+# Paper MCP: update_styles({ styles: { /* tokens from Figma */ } })</code></pre>
+
+  <p><strong>Pattern 2: Notion to Paper content sync.</strong> Open the Paper file with placeholder content. Prompt: "Sync the content from the Notion Testimonials database with this frame." The agent reads from the Notion MCP server, then writes the real content into Paper via <code>set_text_content</code>.</p>
+
+  <pre><code># Notion → Paper content sync workflow
+
+# Step 1: Agent reads Notion database
+# Notion MCP: query_database({ database_id: "testimonials" })
+# Returns: [{ name: "Sarah", quote: "...", company: "..." }, ...]
+
+# Step 2: Agent populates Paper design
+# Paper MCP: set_text_content({ updates: [
+#   { nodeId: "name-1", text: "Sarah" },
+#   { nodeId: "quote-1", text: "..." },
+#   { nodeId: "company-1", text: "..." },
+#   ...
+# ]})</code></pre>
+
+  <p><strong>Pattern 3: Design to code and back.</strong> The agent reads a design from Figma or Paper via MCP, generates production code, then optionally writes the coded version back to the canvas for visual verification. This pattern is the foundation of the pipeline covered in Chapter 12.</p>
+
+  <pre><code># Design → Code → Canvas verification loop
+
+# Step 1: Read design
+# Figma MCP: get_design_context({ url: "https://figma.com/..." })
+# Returns: React + Tailwind JSX
+
+# Step 2: Agent generates production code
+# (Agent writes files, runs dev server, verifies visually)
+
+# Step 3: Write back to Paper for verification
+# Paper MCP: write_html({ html: "&lt;div class='hero'&gt;...&lt;/div&gt;" })
+# Human reviews on Paper canvas
+# Agent iterates based on feedback</code></pre>
+
+  <p>Each MCP server uses the currently opened file as context. Figma MCP operates on whatever file you have open in the browser. Paper MCP operates on whatever file you have open in the Paper Desktop app. The agent does not switch files --- you do.</p>
+
+  <div class="callout warning">
+    <p><strong>Warning:</strong> Long-running agent sessions can cause MCP connection drops. If the agent reports it cannot access a tool that should be available, restart the agent session. LLMs can also hallucinate tool parameters occasionally --- if you see repeated tool call errors, restart the session to reset the agent's tool-use context.</p>
+  </div>
+
+  <h3 id="10.8">Troubleshooting MCP Connections</h3>
+
+  <p>MCP connections fail in predictable ways. Here is a troubleshooting reference for the most common issues.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Symptom</th>
+        <th>Cause</th>
+        <th>Fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Agent says MCP tool is not available</td>
+        <td>Agent session started before MCP server was configured</td>
+        <td>Restart the agent session</td>
+      </tr>
+      <tr>
+        <td>Agent session cannot connect to Paper MCP</td>
+        <td>Paper Desktop app is not running or no file is open</td>
+        <td>Open Paper Desktop and ensure a file is loaded</td>
+      </tr>
+      <tr>
+        <td>Paper MCP connected but agent reports no access</td>
+        <td>MCP host tool needs restart</td>
+        <td>Restart the MCP host (Paper Desktop app)</td>
+      </tr>
+      <tr>
+        <td>Figma MCP returns errors on large designs</td>
+        <td>Large, deeply nested designs exceed response limits</td>
+        <td>Select specific frames instead of entire pages</td>
+      </tr>
+      <tr>
+        <td>Figma SVG fills returned as images</td>
+        <td>Known Figma MCP behavior</td>
+        <td>Use <code>get_design_context</code> for code output instead</td>
+      </tr>
+      <tr>
+        <td>Paper MCP fails on Windows WSL</td>
+        <td>WSL cannot access <code>127.0.0.1:29979</code></td>
+        <td>Enable mirrored mode networking in WSL config</td>
+      </tr>
+      <tr>
+        <td>MCP limits not reset after Paper plan upgrade</td>
+        <td>Desktop app caches plan limits</td>
+        <td>Update Paper Desktop app and restart</td>
+      </tr>
+      <tr>
+        <td>Repeated tool call errors from agent</td>
+        <td>LLM hallucinating tool parameters</td>
+        <td>Restart the agent session</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>I spent an hour debugging an MCP connection before I realized the Paper Desktop app was not running. The error message was generic --- "connection refused" --- which pointed me toward network issues instead of the obvious cause. Start with the basics: is the tool running, is a file open, is the server listening?</p>
+
+  <p>Figma MCP has additional quirks. It ignores spacer elements. It does not convert inset borders to outlines. Code Connect components are not reliably converted. These are known limitations as of May 2026 and will likely improve over time. For now, work around them by selecting specific frames and validating the output.</p>
+
+  <div class="callout">
+    <p><strong>My take:</strong> MCP connection issues are the number one source of frustration when starting with agentic design. The tools work well when they work, but the failure modes are silent and confusing. I recommend keeping a terminal tab open with a test MCP call ready to paste. When the agent reports a connection issue, verify independently before spending time on agent-side debugging.</p>
+  </div>
+
+  <div class="callout tip">
+    <p><strong>Next:</strong> With MCP servers configured and connected, the next question is scale. How do multiple agents collaborate on a single design? Chapter 11 covers multi-agent design teams, the orchestrator pattern, and when parallelizing is worth the complexity overhead.</p>
+  </div>
+</section>

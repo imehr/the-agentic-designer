@@ -1,0 +1,344 @@
+<section class="content appendix" id="appendix-C">
+  <h2 class="section-title"><span class="num">Appendix C</span> Prompt Library for Design Tasks</h2>
+  <p class="section-intro">Battle-tested prompts for common agentic design tasks. Copy them into your agent session, swap the bracketed values, and ship. Verified as of May 2026.</p>
+
+  <h3 id="appendix-C.1">Prototyping Prompts</h3>
+
+  <p>Quick wireframes, interactive prototypes, and dashboard layouts. These prompts work across tools --- adjust the tool reference for your setup.</p>
+<figure class="figure--full" id="chC-fig-01">
+  <img src="../screenshots/chC-fig-01--print.png" alt="Card grid showing prompt templates for design tasks: Quick Wireframe for any tool, Interactive iOS Prototype for Huashu Design, Web Prototype for Open Design, and Dashboard Prototype with their target tools and expected output descriptions" loading="lazy" />
+  <figcaption>Prompt template gallery organized by task category with target tools and expected outputs</figcaption>
+</figure>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prompt</th>
+        <th>Target Tool(s)</th>
+        <th>Expected Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Quick Wireframe</td>
+        <td>Any</td>
+        <td>Gray-block layout with information architecture</td>
+      </tr>
+      <tr>
+        <td>Interactive App Prototype</td>
+        <td>Huashu Design</td>
+        <td>Clickable iOS prototype with real images</td>
+      </tr>
+      <tr>
+        <td>Web Prototype</td>
+        <td>Open Design</td>
+        <td>Styled web page with hero, features, pricing</td>
+      </tr>
+      <tr>
+        <td>Mobile Onboarding Flow</td>
+        <td>Open Design</td>
+        <td>3-screen dark mode onboarding</td>
+      </tr>
+      <tr>
+        <td>Dashboard Prototype</td>
+        <td>Open Design</td>
+        <td>Admin dashboard with sidebar, KPI cards, table, chart</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Quick wireframe --- works with any tool:</p>
+  <pre><code>Create a wireframe for a [type] app with [key screens].
+Use gray blocks for content areas. No styling needed ---
+just layout and structure. Show me the information architecture.</code></pre>
+
+  <p>Interactive iOS prototype --- Huashu Design:</p>
+  <pre><code>Build an iOS prototype for a [app description] ---
+[4 screens], actually clickable. Use real images from
+Wikimedia/Unsplash. Include navigation between screens.</code></pre>
+
+  <p>Web prototype with design system --- Open Design:</p>
+  <pre><code>Using the [design-system-name] design system, create a
+web prototype for [product description]. Target audience:
+[audience]. Tone: [tone]. Include hero, features, and
+pricing sections.</code></pre>
+
+  <p>Mobile onboarding flow --- Open Design:</p>
+  <pre><code>Create a 3-screen mobile onboarding flow for [app name].
+Screen 1: Splash with brand mark
+Screen 2: Value proposition (3 key benefits)
+Screen 3: Sign-in form
+Use [design-system] style. Dark mode.</code></pre>
+
+  <p>Dashboard prototype --- Open Design:</p>
+  <pre><code>Build an admin dashboard for [use case]. Include:
+- Sidebar navigation (6 items)
+- KPI cards (4 metrics)
+- Data table with sorting
+- Chart section
+Use the [design-system] design system.</code></pre>
+
+  <h3 id="appendix-C.2">Visual Design Prompts</h3>
+
+  <p>Landing pages, brand identities, and design direction exploration. These prompts combine design tools with agent capabilities.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prompt</th>
+        <th>Target Tool(s)</th>
+        <th>Expected Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Landing Page Build</td>
+        <td>Paper + Claude Code</td>
+        <td>React + Tailwind website from Paper design</td>
+      </tr>
+      <tr>
+        <td>Design Direction Advisor</td>
+        <td>Huashu Design</td>
+        <td>3 distinct visual directions to choose from</td>
+      </tr>
+      <tr>
+        <td>Brand-Consistent Design</td>
+        <td>Huashu Design</td>
+        <td>Design using real brand assets</td>
+      </tr>
+      <tr>
+        <td>Token Sync</td>
+        <td>Paper + Figma MCP</td>
+        <td>Design tokens migrated from Figma to Paper</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Landing page from Paper design:</p>
+  <pre><code>I'd like you to build a website in this folder using the
+landing page I have selected in Paper. Use React and
+Tailwind for the styling. Start with the hero section,
+then build out the remaining sections one at a time.</code></pre>
+
+  <p>Design direction exploration --- Huashu Design:</p>
+  <pre><code>I need a visual identity for [project description].
+Give me 3 style directions to pick from. Make them
+visually distinct from each other.</code></pre>
+
+  <p>Brand-consistent design --- Huashu Design:</p>
+  <pre><code>Design a [deliverable] for [brand name]. Follow the
+Core Asset Protocol: find their official brand assets
+(logo, colors, fonts, product shots) before starting.
+Their website is [URL].</code></pre>
+
+  <p>Token sync between Figma and Paper:</p>
+  <pre><code>Create a design system in Paper that matches the design
+system in the currently open Figma file. Include colors,
+text styles, and spacing tokens. Read from Figma, write
+to Paper.</code></pre>
+
+  <div class="callout">
+    <p><strong>My take:</strong> The most effective prompts are specific about output format and constraints. "Build me a website" produces garbage. "Build a React + Tailwind landing page from the Paper selection, starting with the hero section" produces something usable in one shot. Specificity is the lever that turns an agent from a toy into a tool.</p>
+  </div>
+
+  <h3 id="appendix-C.3">Motion Design Prompts</h3>
+
+  <p>Product videos, social content, and data animations. These prompts target Remotion and Hyperframes --- two different approaches to programmatic video.</p>
+
+  <p>Product launch video --- Huashu Design:</p>
+  <pre><code>Turn this product description into a 60-second launch
+animation. Export MP4 and GIF. Use the Stage + Sprite
+model. Include: title reveal, feature showcase, CTA.</code></pre>
+
+  <p>Explainer video --- Hyperframes:</p>
+  <pre><code>Using /hyperframes, create a 10-second product intro
+with a fade-in title, a background video, and background
+music. Resolution: 1920x1080.</code></pre>
+
+  <p>Social media video --- Hyperframes:</p>
+  <pre><code>Make a 9:16 TikTok-style hook video about [topic] using
+/hyperframes, with bouncy captions synced to a TTS
+narration. Include a lower third at 0:03 with my name
+and title.</code></pre>
+
+  <p>Data animation --- Hyperframes:</p>
+  <pre><code>Turn this CSV data into an animated bar chart race using
+/hyperframes. 15-second duration. Dark theme. Include
+axis labels and a title card.</code></pre>
+
+  <p>Iterate on video --- Hyperframes:</p>
+  <pre><code>Make the title 2x bigger, swap to dark mode, and add
+a fade-out at the end. Add a lower third at 0:03 with
+"Product Launch 2026".</code></pre>
+
+  <p>Motion design hero --- Open Design:</p>
+  <pre><code>Create a motion-design hero with looping CSS animations.
+Include rotating type ring, animated globe, and ticking
+timer. Single-frame, hand-off ready for Hyperframes.</code></pre>
+
+  <h3 id="appendix-C.4">Design System Prompts</h3>
+
+  <p>Creating, syncing, and maintaining design systems with agents. These prompts handle the tedious parts of design system management.</p>
+
+  <p>Create a design system from an existing website:</p>
+  <pre><code>Create a DESIGN.md for [product/company name] based on
+their existing website at [URL]. Include: color palette
+(hex values), typography (font families, sizes, weights),
+spacing scale, component patterns, motion guidelines,
+anti-patterns to avoid.</code></pre>
+
+  <p>Sync tokens between Figma and Paper:</p>
+  <pre><code>Read the design tokens from the Figma file (colors,
+text styles, spacing) and create matching design tokens
+in the Paper file. Use the same variable names. Create
+a sticker sheet showing all tokens.</code></pre>
+
+  <p>Generate component library --- OpenPencil:</p>
+  <pre><code>Design a component library for [design system] with these
+components: Button (3 variants), Input, Card, Modal,
+Navigation, Badge. Use design variables for colors and
+spacing. Export as React + Tailwind.</code></pre>
+
+  <p>Maintain token parity --- Pencil:</p>
+  <pre><code>Read the design variables from the .pen file and compare
+them with the CSS custom properties in src/styles/tokens.css.
+List any discrepancies and fix them to match the .pen source
+of truth.</code></pre>
+
+  <h3 id="appendix-C.5">Production UI Prompts</h3>
+
+  <p>Design artifacts to production code. These prompts enforce accessibility, performance, and responsive design standards.</p>
+<figure class="figure--full" id="chC-fig-02">
+  <img src="../screenshots/chC-fig-02--print.png" alt="Comparison grid showing the same design prompt executed in Paper producing JSX output, in Open Design producing an HTML artifact, and in Huashu Design producing an HTML prototype, with quality and format annotations for each tool variant" loading="lazy" />
+  <figcaption>Same prompts run through Paper, Open Design, and Huashu Design showing output format differences</figcaption>
+</figure>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>Prompt</th>
+        <th>Target Tool(s)</th>
+        <th>Expected Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Design to Production Code</td>
+        <td>Paper + Claude Code</td>
+        <td>Accessible React + Tailwind component</td>
+      </tr>
+      <tr>
+        <td>Responsive Breakpoints</td>
+        <td>Paper</td>
+        <td>Mobile-first responsive layout</td>
+      </tr>
+      <tr>
+        <td>Accessibility Audit</td>
+        <td>Any</td>
+        <td>Fixed a11y issues with change summary</td>
+      </tr>
+      <tr>
+        <td>Performance Optimization</td>
+        <td>Any</td>
+        <td>Core Web Vitals improvements</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Design to production code:</p>
+  <pre><code>Read the [section] frame I have selected in Paper and
+build it as a React component using Tailwind. Follow
+these rules:
+1. Use semantic HTML elements (nav, main, section, article)
+2. All images must have descriptive alt text
+3. All interactive elements must be keyboard accessible
+4. Use the design tokens from our DESIGN.md
+5. Ensure color contrast ratio >= 4.5:1 for body text
+Commit the changes when done.</code></pre>
+
+  <p>Responsive breakpoints from Paper frames:</p>
+  <pre><code>Add responsive breakpoints to the website based on the
+frames I have selected in Paper. Each frame is a different
+breakpoint:
+- 375px frame = mobile (default)
+- 768px frame = tablet (md:)
+- 1440px frame = desktop (xl:)
+Use Tailwind responsive classes. Test each breakpoint.</code></pre>
+
+  <p>Accessibility audit:</p>
+  <pre><code>Review the generated code for accessibility issues:
+1. Missing alt text on images
+2. Missing labels on form inputs
+3. Insufficient color contrast (< 4.5:1 for text)
+4. Missing ARIA attributes on custom widgets
+5. Keyboard navigation gaps
+6. Missing focus indicators
+Fix all issues found. Show me what you changed.</code></pre>
+
+  <p>Performance optimization:</p>
+  <pre><code>Optimize the generated code for Core Web Vitals:
+1. Add width/height to all images to prevent CLS
+2. Lazy-load below-fold images with loading="lazy"
+3. Preload critical fonts
+4. Minimize CSS by removing unused Tailwind classes
+5. Add proper srcset for responsive images
+Show me the Lighthouse score improvements.</code></pre>
+
+  <div class="callout">
+    <p><strong>My take:</strong> The accessibility audit prompt is the single most valuable prompt in this appendix. Agents are better than most developers at catching a11y issues systematically --- they don't get tired, they don't skip steps, and they check every element. Make this prompt part of every design-to-code workflow.</p>
+  </div>
+
+  <h3 id="appendix-C.6">Multi-Tool Workflow Prompts</h3>
+
+  <p>Chains that span multiple tools. These prompts coordinate across MCP servers and agent sessions to accomplish tasks no single tool handles alone.</p>
+
+  <p>Full website build --- Paper to deployment:</p>
+  <pre><code>Phase 1 - Design:
+  "I have a landing page design in Paper. Read the hero
+  section using the Paper MCP and build it with React +
+  Tailwind."
+
+Phase 2 - Git checkpoint:
+  "Add git to this folder and commit the changes."
+
+Phase 3 - Responsive:
+  "Add responsive breakpoints based on the frames I have
+  selected in Paper. Each frame is a different breakpoint."
+
+Phase 4 - Deploy:
+  "Deploy this to [Vercel/Netlify]. Set up a production
+  build."</code></pre>
+
+  <p>Figma to Paper to code migration:</p>
+  <pre><code>Step 1: Read the design tokens from the Figma file and
+create them in Paper.
+Step 2: Copy each section from Figma to Paper, maintaining
+layout fidelity.
+Step 3: Verify the Paper design matches the Figma original.
+Step 4: Generate React + Tailwind from the Paper design.</code></pre>
+
+  <p>Pitch deck to video pipeline --- Open Design to Hyperframes:</p>
+  <pre><code>Step 1: "Using the magazine-deck skill, create a 10-slide
+pitch deck for [startup]. Use [design-system] visual style."
+
+Step 2: "Take slide 1 (the hero) and turn it into a 5-second
+intro animation using /hyperframes. Add a cinematic background
+and title reveal."
+
+Step 3: "Render all animations and assemble into a final
+60-second pitch video with transitions between each slide."</code></pre>
+
+  <p>Design system to component library --- Pencil + OpenPencil:</p>
+  <pre><code>Step 1: "Design the Button, Input, and Card components in
+the .pen file. Define color, spacing, and typography variables."
+
+Step 2: "Export the components as React + Tailwind. Map
+design variables to CSS custom properties."
+
+Step 3: "Create a Storybook story for each component showing
+all variants. Include accessibility testing in each story."</code></pre>
+
+  <p>Each prompt in this appendix is designed to be copied directly into an agent session. Swap bracketed values for your project specifics. The prompts that work best are specific about output format, tool selection, and quality constraints. Vague prompts produce vague output.</p>
+</section>

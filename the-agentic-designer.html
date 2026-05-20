@@ -1,1198 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Mehran Mozaffari">
-  <meta name="description" content="A comprehensive guide to designing with AI agents — from first principles to production systems. Covers AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, and production UI generation.">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "The Agentic Designer",
-    "author": {
-      "@type": "Person",
-      "name": "Mehran Mozaffari",
-      "url": "https://github.com/imehr"
-    },
-    "description": "A comprehensive guide to designing with AI agents — from first principles to production systems.",
-    "datePublished": "2026-05",
-    "inLanguage": "en",
-    "bookFormat": "https://schema.org/EBook",
-    "numberOfPages": 285
-  }
-  </script>
-  <title>The Agentic Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-:root {
-  --primary: #1E40AF;
-  --accent: #93C5FD;
-  --text: #1E293B;
-  --text-secondary: #64748B;
-  --bg: #FFFFFF;
-  --surface: #F8FAFC;
-  --code-bg: #F1F5F9;
-  --highlight: #EFF6FF;
-  --tip-bg: #F0FDF4;
-  --tip-border: #22C55E;
-  --warn-bg: #FEF2F2;
-  --warn-border: #EF4444;
-  --border: #E2E8F0;
-  --section-line: #1E40AF;
-  --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
-
-  --display-font: 'Source Serif 4', 'Inter', serif;
-  --body-font: 'Inter', -apple-system, system-ui, sans-serif;
-  --mono-font: 'JetBrains Mono', monospace;
-  --display-weight: 800;
-  --body-weight: 400;
-
-  --margin-sides: 55px;
-  --margin-top-bottom: 18mm;
-  --line-height: 1.8;
-  --body-size: 10.5pt;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-body {
-  font-family: var(--body-font);
-  font-size: var(--body-size);
-  line-height: var(--line-height);
-  color: var(--text);
-  background: var(--bg);
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0 20px;
-  orphans: 3;
-  widows: 3;
-}
-
-
-figure[class*="figure--"] {
-  margin: 1.5em 0;
-  padding: 0;
-}
-figure[class*="figure--"] img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-}
-figure[class*="figure--"] figcaption {
-  font-size: 9pt;
-  color: var(--text-secondary);
-  margin-top: 0.4em;
-  line-height: 1.4;
-}
-.figure--full {
-  width: 100%;
-}
-.figure--half-left, .figure--half-right {
-  width: 48%;
-  display: inline-block;
-  vertical-align: top;
-}
-.figure--half-left {
-  margin-right: 2%;
-  float: left;
-}
-.figure--half-right {
-  margin-left: 2%;
-  float: right;
-}
-.figure--grid-2 {
-  width: 48%;
-  display: inline-block;
-  vertical-align: top;
-}
-.figure--grid-3 {
-  width: 31%;
-  display: inline-block;
-  vertical-align: top;
-}
-.figure--break {
-  width: 100%;
-  page-break-before: always;
-}
-@media print {
-  figure[class*="figure--"] {
-    page-break-inside: avoid;
-  }
-  .figure--half-left, .figure--half-right {
-    float: none;
-    width: 100%;
-    display: block;
-  }
-  .figure--grid-2, .figure--grid-3 {
-    width: 100%;
-    display: block;
-  }
-}
-
-@media print {
-  body { max-width: none; margin: 0; padding: 0; }
-}
-
-.cover {
-  page: cover-page;
-  page-break-after: always;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px var(--margin-sides);
-  background: var(--cover-gradient);
-  position: relative;
-}
-
-.cover::before {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 50px;
-  width: 80px;
-  height: 5px;
-  background: var(--primary);
-  border-radius: 3px;
-}
-
-.cover::after {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 140px;
-  width: 30px;
-  height: 5px;
-  background: var(--accent);
-  border-radius: 3px;
-}
-
-.cover-badge {
-  display: inline-block;
-  background: var(--primary);
-  color: white;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 3px;
-  margin-bottom: 24px;
-  font-family: 'Inter', sans-serif;
-}
-
-.cover h1 {
-  font-family: var(--display-font);
-  font-size: 36pt;
-  font-weight: var(--display-weight);
-  line-height: 1.15;
-  letter-spacing: -1px;
-  color: var(--text);
-  margin-bottom: 16px;
-}
-
-.cover h1 em {
-  font-style: normal;
-  color: var(--primary);
-}
-
-.cover-subtitle {
-  font-size: 14pt;
-  font-weight: 300;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-  max-width: 520px;
-  line-height: 1.6;
-}
-
-.cover-meta {
-  font-size: 9.5pt;
-  color: var(--text-secondary);
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
-  line-height: 2;
-}
-
-.cover-meta strong { color: var(--text); font-weight: 600; }
-
-.cover-author {
-  margin-top: 20px;
-  font-size: 10pt;
-  color: var(--text-secondary);
-  line-height: 2;
-}
-
-.cover-author strong {
-  font-size: 12pt;
-  color: var(--text);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.cover-author a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.cover-disclaimer {
-  margin-top: 14px;
-  font-size: 8.5pt;
-  color: #9CA3AF;
-  line-height: 1.8;
-}
-
-.cover-exclusive {
-  margin-top: 14px;
-  padding: 12px 16px;
-  background: var(--highlight);
-  border-left: 3px solid var(--primary);
-  border-radius: 0 6px 6px 0;
-  font-size: 9pt;
-  color: var(--text-secondary);
-  line-height: 1.8;
-}
-
-.toc {
-  page-break-after: always;
-  padding: 10px 0 0;
-}
-
-.toc h2 {
-  font-family: var(--display-font);
-  font-size: 22pt;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--text);
-}
-
-.toc-sub {
-  font-size: 10pt;
-  color: var(--text-secondary);
-  margin-bottom: 30px;
-}
-
-.toc-group {
-  margin-top: 20px;
-  margin-bottom: 6px;
-  font-size: 10pt;
-  font-weight: 600;
-  color: var(--primary);
-  letter-spacing: 0.5px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--border);
-  break-after: avoid;
-  break-inside: avoid;
-}
-
-.toc-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 8px 0;
-  border-bottom: 1px dotted #D4D4D4;
-  font-size: 10.5pt;
-  break-inside: avoid;
-}
-
-.toc-item .num {
-  color: var(--primary);
-  font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  margin-right: 10px;
-  min-width: 24px;
-  font-size: 10pt;
-}
-
-.toc-item .title { font-weight: 500; }
-
-.toc-item .en {
-  font-family: 'Inter', sans-serif;
-  font-size: 9pt;
-  color: #9CA3AF;
-  margin-left: 8px;
-  font-weight: 400;
-}
-
-.toc-item a {
-  color: inherit;
-  text-decoration: none;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.toc-item a::after {
-  content: " (p. " target-counter(attr(href url), page) ")";
-  font-size: 8pt;
-  color: var(--text-secondary);
-}
-
-.content {
-  padding: 0 var(--margin-sides);
-}
-
-h2.section-title {
-  font-family: var(--display-font);
-  font-size: 20pt;
-  font-weight: 700;
-  color: var(--text);
-  margin-top: 45px;
-  margin-bottom: 6px;
-  padding-top: 18px;
-  border-top: 3px solid var(--section-line);
-  page-break-after: avoid;
-  string-set: chapter-title content();
-  break-before: right;
-}
-
-.cover h1 {
-  string-set: book-title content();
-}
-
-h2.section-title .num {
-  color: var(--primary);
-  font-family: 'Inter', sans-serif;
-  margin-right: 6px;
-  font-size: 18pt;
-}
-
-.section-en {
-  font-family: 'Inter', sans-serif;
-  font-size: 10pt;
-  color: #9CA3AF;
-  font-style: italic;
-  margin-bottom: 6px;
-}
-
-.section-intro {
-  font-size: 11.5pt;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-  font-weight: 300;
-}
-
-h3 {
-  font-size: 13pt;
-  font-weight: 600;
-  color: var(--text);
-  margin-top: 24px;
-  margin-bottom: 8px;
-  page-break-after: avoid;
-}
-
-h3 .en {
-  font-family: 'Inter', sans-serif;
-  font-size: 9.5pt;
-  color: #9CA3AF;
-  font-weight: 400;
-  margin-left: 6px;
-}
-
-h4 {
-  font-size: 11pt;
-  font-weight: 600;
-  color: var(--text);
-  margin-top: 16px;
-  margin-bottom: 6px;
-}
-
-p { margin-bottom: 10px; }
-
-.callout {
-  background: var(--highlight);
-  border: 1px solid #FDE68A;
-  border-radius: 8px;
-  padding: 14px 16px;
-  margin: 14px 0;
-  font-size: 10pt;
-  page-break-inside: avoid;
-}
-
-.callout strong { color: var(--primary); }
-
-.tip {
-  background: var(--tip-bg);
-  border-left: 4px solid var(--tip-border);
-  padding: 12px 16px;
-  margin: 14px 0;
-  border-radius: 0 8px 8px 0;
-  font-size: 10pt;
-  page-break-inside: avoid;
-}
-
-.tip::before {
-  content: 'Tip';
-  display: block;
-  font-weight: 700;
-  font-size: 8.5pt;
-  letter-spacing: 0.5px;
-  color: #16A34A;
-  margin-bottom: 3px;
-}
-
-.warning {
-  background: var(--warn-bg);
-  border-left: 4px solid var(--warn-border);
-  padding: 12px 16px;
-  margin: 14px 0;
-  border-radius: 0 8px 8px 0;
-  font-size: 10pt;
-  page-break-inside: avoid;
-}
-
-.warning::before {
-  content: 'Warning';
-  display: block;
-  font-weight: 700;
-  font-size: 8.5pt;
-  letter-spacing: 0.5px;
-  color: #DC2626;
-  margin-bottom: 3px;
-}
-
-pre {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-  overflow-x: auto;
-  font-family: var(--mono-font);
-  font-size: 9pt;
-  line-height: 1.6;
-  margin: 10px 0 14px;
-  page-break-inside: avoid;
-}
-
-code {
-  font-family: var(--mono-font);
-  font-size: 9pt;
-  background: var(--code-bg);
-  padding: 1px 4px;
-  border-radius: 3px;
-}
-
-pre code { background: none; padding: 0; }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 14px 0;
-  font-size: 9.5pt;
-  page-break-inside: avoid;
-}
-
-thead th {
-  background: #F5F5F0;
-  font-weight: 600;
-  text-align: left;
-  padding: 9px 12px;
-  border-bottom: 2px solid var(--border);
-  font-size: 8.5pt;
-  letter-spacing: 0.5px;
-  color: var(--text-secondary);
-}
-
-td {
-  padding: 9px 12px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
-
-tr:last-child td { border-bottom: none; }
-
-.step {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 14px 0;
-  page-break-inside: avoid;
-}
-
-.step > .step-num {
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 12px;
-  font-family: 'Inter', sans-serif;
-  margin-top: 2px;
-}
-
-.step-content { flex: 1; }
-.step-content h4 {
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-size: 10.5pt;
-  line-height: 1.6;
-}
-
-.flow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 20px 0;
-  flex-wrap: wrap;
-}
-
-.flow > .flow-item {
-  background: white;
-  border: 2px solid var(--primary);
-  border-radius: 8px;
-  padding: 8px 16px;
-  font-weight: 600;
-  font-size: 10pt;
-  color: var(--primary);
-}
-
-.flow-arrow {
-  color: #D1D5DB;
-  font-size: 18pt;
-  font-weight: 300;
-}
-
-.file-tree {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 18px;
-  font-family: var(--mono-font);
-  font-size: 9pt;
-  line-height: 1.7;
-  margin: 10px 0 14px;
-  page-break-inside: avoid;
-}
-
-.compare {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 14px 0;
-  page-break-inside: avoid;
-}
-
-.compare-good, .compare-bad {
-  border-radius: 8px;
-  padding: 12px 14px;
-  font-size: 9.5pt;
-}
-
-.compare-good {
-  background: var(--tip-bg);
-  border: 1px solid #BBF7D0;
-}
-
-.compare-good::before {
-  content: 'Recommended';
-  display: block;
-  font-weight: 700;
-  font-size: 8.5pt;
-  color: #16A34A;
-  margin-bottom: 4px;
-}
-
-.compare-bad {
-  background: var(--warn-bg);
-  border: 1px solid #FECACA;
-}
-
-.compare-bad::before {
-  content: 'Not recommended';
-  display: block;
-  font-weight: 700;
-  font-size: 8.5pt;
-  color: #DC2626;
-  margin-bottom: 4px;
-}
-
-.compare-good pre, .compare-bad pre {
-  margin: 6px 0 0;
-  font-size: 8.5pt;
-}
-
-.diagram {
-  background: #F9FAFB;
-  border: 2px dashed #D1D5DB;
-  border-radius: 12px;
-  padding: 30px;
-  margin: 20px 0;
-  text-align: center;
-  color: #9CA3AF;
-  font-size: 9pt;
-  page-break-inside: avoid;
-}
-
-.diagram .label {
-  font-weight: 600;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
-  font-size: 10pt;
-}
-
-.page-break { page-break-before: always; }
-
-.footer-note {
-  margin-top: 50px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-  font-size: 8.5pt;
-  color: var(--text-secondary);
-  text-align: center;
-  line-height: 1.8;
-}
-
-ul, ol { margin: 6px 0 12px 22px; }
-li { margin-bottom: 3px; }
-
-em { font-style: italic; color: var(--text-secondary); }
-strong { font-weight: 600; }
-
-.back-page {
-  page: back-page;
-  page-break-before: always;
-  page-break-inside: avoid;
-  page-break-after: avoid;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 50px var(--margin-sides) 40px;
-  background: var(--cover-gradient);
-  text-align: center;
-}
-
-.back-page-title {
-  font-family: var(--display-font);
-  font-size: 22pt;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-
-.back-page-subtitle {
-  font-size: 12pt;
-  font-weight: 400;
-  color: var(--text-secondary);
-  margin-bottom: 28px;
-}
-
-.back-page-qr-wrapper {
-  background: white;
-  padding: 16px;
-  border-radius: 18px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  margin-bottom: 24px;
-  display: inline-block;
-}
-
-.back-page-qr {
-  width: 220px;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-}
-
-.back-page-info {
-  font-size: 9.5pt;
-  color: var(--text-secondary);
-  line-height: 1.9;
-  max-width: 400px;
-}
-
-.back-page-info strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.back-page-link {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 9px 24px;
-  background: var(--primary);
-  color: white;
-  font-size: 10pt;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-.back-page-social {
-  margin-top: 18px;
-  font-size: 9.5pt;
-  color: var(--text-secondary);
-  line-height: 2;
-}
-
-.back-page-social a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.back-page-social .social-sep {
-  margin: 0 8px;
-  color: #D1D5DB;
-}
-
-.back-page-footer {
-  margin-top: 28px;
-  font-size: 8.5pt;
-  color: #B0B0B0;
-  line-height: 1.8;
-  letter-spacing: 0.5px;
-}
-  </style>
-<script>
-window.PagedConfig = { auto: false };
-</script>
-<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
-<style data-book-writer-paged-contract media="print">
-
-@page {
-  size: A4;
-  margin: 22mm 18mm 24mm 18mm;
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-}
-
-@page :left {
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-}
-
-@page :right {
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-}
-
-@page :first {
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-}
-
-@page :blank {
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-    font-weight: 400;
-  }
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-}
-
-@page cover-page {
-  size: A4;
-  margin: 14mm 14mm 18mm 14mm;
-
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-}
-
-@page toc-page {
-  size: A4;
-  margin: 22mm 18mm 24mm 18mm;
-
-  @bottom-center {
-    content: counter(page, lower-roman);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-}
-
-@page chapter-first {
-  size: A4;
-  margin: 22mm 18mm 24mm 18mm;
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-}
-
-@page back-page {
-  size: A4;
-  margin: 14mm 14mm 18mm 14mm;
-
-  @top-left {
-    content: string(book-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-
-  @top-right {
-    content: string(chapter-title);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 7.5pt;
-    color: #D1D5DB;
-  }
-
-  @bottom-center {
-    content: counter(page);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 8.5pt;
-    color: #9CA3AF;
-  }
-}
-
-.cover {
-  page: cover-page;
-  break-after: page;
-}
-
-.toc {
-  page: toc-page;
-  break-after: page;
-}
-
-h2.section-title {
-  string-set: chapter-title content();
-  page: chapter-first;
-  break-before: right;
-}
-
-.back-page {
-  page: back-page;
-  break-before: right;
-}
-
-.book-title-setter {
-  string-set: book-title content();
-  position: absolute;
-  visibility: hidden;
-  font-size: 0;
-}
-
-.chapter-content {
-  page: auto;
-}
-
-figure {
-  break-inside: avoid;
-}
-
-table {
-  break-inside: avoid;
-}
-
-pre {
-  break-inside: avoid;
-}
-
-.callout {
-  break-inside: avoid;
-}
-
-.tip {
-  break-inside: avoid;
-}
-
-.warning {
-  break-inside: avoid;
-}
-
-.step {
-  break-inside: avoid;
-}
-
-.compare {
-  break-inside: avoid;
-}
-
-.diagram {
-  break-inside: avoid;
-}
-
-.file-tree {
-  break-inside: avoid;
-}
-
-h3 {
-  break-after: avoid;
-}
-
-h4 {
-  break-after: avoid;
-}
-
-.figure-group {
-  break-inside: avoid;
-}
-
-p {
-  orphans: 3;
-  widows: 3;
-}
-
-h2, h3, h4 {
-  orphans: 4;
-  widows: 4;
-}
-
-a[href^="#"]::after {
-  content: " (p. " target-counter(attr(href url), page) ")";
-  font-size: 0.85em;
-  color: var(--text-secondary);
-}
-
-.cover a[href^="#"]::after,
-.toc a[href^="#"]::after,
-.back-page a[href^="#"]::after {
-  content: none;
-}
-
-.toc-item .toc-page-num::after {
-  content: target-counter(attr(href url), page);
-}
-
-body {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.content {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.cover,
-.back-page {
-  min-height: auto !important;
-  height: 297mm !important;
-  max-height: 297mm !important;
-  box-sizing: border-box !important;
-}
-
-@media screen {
-  .pagedjs_page {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-    margin-bottom: 12px;
-  }
-}
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Agentic Designer</title>
+<meta name="author" content="Mehran Mozaffari">
+<meta name="description" content="A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design.">
+<meta name="generator" content="agentic-book-writer">
+<meta name="book:title" content="The Agentic Designer">
+<meta name="book:subtitle" content="How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design">
+<meta name="book:version" content="0.1.0">
+<meta name="book:publication_date" content="2026-05-20">
+<meta name="book:publisher" content="Applied AI Press">
+<meta name="book:rights" content="Copyright (c) 2026 Mehran Mozaffari. All rights reserved.">
+<meta property="og:type" content="book">
+<meta property="og:title" content="The Agentic Designer">
+<meta property="og:description" content="A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"The Agentic Designer","alternateName":"How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design","description":"A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design.","author":{"@type":"Person","name":"Mehran Mozaffari","url":"https://github.com/imehr"},"publisher":{"@type":"Organization","name":"Applied AI Press"},"datePublished":"2026-05-20","inLanguage":"en","version":"0.1.0","copyrightYear":"2026","copyrightHolder":{"@type":"Person","name":"Mehran Mozaffari"},"license":"all-rights-reserved"}</script>
+<link rel="stylesheet" href="shared/paged-media.css" media="print">
+<style>
+
+
+
+
+    :root { --primary: #C2410C; --text: #1A1A1A; --text-secondary: #666; --border: #E5E5E5; --body-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { font-family: var(--body-font); color: var(--text); line-height: 1.7; margin: 0; }
+    .cover, .toc, .book-chapter, .back-page { padding: 56px; }
+    .cover { min-height: 100vh; display: grid; place-content: center; text-align: center; page-break-after: always; break-after: page; }
+    .chapter-title, h1 { color: var(--text); }
+    img { max-width: 100%; height: auto; }
+    figure { break-inside: avoid; margin: 1.5rem 0; }
+  
+  
+  
+  
 </style>
+<script src="shared/paged-preview.js" defer></script>
 </head>
 <body>
 <span class="book-title-setter">The Agentic Designer</span>
-<!--
-MANIFEST
-cover.html | cover | cover
-chapter-01.html | The Agentic Design Paradigm | content
-chapter-02.html | Your Agent Toolkit | content
-chapter-03.html | Teaching Agents to Design | content
-chapter-04.html | Design-as-Code | content
-chapter-05.html | Paper and Pencil | content
-chapter-06.html | Open Design and OpenPencil | content
-chapter-07.html | Huashu Design | content
-chapter-08.html | Design Systems and Tokens | content
-chapter-09.html | Motion and Video | content
-chapter-10.html | MCP Integrations | content
-chapter-11.html | Multi-Agent Design Teams | content
-chapter-12.html | Production UI from Design | content
-chapter-13.html | Real-World Case Studies | content
-chapter-14.html | The Future of Agentic Design | content
-chapter-15.html | Agentic Presentations | content
-chapter-16.html | Building Agent Pipelines for Design | content
-chapter-17.html | DESIGN.md: Portable Design Systems | content
-appendix-a.html | Appendix A: Tool Comparison Matrix | content
-appendix-b.html | Appendix B: MCP Server Reference | content
-appendix-c.html | Appendix C: Prompt Library | content
-back-page.html | Back Page | back-page
--->
-
-
-
-
-<!--===== cover.html =====-->
+<main class="content">
+  <section id="cover" class="book-page book-page-cover" data-source="cover.html">
 <div class="cover">
-  <div class="cover-badge">Agentic Design</div>
-  <h1 style="string-set: book-title content()">The <em>Agentic</em> Designer</h1>
-  <p class="cover-subtitle">How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design</p>
-  <div class="cover-meta">
-    <strong>Approach:</strong> Agentic Design Workflows<br>
-    <strong>Version:</strong> 0.1.0 &middot; <strong>Date:</strong> May 2026
+    <p class="cover-meta">Approach: Agentic Design Workflows</p>
+    <h1 class="cover-title"><em>Agentic</em> Designer</h1>
+    <p class="cover-subtitle">How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design</p>
+    <hr class="cover-rule">
+    <p class="cover-author">Mehran Mozaffari</p>
+    <p class="cover-date">May 2026</p>
   </div>
-  <div class="cover-author">
-    <strong>Mehran Mozaffari</strong>
-    <a href="https://github.com/imehr">github.com/imehr</a>
-  </div>
-  <p class="cover-disclaimer">This book was written with the assistance of AI tools. All tool references and code examples reflect capabilities as of May 2026. The agentic design tool ecosystem evolves rapidly; check official documentation for the latest features and integrations.</p>
-</div>
+  </section>
 
+  <section id="front-matter" class="book-page book-page-content" data-source="front-matter.html">
 <section class="front-matter" id="front-matter">
 
   <div class="fm-title-block">
@@ -1385,49 +244,11 @@ back-page.html | Back Page | back-page
   }
 </style>
 
+  </section>
 
-<div class="toc">
-  <h2>Contents</h2>
-  <p class="toc-sub">The Agentic Designer &mdash; 14 chapters + 3 appendices</p>
-
-  <div class="toc-group">Part I: Foundations</div>
-  <div class="toc-item"><a href="#chapter-01"><span class="num">01</span> <span class="title">The Agentic Design Paradigm</span></a></div>
-  <div class="toc-item"><a href="#chapter-02"><span class="num">02</span> <span class="title">Your Agent Toolkit</span></a></div>
-  <div class="toc-item"><a href="#chapter-03"><span class="num">03</span> <span class="title">Teaching Agents to Design</span></a></div>
-  <div class="toc-item"><a href="#chapter-04"><span class="num">04</span> <span class="title">Design-as-Code</span></a></div>
-
-  <div class="toc-group">Part II: Design Tools</div>
-  <div class="toc-item"><a href="#chapter-05"><span class="num">05</span> <span class="title">Paper and Pencil</span></a></div>
-  <div class="toc-item"><a href="#chapter-06"><span class="num">06</span> <span class="title">Open Design and OpenPencil</span></a></div>
-  <div class="toc-item"><a href="#chapter-07"><span class="num">07</span> <span class="title">Huashu Design</span></a></div>
-  <div class="toc-item"><a href="#chapter-08"><span class="num">08</span> <span class="title">Design Systems and Tokens</span></a></div>
-
-  <div class="toc-group">Part III: Advanced Workflows</div>
-  <div class="toc-item"><a href="#chapter-09"><span class="num">09</span> <span class="title">Motion and Video</span></a></div>
-  <div class="toc-item"><a href="#chapter-10"><span class="num">10</span> <span class="title">MCP Integrations</span></a></div>
-  <div class="toc-item"><a href="#chapter-11"><span class="num">11</span> <span class="title">Multi-Agent Design Teams</span></a></div>
-  <div class="toc-item"><a href="#chapter-12"><span class="num">12</span> <span class="title">Production UI from Design</span></a></div>
-
-  <div class="toc-group">Part IV: Practice and Future</div>
-  <div class="toc-item"><a href="#chapter-13"><span class="num">13</span> <span class="title">Real-World Case Studies</span></a></div>
-  <div class="toc-item"><a href="#chapter-14"><span class="num">14</span> <span class="title">The Future of Agentic Design</span></a></div>
-  <div class="toc-item"><a href="#chapter-15"><span class="num">15</span> <span class="title">Agentic Presentations</span></a></div>
-  <div class="toc-item"><a href="#chapter-16"><span class="num">16</span> <span class="title">Building Agent Pipelines for Design</span></a></div>
-  <div class="toc-item"><a href="#chapter-17"><span class="num">17</span> <span class="title">DESIGN.md: Portable Design Systems</span></a></div>
-
-  <div class="toc-group">Appendices</div>
-  <div class="toc-item"><a href="#appendix-A"><span class="num">A</span> <span class="title">Tool Comparison Matrix</span></a></div>
-  <div class="toc-item"><a href="#appendix-B"><span class="num">B</span> <span class="title">MCP Server Reference</span></a></div>
-  <div class="toc-item"><a href="#appendix-C"><span class="num">C</span> <span class="title">Prompt Library for Design Tasks</span></a></div>
-</div>
-
-<div class="page-break"></div>
-
-
-
-<!--===== chapter-01.html =====-->
-
-<h2 class="section-title"><span class="num">01</span> The Agentic Design Paradigm</h2>
+  <section id="01" class="book-page book-page-content" data-source="01.html">
+<section class="content" id="chapter-01">
+  <h2 class="section-title"><span class="num">01</span> The Agentic Design Paradigm</h2>
   <p class="section-en">Why AI agents are becoming the new design tool interface</p>
   <p class="section-intro">The way software gets designed is changing. AI coding agents --- tools built to write and ship code --- are now operating design tools, generating visual artifacts, and closing the loop from design intent to production output. This chapter explains why that shift happened, what enables it, and what it means for anyone who designs software for a living.</p>
 
@@ -1776,9 +597,13 @@ back-page.html | Back Page | back-page
   <div class="callout tip">
     <p><strong>Next:</strong> Chapter 02 compares the four major agent platforms in detail. You will learn how to install each one, what makes it different, and which one to pick for design workflows.</p>
   </div>
-<!--===== chapter-02.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">02</span> Your Agent Toolkit</h2>
+  </section>
+
+  <section id="02" class="book-page book-page-content" data-source="02.html">
+<section class="content" id="chapter-02">
+  <h2 class="section-title"><span class="num">02</span> Your Agent Toolkit</h2>
   <p class="section-en">Claude Code, Codex CLI, OpenCode, and Gemini CLI compared</p>
   <p class="section-intro">Four agent platforms dominate the landscape as of May 2026. This chapter covers each one in detail --- installation, authentication, model access, MCP support, skill systems, and CLI ergonomics --- then closes with a decision framework for choosing the right agent for design work.</p>
 
@@ -2425,9 +1250,13 @@ $ gcloud auth application-default login</code></pre>
   <div class="callout tip">
     <p><strong>Next:</strong> Chapter 03 covers the configuration layer --- CLAUDE.md, AGENTS.md, SKILL.md, and custom design harnesses. This is where the quality of your agent's design output gets decided.</p>
   </div>
-<!--===== chapter-03.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">03</span> Teaching Agents to Design</h2>
+  </section>
+
+  <section id="03" class="book-page book-page-content" data-source="03.html">
+<section class="content" id="chapter-03">
+  <h2 class="section-title"><span class="num">03</span> Teaching Agents to Design</h2>
   <p class="section-en">Configuration files, skill systems, and design harnesses</p>
   <p class="section-intro">An unconfigured agent produces generic output. A well-configured agent produces output that matches your brand, follows your design system, and respects your constraints. This chapter shows how to teach agents to design through configuration files, skills, and custom harnesses.</p>
 
@@ -2925,9 +1754,13 @@ Output a single HTML file with embedded CSS.
   <div class="callout tip">
     <p><strong>Next:</strong> Chapter 04 covers design-as-code --- the foundational formats (.pen files, .op files, HTML canvas, design tokens) that make agentic design possible. Understanding these formats is essential for everything that follows.</p>
   </div>
-<!--===== chapter-04.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">04</span> Design-as-Code</h2>
+  </section>
+
+  <section id="04" class="book-page book-page-content" data-source="04.html">
+<section class="content" id="chapter-04">
+  <h2 class="section-title"><span class="num">04</span> Design-as-Code</h2>
   <p class="section-en">The mental model behind .pen files, HTML canvas, and design tokens</p>
   <p class="section-intro">
     Design files are becoming code artifacts. This chapter explains the paradigm shift: from binary blobs that decay in cloud storage to text-based formats that live in your repo, diff in your pull requests, and respond to your agent's edits. Understanding this mental model is the foundation for every workflow in chapters 05 through 12.
@@ -3443,9 +2276,13 @@ $ pencil tokens design.pen --format css</code></pre>
   <div class="callout tip">
     <p><strong>Next:</strong> Chapter 05 puts this mental model into practice with Paper and Pencil — two connected canvas tools that make design-as-code tangible. You'll set up MCP servers, run real design-to-code workflows, and build a production website from a canvas design.</p>
   </div>
-<!--===== chapter-05.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">05</span> Paper and Pencil</h2>
+  </section>
+
+  <section id="05" class="book-page book-page-content" data-source="05.html">
+<section class="content" id="chapter-05">
+  <h2 class="section-title"><span class="num">05</span> Paper and Pencil</h2>
   <p class="section-en">Connected canvas tools, MCP setup, and design-to-code workflows</p>
   <p class="section-intro">
     Two tools dominate the connected canvas space: Paper for HTML/CSS design and Pencil for vector design inside the IDE. This chapter walks through MCP server setup for each, real design-to-code workflows, and a complete pipeline from canvas design to production website. Every code block is copy-paste ready.
@@ -4065,9 +2902,13 @@ page component with responsive breakpoints.</code></pre>
   <div class="callout tip">
     <p><strong>Next:</strong> Chapter 06 covers the open-source alternatives: Open Design (43k+ stars, 31 skills) and OpenPencil (3k+ stars, concurrent Agent Teams). If Paper and Pencil are the commercial options, Open Design and OpenPencil are the community-driven counterparts — with different trade-offs and capabilities.</p>
   </div>
-<!--===== chapter-06.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">06</span> Open Design and OpenPencil</h2>
+  </section>
+
+  <section id="06" class="book-page book-page-content" data-source="06.html">
+<section class="content" id="chapter-06">
+  <h2 class="section-title"><span class="num">06</span> Open Design and OpenPencil</h2>
   <p class="section-en">Open-source design frameworks, 31 skills, and agent-powered canvas</p>
   <p class="section-intro">
     Open Design (43k+ stars) and OpenPencil (3k+ stars) are the open-source alternatives to the commercial tools covered in chapter 05. Open Design provides 31 composable skills and 129 design systems that run on any of 16 agent CLIs. OpenPencil is the first open-source AI-native vector design tool with concurrent Agent Teams. This chapter walks through setup, skill selection, and real workflows for both.
@@ -4724,9 +3565,12 @@ Include links, social icons, and copyright."</code></pre>
   <div class="callout tip">
     <p><strong>Next:</strong> Chapter 07 covers Huashu Design (14k+ stars) — the HTML-native design skill that turns a single sentence into production-grade prototypes, slide decks, and motion design. It takes the HTML-as-canvas concept from chapter 04 and pushes it further than any other tool in the ecosystem.</p>
   </div>
-<!--===== chapter-07.html =====-->
+</section>
+  </section>
 
-<h2 class="section-title"><span class="num">07</span> Huashu Design</h2>
+  <section id="07" class="book-page book-page-content" data-source="07.html">
+<section class="content" id="chapter-07">
+  <h2 class="section-title"><span class="num">07</span> Huashu Design</h2>
   <p class="section-en">HTML-native design, 20 philosophies, and 5-dimension review</p>
   <p class="section-intro">
     Huashu Design (14.1k GitHub stars as of May 2026) is the most opinionated design skill in the agent ecosystem. It treats HTML as the design surface, not the export target. This chapter walks through installing it, understanding its workflow, and producing real artifacts --- prototypes, slide decks, motion design --- with an AI agent as your junior designer.
@@ -5283,9 +4127,13 @@ function ProductReveal() {
   <div class="callout tip">
     <p><strong>Next:</strong> Huashu Design produces brand-consistent output through its Core Asset Protocol and CSS variable system. Chapter 08 goes deeper into design tokens --- how they work across tools, how to sync them between Figma and code, and how to write your own design system that agents can read.</p>
   </div>
-<!--===== chapter-08.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">08</span> Design Systems and Tokens</h2>
+  </section>
+
+  <section id="08" class="book-page book-page-content" data-source="08.html">
+<section class="content" id="chapter-08">
+  <h2 class="section-title"><span class="num">08</span> Design Systems and Tokens</h2>
   <p class="section-en">Maintaining design systems with agents across tools and codebases</p>
   <p class="section-intro">
     Design tokens are the connective tissue between design tools, codebases, and AI agents. This chapter covers the DESIGN.md schema that makes design systems machine-readable, the 129-system library in Open Design, token syncing between Figma, Paper, Pencil, and code, and how to write your own design system that agents can actually use.
@@ -5967,9 +4815,13 @@ file that matches the Paper design exactly."</code></pre>
   <div class="callout tip">
     <p><strong>Next:</strong> Design systems give visual consistency. Motion gives temporal consistency. Chapter 09 covers programmatic video --- how agents produce animations, explainer videos, and motion design using Remotion and Hyperframes.</p>
   </div>
-<!--===== chapter-09.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">09</span> Motion and Video</h2>
+  </section>
+
+  <section id="09" class="book-page book-page-content" data-source="09.html">
+<section class="content" id="chapter-09">
+  <h2 class="section-title"><span class="num">09</span> Motion and Video</h2>
   <p class="section-en">Remotion, Hyperframes, and programmatic video for agents</p>
   <p class="section-intro">
     Video is becoming a first-class output of AI agent workflows. Two frameworks dominate: Remotion (47.1k stars) makes videos with React components. Hyperframes (19k stars) makes videos with HTML and GSAP, built specifically for agents. This chapter walks through both, compares them honestly, and shows you how to integrate programmatic video into your agent design workflow.
@@ -6579,9 +5431,13 @@ $ npx hyperframes render --output final.mp4        # Hyperframes: custom output<
   <div class="callout tip">
     <p><strong>Next:</strong> All of these design tools connect to agents through MCP servers. Chapter 10 covers the Model Context Protocol in depth --- how to configure MCP servers for Figma, Paper, Pencil, OpenPencil, and other tools, and how to chain them together for multi-tool workflows.</p>
   </div>
-<!--===== chapter-10.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">10</span> MCP Integrations</h2>
+  </section>
+
+  <section id="10" class="book-page book-page-content" data-source="10.html">
+<section class="content" id="chapter-10">
+  <h2 class="section-title"><span class="num">10</span> MCP Integrations</h2>
   <p class="section-en">Connecting Figma, Miro, MagicPattern, and other tools via MCP</p>
   <p class="section-intro">MCP (Model Context Protocol) is the connective tissue between AI agents and design tools. This chapter covers every MCP server that matters for agentic design: how to configure them across agent platforms, how to chain them for multi-tool workflows, and what to do when they break.</p>
 
@@ -7198,9 +6054,12 @@ cursor://anysphere.cursor-deeplink/mcp/install?name=Figma&amp;config=...</code><
   <div class="callout tip">
     <p><strong>Next:</strong> With MCP servers configured and connected, the next question is scale. How do multiple agents collaborate on a single design? Chapter 11 covers multi-agent design teams, the orchestrator pattern, and when parallelizing is worth the complexity overhead.</p>
   </div>
-<!--===== chapter-11.html =====-->
+</section>
+  </section>
 
-<h2 class="section-title"><span class="num">11</span> Multi-Agent Design Teams</h2>
+  <section id="11" class="book-page book-page-content" data-source="11.html">
+<section class="content" id="chapter-11">
+  <h2 class="section-title"><span class="num">11</span> Multi-Agent Design Teams</h2>
   <p class="section-en">Concurrent agents, task delegation, and orchestration patterns</p>
   <p class="section-intro">A single agent can handle most design tasks. But some tasks are too large, too varied, or too time-sensitive for one agent to complete efficiently. This chapter covers when and how to run multiple agents in parallel on a single design, the orchestration patterns that make it work, and the complexity tax that makes it expensive.</p>
 
@@ -7458,9 +6317,12 @@ cursor://anysphere.cursor-deeplink/mcp/install?name=Figma&amp;config=...</code><
   <div class="callout tip">
     <p><strong>Next:</strong> Whether one agent or many, the output eventually needs to become production code. Chapter 12 walks through the complete pipeline from design artifact to production-ready UI, covering code export from Paper, Pencil, and OpenPencil, responsive breakpoints, accessibility enforcement, and the review-and-iterate loop.</p>
   </div>
-<!--===== chapter-12.html =====-->
+</section>
+  </section>
 
-<h2 class="section-title"><span class="num">12</span> Production UI from Design</h2>
+  <section id="12" class="book-page book-page-content" data-source="12.html">
+<section class="content" id="chapter-12">
+  <h2 class="section-title"><span class="num">12</span> Production UI from Design</h2>
   <p class="section-en">The design-to-production code pipeline with agents</p>
   <p class="section-intro">Design artifacts are not production code. The gap between a canvas design and a deployed UI involves responsive breakpoints, accessibility attributes, performance optimization, and iterative review. This chapter covers the complete pipeline, showing how agents handle the tedious parts while humans focus on design direction.</p>
 
@@ -7768,7 +6630,7 @@ export({
 
 # Agent generates responsive img tag:
 # &lt;img
-#   srcSet="hero-image-1x.png 1x, hero-image-2x.png 2x"
+#   srcset="hero-image-1x.png 1x, hero-image-2x.png 2x"
 #   src="hero-image-1x.png"
 #   alt="Product dashboard showing analytics"
 #   loading="lazy"
@@ -7864,9 +6726,13 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
   <div class="callout tip">
     <p><strong>Next:</strong> The tools and patterns covered in this book are not theoretical. Chapter 13 presents four detailed case studies of agentic design workflows used by real teams, with honest assessments of what worked, what did not, and how long each workflow took from start to finish.</p>
   </div>
-<!--===== chapter-13.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">13</span> Real-World Case Studies</h2>
+  </section>
+
+  <section id="13" class="book-page book-page-content" data-source="13.html">
+<section class="content" id="chapter-13">
+  <h2 class="section-title"><span class="num">13</span> Real-World Case Studies</h2>
   <p class="section-en">Four detailed examples of agentic design workflows in production</p>
   <p class="section-intro">Theory is useful. Practice is essential. This chapter walks through four real agentic design workflows, each using a different combination of tools and targeting a different output. Every case study covers the workflow, the tools, the time spent, and an honest assessment of what worked and what fell apart.</p>
 
@@ -8312,9 +7178,13 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
       <li id="fn-ch13-3">Huashu Design skill documentation (<code>SKILL.md</code>). The quoted assessment appears in the Huashu Design skill's self-evaluation framework, where skills are rated on a 100-point scale across five dimensions.</li>
     </ol>
   </section>
-<!--===== chapter-14.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">14</span> The Future of Agentic Design</h2>
+  </section>
+
+  <section id="14" class="book-page book-page-content" data-source="14.html">
+<section class="content" id="chapter-14">
+  <h2 class="section-title"><span class="num">14</span> The Future of Agentic Design</h2>
   <p class="section-en">Trends, predictions, and what comes after the current tools</p>
   <p class="section-intro">This book covers tools and workflows that exist right now, in May 2026. But the agentic design ecosystem is moving fast. This chapter maps the four major trends shaping what comes next, makes specific predictions for 2027 and 2028, and examines the risks that could undermine the whole trajectory.</p>
 
@@ -8664,1145 +7534,13 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
   <div class="callout tip">
     <p><strong>Next:</strong> This chapter concludes the main content of the book. <a href="#appendix-A">Appendix A</a> provides a comprehensive tool comparison matrix for quick reference. <a href="#appendix-B">Appendix B</a> contains the full MCP server reference. <a href="#appendix-C">Appendix C</a> offers a prompt library organized by design task.</p>
   </div>
-<!--===== chapter-15.html =====-->
-<section class="content" id="chapter-15">
-  <h2 class="section-title" style="string-set: chapter-title content()"><span class="num">15</span> Agentic Presentations</h2>
-  <p class="section-en">Seven tools that let agents design and deliver slide decks</p>
-  <p class="section-intro">Presentations are the most universal design artifact in business. Every team makes decks. Every conference needs slides. Every pitch requires a visual narrative. Until recently, building a presentation meant opening PowerPoint or Keynote, choosing a template, and manually arranging text and images on each slide. Agentic tools have changed this. This chapter covers seven projects that let AI coding agents generate production-grade HTML slide decks, each taking a different approach to the problem.</p>
-
-  <h3 id="15.1">Why Presentations Are Different from UI Design</h3>
-
-  <p>Generating a slide deck is not the same as generating a web page. Slides have constraints that general-purpose web UI does not:</p>
-
-  <ul>
-    <li><strong>Fixed viewport.</strong> Every slide targets a fixed canvas (typically 1920&times;1080 or 16:9 aspect ratio). Content must fit within this frame without scrolling.</li>
-    <li><strong>Sequential narrative.</strong> A deck tells a story across slides. The information architecture is linear, not hierarchical. Each slide must work as a standalone visual while contributing to the overall arc.</li>
-    <li><strong>Performance under pressure.</strong> Presentations are shown live. The slide file must open instantly, render reliably, and handle keyboard or click navigation without lag. No loading spinners, no network dependencies during delivery.</li>
-    <li><strong>Content density per slide is low.</strong> A good slide has 20-40 words. A good web page has 200-400. The agent must enforce brevity, not fill the canvas with text.</li>
-    <li><strong>Speaker notes are invisible infrastructure.</strong> The speaker reads from notes the audience never sees. The agent must generate both the visual slide and the supporting script.</li>
-  </ul>
-
-  <p>These constraints make presentations a surprisingly good test case for agentic design. The output is self-contained (one HTML file), the quality criteria are visual (does it look professional?), and the iteration cycle is fast (generate, present, adjust, repeat).</p>
-
-  <h3 id="15.2">The HTML Slide Deck Ecosystem</h3>
-
-  <p>Seven active projects form the current ecosystem. They fall into three categories:</p>
-
-  <p><strong>Agent skills</strong> (prompt-only, no runtime): frontend-slides, guizang-ppt-skill, html-ppt-skill, presentation-skills. These are structured markdown files (SKILL.md) that guide an existing coding agent through the slide generation process. The agent reads the skill, asks clarifying questions, and produces HTML output using its existing code-generation capabilities.</p>
-
-  <p><strong>Agent frameworks</strong> (runtime + skills): Open Design, open-slide. These provide a runtime environment for slide generation. Open Design is a full design platform with 31 skills including 4 deck skills. Open-slide is a React-based slide framework with built-in agent skills and an in-browser inspector.</p>
-
-  <p><strong>Template libraries</strong>: beautiful-html-templates. This is a curated collection of 34 HTML slide templates with machine-readable metadata. Agents pick a template by matching user intent against the metadata, then fill in the content.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Project</th>
-        <th>Stars</th>
-        <th>Category</th>
-        <th>Output Format</th>
-        <th>Key Differentiator</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://github.com/nexu-io/open-design">Open Design</a></td>
-        <td>46.1k</td>
-        <td>Framework</td>
-        <td>HTML, PDF, PPTX</td>
-        <td>31 skills, 129 design systems, MCP server, Electron app</td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/zarazhangrui/frontend-slides">frontend-slides</a></td>
-        <td>18.1k</td>
-        <td>Agent skill</td>
-        <td>HTML</td>
-        <td>7-phase workflow, PPT conversion, visual style discovery</td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/op7418/guizang-ppt-skill">guizang-ppt-skill</a></td>
-        <td>10.1k</td>
-        <td>Agent skill</td>
-        <td>HTML</td>
-        <td>2 visual systems, 32 locked layouts, WebGL backgrounds</td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/1weiho/open-slide">open-slide</a></td>
-        <td>3.4k</td>
-        <td>Framework</td>
-        <td>React/HTML</td>
-        <td>Agent-native React, in-browser inspector, presenter view</td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/lewislulu/html-ppt-skill">html-ppt-skill</a></td>
-        <td>4.1k</td>
-        <td>Agent skill</td>
-        <td>HTML</td>
-        <td>36 themes, 31 layouts, 20 canvas FX, presenter mode</td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/zarazhangrui/beautiful-html-templates">beautiful-html-templates</a></td>
-        <td>1.6k</td>
-        <td>Template library</td>
-        <td>HTML</td>
-        <td>34 curated templates, index.json metadata, tone-first matching</td>
-      </tr>
-      <tr>
-        <td><a href="https://github.com/Sven-LI-sankyuu/presentation-skills">presentation-skills</a></td>
-        <td>104</td>
-        <td>Agent skill</td>
-        <td>PPTX (native)</td>
-        <td>python-pptx, 3-stage quality gates, editable Office output</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The projects share a common insight: presentations are text-driven artifacts. You describe what you want in natural language, and the agent generates a visual output. The difference is in how much structure they impose on the generation process.</p>
-
-  <h3 id="15.3">Open Design: The Full-Stack Design Platform</h3>
-
-  <p>Open Design (<a href="https://github.com/nexu-io/open-design">nexu-io/open-design</a>, 46.1k stars) is the largest project in this space. It is a full design platform that turns existing coding agent CLIs into design engines. The project does not ship its own AI model. Instead, it scans your system for 16 coding agent CLIs and spawns whichever you select to execute design tasks.</p>
-
-  <p>For presentations, Open Design provides four dedicated deck skills:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Skill</th>
-        <th>Output</th>
-        <th>Best For</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>guizang-ppt</code></td>
-        <td>Magazine-style HTML deck with WebGL hero backgrounds</td>
-        <td>Keynotes, product launches, editorial-style talks</td>
-      </tr>
-      <tr>
-        <td><code>simple-deck</code></td>
-        <td>Minimal horizontal-swipe deck</td>
-        <td>Quick updates, internal reviews, lightweight talks</td>
-      </tr>
-      <tr>
-        <td><code>replit-deck</code></td>
-        <td>Product-walkthrough deck</td>
-        <td>Demos, feature walkthroughs, technical showcases</td>
-      </tr>
-      <tr>
-        <td><code>weekly-update</code></td>
-        <td>Team cadence swipe deck</td>
-        <td>Stand-ups, weekly syncs, status reports</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The platform ships 129 brand-grade design systems (Linear, Stripe, Vercel, Airbnb, Apple, Tesla, Notion, Figma) as portable DESIGN.md files. Each design system encodes colors, typography, spacing, and component styles in a format the agent reads deterministically. The agent also has access to 5 curated visual directions (Editorial Monocle, Modern Minimal, Warm Soft, Tech Utility, Brutalist Experimental) with deterministic OKLch color palettes.</p>
-
-  <p>The presentation workflow in Open Design follows the "Junior Designer" pattern covered in <a href="#chapter-07">Chapter 07</a> (Huashu Design): the agent asks a structured discovery questionnaire before writing any code, shows an early preview, and self-critiques its output against a 5-dimensional rubric. This forced-discipline approach prevents the agent from producing generic output.</p>
-
-  <p>Open Design also ships a stdio MCP server that exposes read-only access to your local projects. Any MCP-compatible agent (Claude Code, Codex, Cursor, VS Code, Zed, Windsurf) can pull design tokens, CSS, JSX components, and HTML from an Open Design project into its own workflow. This makes Open Design a design source that feeds into other agent workflows, not just a standalone tool.</p>
-
-  <p>The desktop app (Electron) runs on macOS and Windows, providing a sandboxed iframe preview with in-place editing. Export formats include HTML, PDF, PPTX, and ZIP. (source: <a href="https://github.com/nexu-io/open-design">nexu-io/open-design</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.4">frontend-slides: The Visual Discovery Workflow</h3>
-
-  <p>frontend-slides (<a href="https://github.com/zarazhangrui/frontend-slides">zarazhangrui/frontend-slides</a>, 18.1k stars) is a Claude Code skill that generates animation-rich HTML presentations. Its core innovation is <strong>visual style discovery</strong>: instead of asking users to describe aesthetics in abstract terms ("modern," "minimal," "bold"), the skill generates three style previews as actual HTML files and lets the user pick what they like.</p>
-
-  <p>The skill follows a 7-phase workflow:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Phase</th>
-        <th>Purpose</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>0</td><td>Detect mode: new deck, PPT conversion, or enhance existing</td></tr>
-      <tr><td>1</td><td>Content discovery: purpose, length, images, inline editing preference</td></tr>
-      <tr><td>2</td><td>Style discovery: generate 3 visual previews for user comparison</td></tr>
-      <tr><td>3</td><td>Generate full presentation from chosen style</td></tr>
-      <tr><td>4</td><td>PPT extraction and conversion (if source is .pptx)</td></tr>
-      <tr><td>5</td><td>Delivery: open in browser, summarize controls</td></tr>
-      <tr><td>6</td><td>Share/export: Vercel deploy or PDF export</td></tr>
-    </tbody>
-  </table>
-
-  <p>Phase 2 is the key differentiator. The agent generates three small HTML samples, each in a different visual style. The user opens them in a browser and picks the one that feels right. This "show, don't tell" approach avoids the common problem where users struggle to articulate their aesthetic preferences in words.</p>
-
-  <p>The skill ships 12 curated style presets: 4 dark, 4 light, and 4 specialty (Neon Cyber, Terminal Green, Swiss Modern, Paper &amp; Ink). Each preset includes specific font pairings, color palettes, and animation patterns. The anti-AI-slop philosophy is explicit: Inter and Roboto are forbidden, purple gradients are banned, and generic layouts are rejected.</p>
-
-  <p>Output is a single self-contained HTML file with all CSS and JS inlined. No build step, no server, no npm dependencies. Each slide is a <code>&lt;section class="slide"&gt;</code> with <code>height: 100vh</code> and scroll-snap alignment. The runtime handles keyboard navigation, touch/swipe, progress bar, navigation dots, and IntersectionObserver-based entrance animations. Typography uses aggressive <code>clamp()</code> for responsive scaling across viewports.</p>
-
-  <p>The skill also supports PPT/PPTX conversion. It uses Python's <code>python-pptx</code> library to extract text, images, and speaker notes from an existing PowerPoint file, then rebuilds the content as an HTML deck. This is useful for teams that have existing slide libraries in PowerPoint format and want to convert them to web-native presentations.</p>
-
-  <p>Export options include PDF via Playwright (headless Chromium screenshots at 1920&times;1080) and one-command Vercel deployment for live URL sharing. (source: <a href="https://github.com/zarazhangrui/frontend-slides">zarazhangrui/frontend-slides</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.5">guizang-ppt-skill: Locked Layouts and Visual Systems</h3>
-
-  <p>guizang-ppt-skill (<a href="https://github.com/op7418/guizang-ppt-skill">op7418/guizang-ppt-skill</a>, 10.1k stars) takes the opposite approach from frontend-slides. Where frontend-slides offers visual discovery and flexible generation, guizang constrains the agent to a fixed palette of layouts and themes. The constraint is the feature.</p>
-
-  <p>The skill provides two complete visual systems:</p>
-
-  <p><strong>Style A: Editorial Magazine</strong> (Monocle-inspired). Ten layouts built around serif typography, generous whitespace, and an electronic ink aesthetic. Themes include Ink Classic, Indigo Porcelain, Forest Ink, Kraft Paper, and Dune. Hero slides feature WebGL shader backgrounds (fluid, contour) with a low-power fallback triggered by pressing <code>B</code>.</p>
-
-  <p><strong>Style B: Swiss International Typographic Style</strong>. Twenty-two locked named layouts (S01-S22) built around a strict grid system. Themes include Klein Blue, Lemon Yellow, Lemon Green, and Safety Orange. Custom colors are forbidden. You pick from the nine curated presets and the agent applies the palette consistently.</p>
-
-  <pre><code># guizang-ppt-skill workflow
-
-# 1. Agent reads SKILL.md and asks 7 clarification questions:
-"Style A or B?"
-"Who is the audience?"
-"How long is the talk?"
-"What source material do you have?"
-"Do you need generated images?"
-"Which theme?"
-"Any special constraints?"
-
-# 2. Agent copies the seed template:
-# Style A → template.html
-# Style B → template-swiss.html
-
-# 3. Agent swaps CSS variables for the chosen theme:
-:root {
-  --c-bg: #F5F0EB;      /* Ink Classic background */
-  --c-text: #1A1A1A;     /* Ink Classic text */
-  --c-accent: #C4A882;   /* Ink Classic accent */
-  --c-muted: #8B8178;    /* Ink Classic muted */
-  --c-hero: #2D2A26;     /* Ink Classic hero bg */
-  --c-hero-text: #F5F0EB; /* Ink Classic hero text */
-}
-
-# 4. Agent picks layouts from the catalog and fills content:
-# Style A: 10 editorial layouts (hero, text-heavy, split, etc.)
-# Style B: 22 locked grid layouts (S01-S22)
-
-# 5. For Swiss decks, agent runs validator:
-$ node scripts/validate-swiss-deck.mjs</code></pre>
-
-  <p>The locked-layout approach produces visually consistent output even when the agent generates slides autonomously. The agent cannot "invent" a layout that breaks the grid. It picks from the palette and fills in content. If the content does not fit the chosen layout, the agent selects a different layout rather than warping the grid.</p>
-
-  <p>The Swiss layout validator (<code>validate-swiss-deck.mjs</code>) catches layout drift, centered titles that should be left-aligned, SVG text that does not scale, and misplaced images. This automated quality check runs before the human sees the output, catching mechanical issues that are easy to miss in visual review.</p>
-
-  <p>Animation is handled by Motion One (bundled <code>motion.min.js</code> with CDN fallback). The skill also supports image generation via GPT-Image 2.0 or GPT-M 2.0 when running through Codex, producing photos, infographics, flow diagrams, and UI scenes that match the chosen theme's color palette. (source: <a href="https://github.com/op7418/guizang-ppt-skill">op7418/guizang-ppt-skill</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.6">open-slide: The React-Native Slide Framework</h3>
-
-  <p>open-slide (<a href="https://github.com/1weiho/open-slide">1weiho/open-slide</a>, 3.4k stars) is the only framework in this ecosystem where slides are React components. Instead of generating a static HTML file, the agent writes JSX/TSX that renders into a fixed 1920&times;1080 canvas. The framework handles the runtime (scaling, navigation, present mode, hot reload) so the agent only needs to focus on content.</p>
-
-  <p>This architecture has three advantages:</p>
-
-  <p><strong>Full React ecosystem access.</strong> The agent can use any React library: Recharts for data visualization, Framer Motion for animations, Three.js for 3D elements. Slides are not limited to CSS and static images.</p>
-
-  <p><strong>In-browser inspector with comments.</strong> During development, you click any element on a slide and leave a comment ("make this red," "move this up 20px"). Comments are persisted as <code>@slide-comment</code> markers in the source code. The <code>/apply-comments</code> skill has the agent batch-apply all edits in one pass. This is a structured feedback loop that replaces the unstructured "I don't like it, try again" pattern.</p>
-
-  <p><strong>Professional presenter view.</strong> Fullscreen mode with a synced popup showing current slide, next slide preview, speaker notes, and a timer. This is production-ready for live conference talks.</p>
-
-  <pre><code># open-slide project structure
-
-my-deck/
-├── slides/
-│   ├── 01-cover/
-│   │   └── index.tsx       # Each slide is a React component
-│   ├── 02-problem/
-│   │   └── index.tsx
-│   └── 03-solution/
-│       └── index.tsx
-├── assets/                  # Images, fonts, videos
-├── skills/                  # Agent skills (create-slide, etc.)
-├── AGENTS.md               # Agent instructions
-└── package.json
-
-# Agent workflow:
-# 1. npx @open-slide/cli init → scaffold project
-# 2. /create-slide → agent asks 4 scoping questions
-# 3. Agent writes React components for each slide
-# 4. Dev server runs with hot reload
-# 5. Click elements to leave @slide-comments
-# 6. /apply-comments → agent batch-applies edits
-# 7. Export to static HTML or PDF</code></pre>
-
-  <p>The framework ships three built-in skills: <code>/create-slide</code> (end-to-end deck creation with 4 scoping questions about topic, page count, text density, and motion preference), <code>/slide-authoring</code> (technical reference for the 1920&times;1080 canvas, type scale, and layout rules), and <code>/apply-comments</code> (reads <code>@slide-comment</code> markers and batch-applies edits).</p>
-
-  <p>Export produces a self-contained static HTML site (deployable to Vercel, Cloudflare Pages, Netlify) or a print-ready PDF. The scaffolder generates projects preconfigured with agent skills in both <code>.claude/skills/</code> and <code>.agents/skills/</code> directories for Claude Code and agent-agnostic compatibility. (source: <a href="https://github.com/1weiho/open-slide">1weiho/open-slide</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.7">html-ppt-skill: The Theme and Animation Library</h3>
-
-  <p>html-ppt-skill (<a href="https://github.com/lewislulu/html-ppt-skill">lewislulu/html-ppt-skill</a>, 4.1k stars) offers the largest library of themes, layouts, and animations among the agent skills. It ships 36 CSS themes, 31 single-page layouts, 27 CSS animations, and 20 canvas FX animations as composable building blocks.</p>
-
-  <p>The theme system is pure CSS tokens. Each theme is a CSS file that defines variables for colors, typography, and spacing. To reskin a deck, you swap one <code>&lt;link&gt;</code> tag. Themes range from <code>minimal-white</code> to <code>cyberpunk-neon</code> to <code>xiaohongshu-white</code>, covering the spectrum from corporate to creative.</p>
-
-  <pre><code># html-ppt-skill: Theme swapping
-
-<!-- Minimal White theme -->
-&lt;link rel="stylesheet" href="assets/themes/minimal-white.css"&gt;
-
-<!-- Swap to Cyberpunk Neon -->
-&lt;link rel="stylesheet" href="assets/themes/cyberpunk-neon.css"&gt;
-
-<!-- Each theme defines CSS custom properties: -->
-:root {
-  --bg-primary: #0a0a0f;
-  --text-primary: #e0e0ff;
-  --accent-1: #ff00ff;
-  --accent-2: #00ffff;
-  --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Rajdhani', sans-serif;
-}</code></pre>
-
-  <p>The animation catalog includes CSS entrance effects (fade-up, zoom-pop, glitch-in, typewriter, neon-glow, card-flip-3d, kenburns) and canvas FX (particle-burst, matrix-rain, knowledge-graph with force-directed physics, neural-net visualization, confetti-cannon, firework). Canvas FX auto-initialize from <code>data-fx</code> attributes: <code>&lt;canvas data-fx="particle-burst"&gt;</code> activates the effect without writing JavaScript.</p>
-
-  <p>The presenter mode is activated with the <code>S</code> key, opening a synced popup with four draggable magnetic cards: current slide, next slide, speaker script, and timer. This is the most complete presenter implementation among the agent skills.</p>
-
-  <p>The SKILL.md constrains the agent to always start from templates, use CSS tokens (never literal colors), and never invent layouts. A pre-authoring questionnaire ensures the agent asks about content, audience, and style preference before writing anything. The agent loads reference catalogs (<code>themes.md</code>, <code>layouts.md</code>, <code>animations.md</code>, <code>full-decks.md</code>) on demand to make informed choices about which building blocks to use.</p>
-
-  <p>Export uses a shell script wrapping headless Chrome to render slides to PNG images. (source: <a href="https://github.com/lewislulu/html-ppt-skill">lewislulu/html-ppt-skill</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.8">beautiful-html-templates: Tone-First Template Matching</h3>
-
-  <p>beautiful-html-templates (<a href="https://github.com/zarazhangrui/beautiful-html-templates">zarazhangrui/beautiful-html-templates</a>, 1.6k stars) is not a generation tool. It is a curated library of 34 self-contained HTML slide templates, each a complete deck with its own visual system. The innovation is the <strong>tone-first matching</strong> approach enabled by a machine-readable manifest.</p>
-
-  <p>The project's <code>index.json</code> file contains structured metadata for every template:</p>
-
-  <pre><code>// index.json — excerpt showing one template's metadata
-{
-  "name": "Soft Editorial",
-  "mood": "warm, literary, refined",
-  "tone": "thoughtful, unhurried",
-  "occasion": "keynote, essay, portfolio, book launch",
-  "formality": "medium",
-  "density": "low",
-  "scheme": "light",
-  "best_for": ["storytelling", "personal narratives", "literary events"],
-  "avoid_for": ["hard data", "technical walkthroughs", "corporate updates"],
-  "slide_count": 12,
-  "fonts": ["Cormorant Garamond", "DM Sans"],
-  "colors": {
-    "primary": "#2C2825",
-    "accent": "#B8A598",
-    "background": "#FAF7F2"
-  }
-}</code></pre>
-
-  <p>The agent workflow is prescribed in the project's <code>AGENTS.md</code>:</p>
-
-  <ol>
-    <li>Ask the user about the occasion and desired mood.</li>
-    <li>Read <code>index.json</code> and pick three candidate templates based on tone matching.</li>
-    <li>Build title-slide HTML previews with the user's real content for all three candidates.</li>
-    <li>Open previews in the browser. User picks one.</li>
-    <li>Clone the chosen template folder and replace placeholder content with the user's content.</li>
-    <li>Design any missing slide layouts using the template's existing visual language.</li>
-  </ol>
-
-  <p>The templates span seven style categories: Editorial/Literary (Soft Editorial, Emerald Editorial, Vellum, Cobalt Grid), Bold/Graphic (Neo-Grid Bold, Raw Grid, BlockFrame), Professional (Blue Professional, Signal, Monochrome), Warm/Crafted (Pin &amp; Paper, Grove, Mat), Playful (Scatterbrain, Capsule, Daisy Days), Retro (Retro Windows, 8-Bit Orbit, Sakura Chroma), and Dark/Moody (Studio, Coral, Pink Script After Hours).</p>
-
-  <p>The critical design rule: templates are closed visual systems. Fonts, colors, decorations, spacing, and navigation are immutable. Only user content gets swapped. If a needed layout does not exist, the agent extends the system using its existing vocabulary rather than mixing templates. This prevents the visual inconsistency that comes from combining elements from different design systems. (source: <a href="https://github.com/zarazhangrui/beautiful-html-templates">zarazhangrui/beautiful-html-templates</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.9">presentation-skills: Native PPTX with Quality Gates</h3>
-
-  <p>presentation-skills (<a href="https://github.com/Sven-LI-sankyuu/presentation-skills">Sven-LI-sankyuu/presentation-skills</a>, 104 stars) is the only project in this ecosystem that generates <strong>native PowerPoint files</strong> rather than HTML. It uses Python's <code>python-pptx</code> library to produce fully editable PPTX files with native Office charts, tables, and connector-backed diagrams.</p>
-
-  <p>The PPTX approach has a clear tradeoff. HTML slides look better in a browser, support animations that PowerPoint cannot render, and work without any software installation. But HTML slides do not work in corporate environments where PowerPoint is the standard delivery format. presentation-skills targets that corporate use case.</p>
-
-  <p>The skill implements a rigorous three-stage quality gate system:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Gate</th>
-        <th>Check</th>
-        <th>What It Catches</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>package_preflight</code></td>
-        <td>Validates PPTX package structure</td>
-        <td>Missing files, corrupt ZIP structure, broken relationships</td>
-      </tr>
-      <tr>
-        <td><code>structure_precheck</code></td>
-        <td>Checks text fit, overlaps, layout bounds</td>
-        <td>Text overflowing containers, overlapping elements, misaligned shapes</td>
-      </tr>
-      <tr>
-        <td><code>render_review</code></td>
-        <td>Visual inspection via PNG previews</td>
-        <td>Issues invisible at structure level: color clashes, visual density, readability</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The generation pipeline is the most structured of any tool in this chapter:</p>
-
-  <ol>
-    <li><strong>Brief.</strong> Agent interviews the user about audience, context, template, and style preferences.</li>
-    <li><strong>Workspace initialization.</strong> <code>init_deck_workspace.py</code> creates a structured directory with areas for brief, narrative, assets, build, validation, and final output.</li>
-    <li><strong>Template audit.</strong> If the user provides a corporate PPTX template, <code>audit_pptx_template.py</code> extracts slide masters, layouts, font systems, and shared elements so the agent can inherit the existing design language.</li>
-    <li><strong>Narrative planning.</strong> Agent writes <code>brief.md</code> (the deck contract) and <code>deck_narrative.md</code> (chapter structure with per-page tasks).</li>
-    <li><strong>Slide specification.</strong> <code>derive_slide_specs_from_narrative.py</code> generates <code>slide_specs.yaml</code> with per-slide contracts defining archetype, required assets, and validation mode.</li>
-    <li><strong>Asset planning.</strong> All charts, diagrams, images, and icons register as typed <code>asset_slots</code> with assigned rendering modules.</li>
-    <li><strong>Build.</strong> <code>python-pptx</code> assembles native PPTX with editable shapes, text boxes, native charts, connector diagrams, and tables.</li>
-    <li><strong>Quality gates.</strong> Three automated checks run before human review.</li>
-    <li><strong>Preview export.</strong> Per-slide PNGs and a contact sheet for visual review.</li>
-    <li><strong>Connector validation.</strong> Diagram connectors are verified to ensure flowcharts and architecture diagrams render correctly.</li>
-  </ol>
-
-  <p>The output is a fully editable <code>.pptx</code> file with preview PNGs and validation reports. Any stakeholder can open it in PowerPoint and make changes. Charts stay editable (not rasterized images). Tables stay native (not screenshots). This matters in corporate environments where decks go through multiple rounds of manual editing by people who do not use coding agents.</p>
-
-  <p>The skill also produces demo videos: TTS narration (Alibaba Cloud ISI or macOS <code>say</code>), timed to slide transitions, with screen recording via Playwright and final compositing via ffmpeg. (source: <a href="https://github.com/Sven-LI-sankyuu/presentation-skills">Sven-LI-sankyuu/presentation-skills</a>, retrieved 2026-05-20)</p>
-
-  <h3 id="15.10">Choosing the Right Tool</h3>
-
-  <p>The seven tools serve different needs. Here is a decision framework:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>If you need...</th>
-        <th>Use...</th>
-        <th>Because...</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>A complete design platform with decks as one output type</td>
-        <td>Open Design</td>
-        <td>31 skills, 129 design systems, MCP server, handles all design artifacts</td>
-      </tr>
-      <tr>
-        <td>Visual style exploration before committing</td>
-        <td>frontend-slides</td>
-        <td>Generates 3 visual previews for comparison, "show don't tell" approach</td>
-      </tr>
-      <tr>
-        <td>Visually consistent output without manual design review</td>
-        <td>guizang-ppt-skill</td>
-        <td>Locked layouts and themes prevent visual inconsistency</td>
-      </tr>
-      <tr>
-        <td>Interactive data-driven slides with React components</td>
-        <td>open-slide</td>
-        <td>React ecosystem access, in-browser inspector with comments</td>
-      </tr>
-      <tr>
-        <td>The largest selection of themes and animations</td>
-        <td>html-ppt-skill</td>
-        <td>36 themes, 31 layouts, 27 CSS animations, 20 canvas FX</td>
-      </tr>
-      <tr>
-        <td>A specific visual style from a curated collection</td>
-        <td>beautiful-html-templates</td>
-        <td>34 templates with tone-first matching via index.json</td>
-      </tr>
-      <tr>
-        <td>Native PowerPoint files for corporate delivery</td>
-        <td>presentation-skills</td>
-        <td>python-pptx produces editable PPTX with native charts and tables</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3 id="15.11">The Common Pattern: Constraint-Based Generation</h3>
-
-  <p>All seven tools share one architectural principle: <strong>constraint-based generation</strong>. None of them give the agent a blank canvas and say "make a presentation." Instead, they provide:</p>
-
-  <ul>
-    <li><strong>Layout palettes</strong> (pre-designed slide structures the agent picks from)</li>
-    <li><strong>Theme systems</strong> (CSS token files that ensure consistent colors and typography)</li>
-    <li><strong>Content density limits</strong> (max bullets per slide, max words per slide, max cards per grid)</li>
-    <li><strong>Quality checklists</strong> (P0/P1/P2 severity levels the agent validates against before delivery)</li>
-    <li><strong>Pre-authoring questionnaires</strong> (structured discovery that locks the brief before the agent writes any code)</li>
-  </ul>
-
-  <p>This pattern mirrors what we saw with design token systems in <a href="#chapter-08">Chapter 08</a>. The agent's creative freedom is bounded by the design system. Within those bounds, the agent generates content, selects layouts, and arranges information. Outside those bounds, the agent is constrained to prevent visual inconsistency.</p>
-
-  <p>The constraint-based approach works because presentations have strong structural constraints already: fixed viewport, linear narrative, low content density per slide. The tools encode these constraints explicitly rather than hoping the agent will discover them through trial and error.</p>
-
-  <h3 id="15.12">Huashu Design's Slide Capabilities</h3>
-
-  <p>Huashu Design, covered in detail in <a href="#chapter-07">Chapter 07</a>, also generates slide presentations as one of its multi-mode outputs. Its slide mode uses the same Junior Designer workflow as its prototyping mode: the agent asks clarifying questions, proposes a visual direction, generates an early preview, and iterates based on feedback.</p>
-
-  <p>Huashu Design's slide output includes device frames (iPhone 15 Pro, Pixel, iPad Pro, MacBook, Chrome) for embedding app screenshots in presentation context, speaker notes support, and MP4/GIF export for animated slides. The animation engine runs at 60fps with frame interpolation for smooth motion graphics.</p>
-
-  <p>The relationship between Huashu Design and the dedicated slide tools is complementary. Huashu Design is a general-purpose HTML design tool that happens to support slides. The seven tools covered in this chapter are purpose-built for presentations. For a single deck, any of them will work. For a workflow that includes prototypes, slides, and other HTML artifacts, Huashu Design's unified approach may be more efficient.</p>
-
-  <h3 id="15.13">Export and Delivery</h3>
-
-  <p>All seven tools produce HTML output. But presenting from an HTML file has different requirements than presenting from a PowerPoint file. Here is how each tool handles delivery:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Format</th>
-        <th>Tools</th>
-        <th>Delivery Method</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Self-contained HTML</td>
-        <td>All except presentation-skills</td>
-        <td>Open in any browser, fullscreen, keyboard navigation</td>
-      </tr>
-      <tr>
-        <td>PDF export</td>
-        <td>Open Design, frontend-slides, open-slide</td>
-        <td>Playwright headless Chromium at 1920&times;1080</td>
-      </tr>
-      <tr>
-        <td>PPTX export</td>
-        <td>Open Design, presentation-skills</td>
-        <td>Native Office format for corporate environments</td>
-      </tr>
-      <tr>
-        <td>PNG per slide</td>
-        <td>html-ppt-skill, presentation-skills</td>
-        <td>Headless Chrome rendering for static distribution</td>
-      </tr>
-      <tr>
-        <td>Live URL</td>
-        <td>frontend-slides, open-slide</td>
-        <td>Vercel/Cloudflare deployment for sharing</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The HTML-First approach has practical advantages. The presenter does not need PowerPoint installed. The deck works on any device with a browser. Animations render at full frame rate. Speaker notes display in a separate window. And the single-file output can be version-controlled in git, tracked in diffs, and shared via URL.</p>
-
-  <p>The tradeoff is compatibility. In corporate environments where slide decks are emailed as <code>.pptx</code> attachments and edited by non-technical stakeholders, HTML output does not work. presentation-skills and Open Design's PPTX export fill this gap.</p>
-
-  <div class="callout">
-    <p><strong>My take:</strong> HTML will become the default presentation format within two years. The combination of reliable fullscreen mode, smooth CSS animations, no-software-installation delivery, and git-friendly versioning makes HTML fundamentally better than PowerPoint for live presentations. The corporate <code>.pptx</code> requirement will persist as a legacy constraint, but it is a legacy constraint --- like sending Word documents instead of Google Docs links. The tools in this chapter are building the future format today.</p>
-  </div>
-
-  <div class="callout tip">
-    <p><strong>Next:</strong> <a href="#16.1">Chapter 16</a> shifts from generating design artifacts to building agent pipelines that produce those artifacts at scale. You will learn about the four major agent SDKs, the core agentic loop pattern, and concrete pipelines for image generation, video production, and design-to-code workflows.</p>
-  </div>
 </section>
 
-
-<div class="page-break"></div>
-
-
-<!--===== chapter-16.html =====-->
-<section class="content" id="chapter-16">
-  <h2 class="section-title" style="string-set: chapter-title content()"><span class="num">16</span> Building Agent Pipelines for Design</h2>
-  <p class="section-en">Programmatic agents, SDKs, and automated design workflows</p>
-  <p class="section-intro">Interactive CLI sessions are how you explore. SDK-driven pipelines are how you produce at scale. This chapter covers the four major agent SDKs, the core agentic loop pattern, and concrete pipelines for image generation, video production, and design-to-code workflows. By the end, you will be able to architect multi-step agent pipelines that generate visual assets without human intervention.</p>
-
-  <h3 id="16.1">Why Programmatic Agents?</h3>
-
-  <p>The CLI is a conversation. You type, the agent responds, you course-correct in real time. This is ideal for exploration, prototyping, and one-off tasks. But conversations do not scale. When you need to generate 200 illustrations for a book, run a design pipeline on every pull request, or produce video assets from a YAML manifest, you need programmatic access.</p>
-
-  <p>Programmatic agents solve four problems the CLI cannot:</p>
-
-  <p><strong>Batch processing.</strong> The CLI processes one task at a time. An SDK pipeline can fan out across dozens of tasks in parallel, collecting results into a structured output. A book with 40 chapters does not mean 40 separate CLI sessions.</p>
-
-  <p><strong>CI/CD integration.</strong> Design generation belongs in your build pipeline, not in a terminal window. When a content author pushes a new chapter, the pipeline generates figures, validates dimensions, and produces print-ready assets automatically.</p>
-
-  <p><strong>Repeated workflows.</strong> Any task you run more than twice should be scripted. The CLI forces you to re-articulate context every session. An SDK pipeline encodes the context once and reuses it indefinitely.</p>
-
-  <p><strong>Multi-step creative pipelines.</strong> Real design work is not a single prompt. It is a chain: research, propose, iterate, generate, validate, compose. Each step feeds the next. The CLI handles this through manual copy-paste between turns. An SDK pipeline handles it through code.</p>
-
-  <p>The shift from CLI to SDK is the shift from <em>talking</em> to an agent to <em>programming</em> an agent. Both have their place. The mistake is using one when you need the other.</p>
-
-  <h3 id="16.2">The Agent SDK Landscape</h3>
-
-  <p>As of May 2026, four agent SDKs dominate the ecosystem. Each reflects a different philosophy about what an agent <em>is</em> and how it should be controlled.</p>
-
-  <p><strong>Claude Agent SDK</strong> (<code>@anthropic-ai/claude-agent-sdk</code>) treats the agent as an async iterator. You call <code>query()</code>, and the SDK streams back events as the agent reasons, selects tools, and produces output. Subagents allow delegation to specialized workers. MCP integration gives access to external tools. Hooks let you intercept behavior at every stage. (source: <a href="https://github.com/anthropics/claude-agent-sdk-python">Claude Agent SDK</a>, retrieved 2026-05-19)</p>
-
-  <p><strong>Google ADK</strong> (<code>google/adk-python</code>) takes a declarative approach. You define an <code>LlmAgent</code> with a list of tools and <code>sub_agents</code>. The runtime handles orchestration automatically. Native integrations with Imagen 4, Veo 3.1, and Gemini give it a built-in advantage for visual pipelines. (source: <a href="https://github.com/google/adk-python">Google ADK</a>, retrieved 2026-05-19)</p>
-
-  <p><strong>OpenAI Agents SDK</strong> (<code>openai-agents</code>) centers on the <code>Runner</code> primitive. You define agents with specific capabilities, and the Runner manages their lifecycle. Handoffs allow agents to transfer control. <code>ImageGenerationTool</code> provides native image generation. The SDK is provider-agnostic via LiteLLM adapters. (source: <a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a>, retrieved 2026-05-19)</p>
-
-  <p><strong>OpenCode SDK</strong> (<code>@opencode-ai/sdk</code>) is an HTTP-based API. You send structured requests and receive structured output. Custom tools are registered as endpoints. It is the simplest to integrate into existing systems because it speaks HTTP. (source: <a href="https://opencode.ai">OpenCode</a>, retrieved 2026-05-19)</p>
-
-  <figure class="figure--full" id="fig-15-1">
-    <picture>
-      <source srcset="screenshots/ch15-fig-01--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch15-fig-01--print.png" alt="SDK architecture comparison showing the four major agent SDKs and their core primitives" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 15.1: SDK architecture comparison showing the four major agent SDKs and their core primitives</figcaption>
-  </figure>
-
-  <table>
-    <thead><tr><th>Feature</th><th>Claude Agent SDK</th><th>Google ADK</th><th>OpenAI Agents</th><th>OpenCode SDK</th></tr></thead>
-    <tbody>
-      <tr><td>Language</td><td>TypeScript, Python</td><td>Python</td><td>Python, TypeScript</td><td>Any (HTTP)</td></tr>
-      <tr><td>Stars</td><td>6.9k</td><td>19.7k</td><td>26.4k</td><td>&#8212;</td></tr>
-      <tr><td>Key Primitive</td><td><code>query()</code> async iterator</td><td><code>LlmAgent</code> declarative</td><td><code>Runner</code> lifecycle</td><td>HTTP request/response</td></tr>
-      <tr><td>Subagents</td><td>Yes, with hooks</td><td>Yes, <code>sub_agents[]</code></td><td>Yes, via handoffs</td><td>No (single agent)</td></tr>
-      <tr><td>MCP</td><td>Native</td><td>Via tools</td><td>Via tools</td><td>Native</td></tr>
-      <tr><td>Image Gen</td><td>Via tools/MCP</td><td>Native (Imagen 4)</td><td><code>ImageGenerationTool</code></td><td>Via custom tools</td></tr>
-      <tr><td>Model Support</td><td>Claude only</td><td>Gemini family</td><td>100+ via LiteLLM</td><td>75+ providers</td></tr>
-    </tbody>
-  </table>
-
-  <div class="callout"><p><strong>My take:</strong> The SDK landscape is fragmented in exactly the way the framework landscape was fragmented in 2015. Four competing paradigms, none dominant, all evolving fast. The honest move is to learn the pattern, not the SDK. The agentic loop (agent &rarr; tool &rarr; iterate) is the same everywhere. The SDK is just syntax. Invest in understanding the loop; the specific SDK you use will probably change within a year.</p></div>
-
-  <h3 id="16.3">The Core Pattern: Agent &rarr; Tool &rarr; Iterate</h3>
-
-  <p>Every agent SDK implements the same fundamental loop. Understanding this loop is more important than understanding any specific API.</p>
-
-  <div class="flow">
-    <div class="flow-item"><strong>Agent receives task</strong><p>Structured input with context and goal</p></div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-item"><strong>Selects tools</strong><p>Decides which capabilities to invoke</p></div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-item"><strong>Executes</strong><p>Runs tool, gets results</p></div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-item"><strong>Observes</strong><p>Evaluates output against goal</p></div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-item"><strong>Repeats or done</strong><p>Iterates until task complete</p></div>
-  </div>
-
-  <p>The agent is the <em>brain</em>. The tools are the <em>hands</em>. The loop is the <em>persistence</em>. Without tools, the agent can only reason. Without the loop, it can only act once. All three are required.</p>
-
-  <p>Here is the pattern in Claude Agent SDK:</p>
-
-  <pre><code>import { query } from "@anthropic-ai/claude-agent-sdk";
-
-for await (const message of query({
-  prompt: "Generate a hero illustration for a chapter about agent pipelines",
-  options: {
-    allowedTools: ["Read", "Write", "Bash", "WebSearch"],
-    permissionMode: "acceptEdits",
-    agents: {
-      illustrator: {
-        description: "Generates images for book chapters",
-        prompt: "Create technical diagrams using...",
-        tools: ["Bash", "Write"]
-      }
-    }
-  }
-})) {
-  if (message.type === "assistant") {
-    console.log("Agent reasoning:", message.text);
-  }
-}</code></pre>
-
-  <p>The <code>query()</code> function starts the loop. <code>allowedTools</code> constrains what the agent can do. Subagents allow delegation to specialists. The async iterator gives you visibility into each step.</p>
-
-  <p>The same pattern in Google ADK:</p>
-
-  <pre><code>from google.adk.agents import LlmAgent
-
-design_agent = LlmAgent(
-    name="design_producer",
-    model="gemini-2.5-flash",
-    instruction="Generate visual assets from chapter descriptions",
-    tools=[generate_image_tool, file_manager_tool],
-    sub_agents=[color_specialist, layout_validator],
-)
-
-result = await design_agent.run(
-    "Create a diagram showing the agentic loop for Chapter 16"
-)</code></pre>
-
-  <p>ADK abstracts the loop away. You define the agent, its tools, its subagents, and the runtime handles iteration. The tradeoff is less control over individual steps, but faster setup for standard workflows.</p>
-
-  <figure class="figure--full" id="fig-15-2">
-    <picture>
-      <source srcset="screenshots/ch15-fig-02--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch15-fig-02--print.png" alt="Claude Agent SDK subagent delegation pattern with lead agent dispatching to specialized workers" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 15.2: Claude Agent SDK subagent delegation pattern with lead agent dispatching to specialized workers</figcaption>
-  </figure>
-
-  <h3 id="16.4">Image Generation in Agent Pipelines</h3>
-
-  <p>Image generation is the most common visual task in agent pipelines. Three approaches exist, each with different tradeoffs.</p>
-
-  <p><strong>Approach 1: Direct API calls via Bash tool.</strong> The agent uses a shell execution tool to call generation APIs directly. This is the most flexible approach because it works with any API, but requires the agent to handle authentication and error parsing.</p>
-
-  <pre><code># Gemini image generation via agent Bash tool
-curl -s https://generativelanguage.googleapis.com/v1beta/\
-models/gemini-3.1-flash-image-preview:generateContent \
-  -H "Content-Type: application/json" \
-  -H "x-goog-api-key: $GEMINI_KEY" \
-  -d '{
-    "contents": [{"parts": [{"text": "Technical diagram..."}]}],
-    "generationConfig": {"responseModalities": ["IMAGE"]}
-  }' | jq -r '.candidates[0].content.parts[1].inlineData.data' \
-  | base64 -d > output.png</code></pre>
-
-  <p><strong>Approach 2: Skill-based generation.</strong> Skills encapsulate generation logic into reusable units. The <code>garden-skills</code> repository (5.2k stars) provides 18 visual categories and 80+ prompt templates for image generation across Claude Code, Cursor, Codex, and OpenCode. (source: <a href="https://github.com/ConardLi/garden-skills">garden-skills</a>, retrieved 2026-05-19)</p>
-
-  <p><strong>Approach 3: MCP-exposed generation.</strong> MCP servers expose image generation as standardized tools. The <code>gemini-asset-generation-mcp</code> wraps Gemini image generation behind a tool interface. The <code>muapi MCP</code> from Generative-Media-Skills (3.3k stars) provides 19 tools covering generation, editing, upscaling, and face swap. (source: <a href="https://github.com/SamurAIGPT/Generative-Media-Skills">Generative-Media-Skills</a>, retrieved 2026-05-19)</p>
-
-  <pre><code># MCP server configuration for image generation
-{
-  "mcpServers": {
-    "gemini-assets": {
-      "command": "python",
-      "args": ["asset_server.py", "--root-dir", "./assets"],
-      "env": { "GEMINI_API_KEY": "..." }
-    }
-  }
-}</code></pre>
-
-  <table>
-    <thead><tr><th>Approach</th><th>Tools</th><th>Best For</th><th>Example</th></tr></thead>
-    <tbody>
-      <tr><td>Direct API (Bash)</td><td><code>curl</code>, API keys</td><td>One-off scripts, maximum control</td><td>Custom pipeline with non-standard APIs</td></tr>
-      <tr><td>Skill-based</td><td>garden-skills templates</td><td>Repeated workflows, consistent style</td><td>Book illustrations with 18 visual categories</td></tr>
-      <tr><td>MCP-exposed</td><td>gemini-asset-generation-mcp, muapi</td><td>Multi-tool pipelines, standard interface</td><td>Design system with gen, edit, upscale</td></tr>
-    </tbody>
-  </table>
-
-  <figure class="figure--full" id="fig-15-3">
-    <picture>
-      <source srcset="screenshots/ch15-fig-03--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch15-fig-03--print.png" alt="Google ADK short-movie-agents pipeline from story to video with session state" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 15.3: Google ADK short-movie-agents pipeline from story to video with session state</figcaption>
-  </figure>
-
-  <div class="callout"><p><strong>My take:</strong> Image generation is the gateway drug to agent pipelines. It is the first thing most people automate because the CLI workflow is tedious: write prompt, wait, evaluate, tweak, repeat. Once you script that loop, you start scripting everything else. Start with image generation. It teaches you the agentic loop in a domain where the output is immediately visible and the feedback loop is tight.</p></div>
-
-  <h3 id="16.5">Video Production with Agents</h3>
-
-  <p>Video production is where agent pipelines show their full power. A single video requires script, visuals, audio, editing, and composition. No single model does all of that well. Agent pipelines coordinate multiple specialized steps into a coherent workflow.</p>
-
-  <p><strong>OpenMontage</strong> (3.8k stars) is the most complete agent video framework. It defines 12 pipelines and 52 tools, orchestrated through YAML manifests and skill-based composition. The agent <em>is</em> the orchestrator. A typical pipeline has eight stages: research, proposal, script, scene plan, assets, edit, compose, and publish. Each stage has its own skill file, quality gates, and validation criteria. (source: <a href="https://github.com/calesthio/OpenMontage">OpenMontage</a>, retrieved 2026-05-19)</p>
-
-  <pre><code># OpenMontage animated-explainer pipeline (excerpt)
-pipeline: animated-explainer
-stages:
-  - research:
-      skill: pipelines/explainer/research-director
-      produces: [research_brief]
-  - proposal:
-      skill: pipelines/explainer/proposal-director
-      required_artifacts_in: [research_brief]
-      human_approval_default: true
-  - script:
-      skill: pipelines/explainer/script-director
-      produces: [script]
-  - assets:
-      skill: pipelines/explainer/asset-director
-      required_tools: [tts_selector, image_selector]
-  - compose:
-      skill: pipelines/explainer/compose-director
-      required_tools: [video_compose, audio_mixer]</code></pre>
-
-  <p><strong>Google ADK short-movie-agents</strong> takes a more integrated approach. A single pipeline moves from story to screenplay to storyboard (using Imagen 4) to final video (using Veo 3.1). Session state carries context between stages. (source: <a href="https://github.com/google/adk-samples">ADK Samples</a>, retrieved 2026-05-19)</p>
-
-  <p><strong>ArcReel</strong> (2.3k stars) specializes in long-form narrative video. It converts novels into video by extracting characters, generating storyboards, and producing scenes using Claude Agent SDK subagents. Each subagent receives only the context it needs, keeping the main agent's context window clean. (source: <a href="https://github.com/ArcReel/ArcReel">ArcReel</a>, retrieved 2026-05-19)</p>
-
-  <figure class="figure--full" id="fig-15-4">
-    <picture>
-      <source srcset="screenshots/ch15-fig-04--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch15-fig-04--print.png" alt="OpenMontage eight-stage pipeline with YAML manifests, skills, and quality gates" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 15.4: OpenMontage eight-stage pipeline with YAML manifests, skills, and quality gates</figcaption>
-  </figure>
-
-  <table>
-    <thead><tr><th>Framework</th><th>Stars</th><th>Pipeline</th><th>Image Gen</th><th>Video Gen</th></tr></thead>
-    <tbody>
-      <tr><td>OpenMontage</td><td>3.8k</td><td>12 pipelines, 52 tools, YAML manifests</td><td>Multiple (skill-based)</td><td>Multiple (skill-based)</td></tr>
-      <tr><td>ADK short-movie-agents</td><td>&#8212;</td><td>Story &rarr; Screenplay &rarr; Storyboard &rarr; Video</td><td>Imagen 4</td><td>Veo 3.1</td></tr>
-      <tr><td>ArcReel</td><td>2.3k</td><td>Novel &rarr; Characters &rarr; Storyboard &rarr; Video</td><td>Variable (subagent)</td><td>Variable (subagent)</td></tr>
-    </tbody>
-  </table>
-
-  <h3 id="16.6">Design-to-Code Pipelines</h3>
-
-  <p>The most emerging category of agent pipeline is design-to-code: taking a visual input (screenshot, mockup, or description) and producing working frontend code. This is where the agentic loop shines because no single model call can handle the full translation.</p>
-
-  <p>The <code>agentic_image_to_tsx</code> pattern demonstrates a multi-agent approach using CrewAI with Gemini as the backbone model. The pipeline has four stages, each handled by a specialized agent:</p>
-
-  <pre><code># agentic_image_to_tsx pipeline
-agents:
-  - ui_analyst:
-      role: "Analyze screenshot, extract design tokens"
-      output: "design_tokens.json"
-
-  - design_architect:
-      role: "Convert tokens into structured design system"
-      input: "design_tokens.json"
-      output: "component_spec.json"
-
-  - frontend_dev:
-      role: "Generate React/TSX from component spec"
-      input: "component_spec.json"
-      output: "Component.tsx"
-
-  - file_manager:
-      role: "Validate, format, and write output files"
-      input: "Component.tsx"
-      output: "src/components/GeneratedComponent.tsx"</code></pre>
-
-  <p>The UI Analyst examines the screenshot and extracts concrete values: colors as hex codes, spacing as pixel values, typography as font-size and weight, layout as flex or grid properties. The Design Architect takes those raw values and structures them into a component specification. The Frontend Dev writes the code. The File Manager validates and places the output. (source: <a href="https://github.com/HardikGupta21/agentic_image_to_tsx">agentic_image_to_tsx</a>, retrieved 2026-05-19)</p>
-
-  <p>The key insight is that the pipeline is not linear. The Frontend Dev might request clarification from the Design Architect, which triggers re-analysis by the UI Analyst. The agentic loop applies within each agent and across agents.</p>
-
-  <h3 id="16.7">Choosing Your Pipeline Architecture</h3>
-
-  <p>The hardest decision is not which SDK to use. It is which architecture to adopt.</p>
-
-  <table>
-    <thead><tr><th>When</th><th>Use</th><th>Why</th></tr></thead>
-    <tbody>
-      <tr><td>One-off exploration, prototyping</td><td>CLI</td><td>Fastest feedback loop, no setup cost, conversational course-correction</td></tr>
-      <tr><td>Repeated single-step tasks</td><td>Single-agent SDK</td><td>Encodes context once, runs reliably, easy to debug</td></tr>
-      <tr><td>Multi-step creative workflows</td><td>Multi-agent SDK</td><td>Each step gets specialized instructions, parallel execution possible</td></tr>
-      <tr><td>Tool integration across services</td><td>MCP</td><td>Standardized protocol, language-agnostic, composable</td></tr>
-      <tr><td>Reusable expertise across projects</td><td>Skills</td><td>Encapsulated knowledge, parameterized, shareable</td></tr>
-      <tr><td>CI/CD integration</td><td>SDK + MCP</td><td>Programmatic access + standardized tool interface</td></tr>
-    </tbody>
-  </table>
-
-  <p>The pragmatic approach: start with the CLI. When you find yourself running the same prompt three times, wrap it in a script. When the script needs tool access, move to an SDK. When you need multiple coordinated steps, add subagents. When you need to integrate external services, add MCP. When you want to share the workflow, package it as a skill.</p>
-
-  <p>Do not start by architecting a 12-agent pipeline. Start with one agent doing one thing reliably. Complexity is earned, not assumed.</p>
-
-  <figure class="figure--full" id="fig-15-5">
-    <picture>
-      <source srcset="screenshots/ch15-fig-05--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch15-fig-05--print.png" alt="MCP as universal connector between agent CLIs and generation APIs" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 15.5: MCP as universal connector between agent CLIs and generation APIs</figcaption>
-  </figure>
-
-  <table>
-    <thead><tr><th>Repo</th><th>Stars</th><th>Focus</th></tr></thead>
-    <tbody>
-      <tr><td><a href="https://github.com/anthropics/claude-agent-sdk-python">claude-agent-sdk</a></td><td>6.9k</td><td>Python/TS agent SDK with subagents and hooks</td></tr>
-      <tr><td><a href="https://github.com/google/adk-python">google/adk-python</a></td><td>19.7k</td><td>Python agent framework with native Gemini/Imagen/Veo</td></tr>
-      <tr><td><a href="https://github.com/openai/openai-agents-python">openai-agents</a></td><td>26.4k</td><td>Python agent SDK with handoffs and Runner</td></tr>
-      <tr><td><a href="https://github.com/ConardLi/garden-skills">garden-skills</a></td><td>5.2k</td><td>80+ skill templates for image generation</td></tr>
-      <tr><td><a href="https://github.com/SamurAIGPT/Generative-Media-Skills">Generative-Media-Skills</a></td><td>3.3k</td><td>MCP servers for generative media workflows</td></tr>
-      <tr><td><a href="https://github.com/calesthio/OpenMontage">OpenMontage</a></td><td>3.8k</td><td>12 video pipelines with YAML orchestration</td></tr>
-      <tr><td><a href="https://github.com/ArcReel/ArcReel">ArcReel</a></td><td>2.3k</td><td>Novel-to-video with Claude subagents</td></tr>
-    </tbody>
-  </table>
-
-  <div class="callout"><p><strong>My take:</strong> The right architecture is the simplest one that solves your problem. I have seen teams build 8-agent pipelines for tasks a single prompt could handle. I have also seen teams manually running 50 CLI sessions for tasks a 3-agent pipeline could automate. The discipline is knowing when to escalate complexity. If you cannot explain why you need a multi-agent architecture in one sentence, you do not need one yet.</p></div>
-
-  <div class="callout tip">
-    <p><strong>Next:</strong> <a href="#17.1">Chapter 17</a> covers DESIGN.md &#8212; the emerging standard for portable design systems that agents can read. You will learn how Google Stitch defined the format, how the community built a 500+ design system library around it, and how to write your own DESIGN.md for consistent agent output.</p>
-  </div>
-</section>
-
-
-<div class="page-break"></div>
-
-
-
-
-<!--===== chapter-17.html =====-->
-<section class="content" id="chapter-17">
-  <h2 class="section-title" style="string-set: chapter-title content()"><span class="num">17</span> DESIGN.md: Portable Design Systems for Agents</h2>
-  <p class="section-en">How a Markdown file became the standard for transferring visual design to AI</p>
-  <p class="section-intro">In April 2026, Google launched Stitch, an AI design tool that needed a way to encode entire design systems in a format agents could read. The answer was a plain Markdown file with YAML tokens. Within eight weeks, the community built 500+ design system files around it. This chapter covers the format, the ecosystem, and how to use DESIGN.md in your agentic design workflows.</p>
-
-  <h3 id="17.1">What Is DESIGN.md?</h3>
-
-  <p>Google Stitch (<a href="https://stitch.withgoogle.com">stitch.withgoogle.com</a>) is an AI-powered design tool that generates UI from text descriptions. Stitch needed a way to encode an entire design system so AI coding agents could apply it consistently across thousands of generated components. The answer was unexpectedly simple: a plain-text Markdown file called <code>DESIGN.md</code>.</p>
-
-  <p>DESIGN.md combines two things that had never been formally united. The top of the file is <strong>YAML front matter</strong> &#8212; machine-readable tokens like <code>colors.primary</code> and <code>typography.scale</code> that agents interpolate directly into CSS variables or Tailwind themes. The bottom is a <strong>Markdown body</strong> &#8212; human-readable rationale explaining <em>why</em> those tokens exist, with do&#8217;s, don&#8217;ts, and component specifications written in natural language.</p>
-
-  <p>This dual-format approach solved a real problem. Design tokens alone (JSON, Theo, Style Dictionary) carry values but not intent. Figma files carry visuals but not text-readable logic. Storybook carries components but requires a running application. DESIGN.md carries <em>everything an AI agent needs</em> in a single file that diffs cleanly in version control and weighs a few kilobytes.</p>
-
-  <p>Google open-sourced the specification at <a href="https://github.com/google-labs-code/design.md">google-labs-code/design.md</a>. The repository hit 14,300 stars within six weeks &#8212; a signal the community had been waiting for exactly this. (source: <a href="https://github.com/google-labs-code/design.md">google-labs-code/design.md</a>, retrieved 2026-05-19)</p>
-
-  <figure class="figure--full" id="fig-16-1">
-    <picture>
-      <source srcset="screenshots/ch16-fig-01--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch16-fig-01--print.png" alt="The three-layer convention showing how AGENTS.md, SKILL.md, and DESIGN.md divide AI context responsibilities" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 16.1: The three-layer convention showing how AGENTS.md, SKILL.md, and DESIGN.md divide AI context responsibilities</figcaption>
-  </figure>
-
-  <h3 id="17.2">The Three-Layer Convention</h3>
-
-  <p>A convention emerged quickly across the AI tooling ecosystem. Three files, three responsibilities, zero overlap.</p>
-
-  <p><strong>AGENTS.md</strong> (or <code>CLAUDE.md</code> for Claude Code, <code>.cursor/rules</code> for Cursor) defines the <em>behavior layer</em>. It contains coding rules, project context, build commands, testing strategies &#8212; everything about <em>how</em> an agent should work. It says &#8220;use TypeScript strict mode&#8221; and &#8220;run tests before committing.&#8221; It does not mention colors.</p>
-
-  <p><strong>SKILL.md</strong> defines the <em>task layer</em>. It contains reusable procedures and domain expertise. The <a href="https://agentskills.io">agentskills.io</a> specification, supported by 30+ agent clients, formalizes this layer. A SKILL.md says &#8220;when building a form, validate on blur, show errors inline, disable submit until valid.&#8221; It teaches <em>how to think about a task</em>. <a href="#chapter-03">Chapter 03</a> covers skills in detail.</p>
-
-  <p><strong>DESIGN.md</strong> defines the <em>appearance layer</em>. It contains colors, typography scales, spacing systems, border radii, component specifications &#8212; everything about <em>what the output should look like</em>. It says &#8220;primary buttons use #533afd at 48px height with 12px horizontal padding.&#8221; It speaks in pixels and hex values.</p>
-
-  <table>
-    <thead><tr><th>File</th><th>Purpose</th><th>Who Reads It</th><th>What It Carries</th></tr></thead>
-    <tbody>
-      <tr><td>AGENTS.md / CLAUDE.md</td><td>Behavior layer</td><td>All AI coding agents</td><td>Coding rules, project context, build commands, testing strategy</td></tr>
-      <tr><td>SKILL.md</td><td>Task layer</td><td>Skills-compatible agents (30+ clients)</td><td>Reusable procedures, domain expertise, workflow steps</td></tr>
-      <tr><td>DESIGN.md</td><td>Appearance layer</td><td>All agents doing UI work</td><td>Colors, typography, spacing, component specifications</td></tr>
-    </tbody>
-  </table>
-
-  <p>The three layers complement each other. An agent reading all three knows <em>how to build</em> (AGENTS.md), <em>how to approach the task</em> (SKILL.md), and <em>what the result should look like</em> (DESIGN.md). Remove any one layer and the agent compensates by guessing &#8212; which is where inconsistent UI comes from.</p>
-
-  <div class="callout"><p><strong>My take:</strong> The three-layer split is the correct decomposition. Behavior, task, and appearance are orthogonal concerns that change at different rates. Your design system might get a refresh every quarter. Your coding rules might change when you switch frameworks. Your task workflows might change when you adopt a new methodology. Keeping them separate means you update one without accidentally mutating the others. If your AGENTS.md has a &#8220;colors&#8221; section, you are doing it wrong.</p></div>
-
-  <h3 id="17.3">Google&#8217;s DESIGN.md Specification</h3>
-
-  <p>The canonical DESIGN.md format follows a strict structure. The file opens with YAML front matter containing token definitions, then continues with Markdown sections explaining each token group.</p>
-
-  <figure class="figure--full" id="fig-16-2">
-    <picture>
-      <source srcset="screenshots/ch16-fig-02--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch16-fig-02--print.png" alt="DESIGN.md file structure with YAML front matter tokens and nine markdown body sections" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 16.2: DESIGN.md file structure with YAML front matter tokens and nine markdown body sections</figcaption>
-  </figure>
-
-  <p>The YAML front matter uses token references that agents interpolate into CSS custom properties:</p>
-
-  <pre><code>---
-name: stripe-inspired
-version: "1.0"
-colors:
-  primary: "#533afd"
-  ink: "#0d253d"
-  surface: "#f6f9fc"
-  border: "#e3e8ee"
-  success: "#0d9467"
-  error: "#e53e3e"
-typography:
-  display:
-    family: "'Calibre', 'Inter', sans-serif"
-    weight: 600
-  body:
-    family: "'Inter', sans-serif"
-    weight: 400
-  scale:
-    - size: "48px"
-      name: display-lg
-    - size: "24px"
-      name: heading
-    - size: "16px"
-      name: body
-    - size: "14px"
-      name: caption
-rounded:
-  button: "8px"
-  card: "12px"
-  input: "6px"
-spacing:
-  unit: "4px"
-  scale: [4, 8, 12, 16, 24, 32, 48, 64]
-components:
-  - name: button-primary
-    height: "48px"
-    padding: "0 24px"
-    bg: "{colors.primary}"
-    color: "#ffffff"
-    radius: "{rounded.button}"
-    font: "{typography.body}"
-    weight: 500
----</code></pre>
-
-  <p>After the front matter, the Markdown body contains up to nine sections:</p>
-
-  <table>
-    <thead><tr><th>Section</th><th>What It Defines</th><th>Example</th></tr></thead>
-    <tbody>
-      <tr><td>Colors</td><td>Semantic color palette with roles</td><td>primary, ink, surface, border, success, error</td></tr>
-      <tr><td>Typography</td><td>Font families, weights, and type scale</td><td>display-lg 48px, heading 24px, body 16px</td></tr>
-      <tr><td>Spacing</td><td>Base unit and spacing scale</td><td>4px base unit, scale from 4 to 64</td></tr>
-      <tr><td>Border Radius</td><td>Corner radii by component type</td><td>button 8px, card 12px, input 6px</td></tr>
-      <tr><td>Shadows</td><td>Elevation levels</td><td>sm: 0 1px 2px, md: 0 4px 12px</td></tr>
-      <tr><td>Components</td><td>UI element specifications</td><td>button-primary: 48px height, #533afd bg</td></tr>
-      <tr><td>Layout</td><td>Grid system, breakpoints, containers</td><td>max-width 1200px, 12-col grid</td></tr>
-      <tr><td>Motion</td><td>Animation timing and easing</td><td>150ms ease for hover, 300ms for expand</td></tr>
-      <tr><td>Dark Mode</td><td>Token overrides for dark theme</td><td>primary: #7c6aff, surface: #1a1a2e</td></tr>
-    </tbody>
-  </table>
-
-  <p>Google ships a CLI tool for working with DESIGN.md files:</p>
-
-  <pre><code># Validate spec compliance + WCAG contrast ratios
-npx @google/design.md lint DESIGN.md
-
-# Token-level regression detection
-npx @google/design.md diff a.md b.md
-
-# Export to Tailwind theme, CSS variables, or Style Dictionary
-npx @google/design.md export --format tailwind DESIGN.md</code></pre>
-
-  <table>
-    <thead><tr><th>Command</th><th>What It Does</th></tr></thead>
-    <tbody>
-      <tr><td><code>lint DESIGN.md</code></td><td>Validates spec compliance and WCAG contrast ratios across seven linting rules</td></tr>
-      <tr><td><code>diff a.md b.md</code></td><td>Token-level regression detection between two DESIGN.md files</td></tr>
-      <tr><td><code>export --format tailwind</code></td><td>Exports tokens to Tailwind theme configuration</td></tr>
-      <tr><td><code>export --format css</code></td><td>Generates a <code>:root</code> block of CSS custom properties</td></tr>
-      <tr><td><code>init --template stripe</code></td><td>Scaffolds a new DESIGN.md from a built-in template</td></tr>
-    </tbody>
-  </table>
-
-  <h3 id="17.4">The DESIGN.md Ecosystem</h3>
-
-  <p>The community response was immediate and large. Within two months of Google&#8217;s open-source release, a constellation of repositories and tools appeared.</p>
-
-  <figure class="figure--full" id="fig-16-3">
-    <picture>
-      <source srcset="screenshots/ch16-fig-03--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch16-fig-03--print.png" alt="The DESIGN.md ecosystem from Google Stitch specification to community collections and agent consumption" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 16.3: The DESIGN.md ecosystem from Google Stitch specification to community collections and agent consumption</figcaption>
-  </figure>
-
-  <p><strong>VoltAgent/awesome-design-md</strong> became the central hub. At 80,900 stars, it hosts 73 DESIGN.md files for real-world websites &#8212; Stripe, Vercel, Apple, Linear, Notion, Airbnb, Tesla, and dozens more. Each file is hand-audited for spec compliance and WCAG contrast. (source: <a href="https://github.com/VoltAgent/awesome-design-md">VoltAgent/awesome-design-md</a>, retrieved 2026-05-19)</p>
-
-  <p><strong>bergside/design-md-chrome</strong> (2,000 stars) is a Chrome extension that extracts any website&#8217;s visual design into a spec-compliant DESIGN.md file. It computes color palettes from computed styles, derives type scales from rendered font sizes, and infers spacing systems from layout measurements.</p>
-
-  <p><strong>kwakseongjae/oh-my-design</strong> provides a CLI with 107 pre-built brand files plus an MCP server that serves DESIGN.md tokens to any MCP-compatible agent. It generates shim pointers &#8212; small cross-reference snippets you paste into CLAUDE.md, AGENTS.md, or <code>.cursor/rules</code>.</p>
-
-  <table>
-    <thead><tr><th>Repo</th><th>Stars</th><th>Focus</th></tr></thead>
-    <tbody>
-      <tr><td><a href="https://github.com/VoltAgent/awesome-design-md">VoltAgent/awesome-design-md</a></td><td>80.9k</td><td>73 DESIGN.md files for real websites</td></tr>
-      <tr><td><a href="https://designmd.ai">DESIGNmd.ai</a></td><td>&#8212;</td><td>100+ community design systems, web editor</td></tr>
-      <tr><td><a href="https://github.com/bergside/design-md-chrome">design-md-chrome</a></td><td>2k</td><td>Chrome extension: website to DESIGN.md</td></tr>
-      <tr><td><a href="https://github.com/kzhrknt/awesome-design-md-jp">awesome-design-md-jp</a></td><td>3.4k</td><td>Japanese/CJK design system collection</td></tr>
-      <tr><td><a href="https://github.com/Meliwat/awesome-ios-design-md">awesome-ios-design-md</a></td><td>5.1k</td><td>200 iOS app DESIGN.md specifications</td></tr>
-      <tr><td><a href="https://github.com/kwakseongjae/oh-my-design">oh-my-design</a></td><td>1.8k</td><td>CLI with 107 brand files + MCP server</td></tr>
-    </tbody>
-  </table>
-
-  <p>Combined, these repositories contain over 500 DESIGN.md files covering web, iOS, and CJK design systems. The velocity is unusual for a developer tool specification. DESIGN.md hit this level in eight weeks because it solved a problem everyone had &#8212; how do I tell an AI what my design system looks like? &#8212; with a format everyone already understood: Markdown plus YAML.</p>
-
-  <div class="callout"><p><strong>My take:</strong> The ecosystem velocity here is meaningful. When 500+ design system specifications appear in two months, the format has struck a nerve. Every team using AI coding agents was already struggling with the same problem. They were pasting Figma links that agents could not read, writing prose descriptions of colors that agents interpreted inconsistently, or hardcoding design tokens into prompts that broke on every refresh. DESIGN.md gave them a format that agents parse deterministically and humans read naturally.</p></div>
-
-  <h3 id="17.5">How Agents Discover DESIGN.md</h3>
-
-  <p>Most AI coding agents do <em>not</em> automatically discover DESIGN.md files. Unlike <code>package.json</code> or <code>tsconfig.json</code>, there is no universal convention for agents to look for DESIGN.md at the project root. You must create an explicit cross-reference from whichever instruction file your agent already reads.</p>
-
-  <figure class="figure--full" id="fig-16-4">
-    <picture>
-      <source srcset="screenshots/ch16-fig-04--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch16-fig-04--print.png" alt="Project file layout showing how agents discover DESIGN.md through cross-references in CLAUDE.md and AGENTS.md" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 16.4: Project file layout showing how agents discover DESIGN.md through cross-references in CLAUDE.md and AGENTS.md</figcaption>
-  </figure>
-
-  <p>The recommended project layout places DESIGN.md at the repository root:</p>
-
-  <pre><code>project/
-├── CLAUDE.md          # or AGENTS.md for Codex/OpenCode
-├── DESIGN.md          # visual design system
-├── .cursor/
-│   └── rules/
-│       └── design-system.mdc  # Cursor rule pointing to DESIGN.md
-├── src/
-└── package.json</code></pre>
-
-  <p>For <strong>Claude Code</strong>, add a section to CLAUDE.md:</p>
-
-  <pre><code>## Design System
-
-This project uses DESIGN.md for visual specifications.
-Read DESIGN.md before generating any UI code.
-All color, typography, and spacing values must reference
-the tokens defined in DESIGN.md YAML front matter.
-Do not hardcode hex values or pixel measurements.</code></pre>
-
-  <p>For <strong>Cursor</strong>, create <code>.cursor/rules/design-system.mdc</code>:</p>
-
-  <pre><code>---
-description: Design system tokens and component specs
-globs: ["**/*.tsx", "**/*.css"]
-alwaysApply: true
----
-
-Read DESIGN.md at the project root. Follow its token
-definitions for all UI code. Use CSS custom properties
-mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
-
-  <p>The <code>oh-my-design</code> CLI goes further &#8212; it runs <code>oh-my-design link DESIGN.md</code> and writes shim pointers into CLAUDE.md, AGENTS.md, and <code>.cursor/rules/</code> simultaneously, so every agent in your team discovers the same design file.</p>
-
-  <h3 id="17.6">From Brand Spec to Portable Design System</h3>
-
-  <p><a href="#chapter-07">Chapter 07</a> covered Huashu Design and its <code>brand-spec.md</code> approach &#8212; a project-specific, dynamically generated design specification created through a five-step mandatory brand research process. <code>brand-spec.md</code> is produced fresh for each task via the Core Asset Protocol, injected as CSS variables, and validated through the &#8220;5-10-2-8&#8221; quality gate.</p>
-
-  <p>DESIGN.md takes a different approach. It is <em>pre-authored</em>, <em>portable</em>, and <em>shared across projects</em>. You write it once &#8212; or grab one from a community collection &#8212; and every agent that reads it produces visually consistent output. There is no brand research phase. The file is a static artifact that sits in version control.</p>
-
-  <figure class="figure--full" id="fig-16-5">
-    <picture>
-      <source srcset="screenshots/ch16-fig-05--web.webp" type="image/webp" media="(max-width: 1200px)">
-      <img src="screenshots/ch16-fig-05--print.png" alt="Comparison of brand-spec.md workflow versus portable DESIGN.md approach" loading="lazy" width="1800">
-    </picture>
-    <figcaption>Figure 16.5: Comparison of brand-spec.md workflow versus portable DESIGN.md approach</figcaption>
-  </figure>
-
-  <table>
-    <thead><tr><th>Aspect</th><th>brand-spec.md (Huashu)</th><th>DESIGN.md (Stitch)</th></tr></thead>
-    <tbody>
-      <tr><td>When created</td><td>Per-task, dynamically generated</td><td>Pre-authored, version-controlled</td></tr>
-      <tr><td>Portability</td><td>Project-specific, tied to one brand</td><td>Portable, shared across projects</td></tr>
-      <tr><td>Brand research</td><td>5-step mandatory process</td><td>None &#8212; uses pre-existing design system</td></tr>
-      <tr><td>Format</td><td>Markdown with CSS variable injection</td><td>YAML front matter + Markdown body</td></tr>
-      <tr><td>Validation</td><td>&#8220;5-10-2-8&#8221; quality gate</td><td>7-rule linter (spec + WCAG contrast)</td></tr>
-      <tr><td>Best for</td><td>Bespoke brand work, original designs</td><td>Replicating known design systems</td></tr>
-      <tr><td>Ecosystem</td><td>Internal to huashu-design workflow</td><td>500+ community files, CLI tools, MCP</td></tr>
-    </tbody>
-  </table>
-
-  <p>Neither approach is universally superior. <code>brand-spec.md</code> is better when you need <em>original</em> design work that captures a specific brand personality. DESIGN.md is better when you need <em>consistent replication</em> of a known design system &#8212; Stripe&#8217;s checkout, Vercel&#8217;s dashboard, Apple&#8217;s product pages.</p>
-
-  <p>The Open Design project combined both approaches: Huashu Design&#8217;s brand research workflow with DESIGN.md&#8217;s portable format, resulting in 71+ swappable design systems that agents can switch between with a single file swap.</p>
-
-  <div class="callout"><p><strong>My take:</strong> Use both. Run the brand-spec.md workflow when you are creating something new. Then freeze the output into DESIGN.md format so every subsequent agent session gets the same tokens without repeating the research. brand-spec.md is the factory. DESIGN.md is the product. You run the factory once, then ship the product everywhere.</p></div>
-
-  <h3 id="17.7">Writing Your First DESIGN.md</h3>
-
-  <p>Start with the spec. End with the linter.</p>
-
-  <p><strong>Step 1: Define your color palette with semantic roles.</strong> Name tokens by function, not appearance. <code>primary</code> not <code>purple</code>. <code>surface</code> not <code>light-gray</code>. <code>ink</code> not <code>dark-blue</code>. This matters because your primary color might change in a rebrand &#8212; your token name should not.</p>
-
-  <p><strong>Step 2: Set your typography scale.</strong> Pick a base size (usually 16px) and define a consistent scale. Four to six sizes cover most interfaces: display, heading, subheading, body, caption. Specify family, weight, and line-height for each.</p>
-
-  <p><strong>Step 3: Define your spacing system.</strong> Choose a base unit (4px or 8px) and derive a scale from it. Most design systems use a 4px base with values at 4, 8, 12, 16, 24, 32, 48, 64. Every gap, margin, and padding should map to a token on your scale.</p>
-
-  <p><strong>Step 4: Specify your component vocabulary.</strong> Start with your three most-used components &#8212; typically button-primary, input-text, and card. Give each explicit dimensions, colors, typography, spacing, and border radius. Reference tokens, not hardcoded values.</p>
-
-  <p><strong>Step 5: Add do&#8217;s and don&#8217;ts.</strong> The Markdown body is where you write rules that cannot be expressed in YAML. &#8220;Buttons always use sentence case.&#8221; &#8220;Never stack two primary buttons.&#8221; These natural-language rules guide agents when the token definition is ambiguous.</p>
-
-  <p><strong>Step 6: Run the linter.</strong></p>
-
-  <pre><code>$ npx @google/design.md lint DESIGN.md
-
-✓ token-syntax: all tokens use valid dot-notation
-✓ contrast-aa: all text/background pairs pass WCAG AA
-  (primary on white: 7.2:1, ink on surface: 12.4:1)
-✓ scale-consistency: spacing uses 4px base
-✓ component-ref: all 3 components resolve to defined tokens
-✗ dark-mode-parity: 2 tokens missing dark overrides
-  → colors.surface, colors.border
-✓ no-hardcoded: no hex values in Markdown body
-✓ semantic-names: all tokens use semantic naming
-
-1 issue found. Fix and re-run.</code></pre>
-
-  <p>Fix the dark mode tokens and run again until all seven rules pass. A few practical tips: include dark mode tokens from the start &#8212; retrofitting them is harder than writing them alongside light tokens. Test contrast ratios with the linter before committing. Keep your components list minimal at first. Three components that agents follow precisely beat thirty that agents interpret loosely.</p>
-
-  <p>DESIGN.md is not a replacement for Figma or your design team. It is a translation layer &#8212; a way to encode visual decisions in a format that AI agents read deterministically. When your designer changes the primary color, you update one token in DESIGN.md and every agent session from that point forward uses the new value. No re-training, no prompt editing, no hunting through generated code for hardcoded hex values.</p>
-
-  <div class="callout tip">
-    <p><strong>Next:</strong> This chapter concludes the main content of the book. <a href="#appendix-A">Appendix A</a> provides a comprehensive tool comparison matrix for quick reference. <a href="#appendix-B">Appendix B</a> contains the full MCP server reference. <a href="#appendix-C">Appendix C</a> offers a prompt library organized by design task.</p>
-  </div>
-</section>
-
-
-<div class="page-break"></div>
-
-<div class="page-break"></div>
-
-
-
-<!--===== appendix-a.html =====-->
-
-<h2 class="section-title"><span class="num">Appendix A</span> Tool Comparison Matrix</h2>
+  </section>
+
+  <section id="A" class="book-page book-page-content" data-source="A.html">
+<section class="content appendix" id="appendix-A">
+  <h2 class="section-title"><span class="num">Appendix A</span> Tool Comparison Matrix</h2>
   <p class="section-intro">Side-by-side feature comparisons for every tool covered in this book. One table per category, verified as of May 2026. Use these tables for quick lookups; the corresponding chapters provide the detailed walkthroughs.</p>
 
   <div class="callout disclaimer">
@@ -10278,9 +8016,13 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
   </div>
 
   <p>Chapter 10 covers MCP integrations in depth, including configuration, chaining, and troubleshooting. Appendix B provides a complete reference for every MCP tool available in each server.</p>
-<!--===== appendix-b.html =====-->
+</section>
 
-<h2 class="section-title"><span class="num">Appendix B</span> MCP Server Reference</h2>
+  </section>
+
+  <section id="B" class="book-page book-page-content" data-source="B.html">
+<section class="content appendix" id="appendix-B">
+  <h2 class="section-title"><span class="num">Appendix B</span> MCP Server Reference</h2>
   <p class="section-intro">Every MCP server covered in this book, every tool it exposes, and the configuration snippets to connect it to your agent. Verified as of May 2026.</p>
   <div class="callout"><p><strong>Note:</strong> Configuration snippets are illustrative examples. Refer to each tool's official documentation for current setup instructions.</p></div>
 
@@ -10801,8 +8543,13 @@ URL: http://127.0.0.1:29979/mcp</code></pre>
       </tr>
     </tbody>
   </table>
-<!--===== appendix-c.html =====-->
-<h2 class="section-title"><span class="num">Appendix C</span> Prompt Library for Design Tasks</h2>
+</section>
+
+  </section>
+
+  <section id="C" class="book-page book-page-content" data-source="C.html">
+<section class="content appendix" id="appendix-C">
+  <h2 class="section-title"><span class="num">Appendix C</span> Prompt Library for Design Tasks</h2>
   <p class="section-intro">Battle-tested prompts for common agentic design tasks. Copy them into your agent session, swap the bracketed values, and ship. Verified as of May 2026.</p>
 
   <h3 id="appendix-C.1">Prototyping Prompts</h3>
@@ -11144,3 +8891,24 @@ Step 3: "Create a Storybook story for each component showing
 all variants. Include accessibility testing in each story."</code></pre>
 
   <p>Each prompt in this appendix is designed to be copied directly into an agent session. Swap bracketed values for your project specifics. The prompts that work best are specific about output format, tool selection, and quality constraints. Vague prompts produce vague output.</p>
+</section>
+
+  </section>
+
+  <section id="back" class="book-page book-page-back-page" data-source="back.html">
+<div class="back-page">
+    <div class="back-page-disclaimer">
+      <strong>Disclaimer</strong><br>
+      This book was written with the assistance of AI tools. All tool references and code examples reflect capabilities as of May 2026. The agentic design tool ecosystem evolves rapidly; check official documentation for the latest features and integrations.
+    </div>
+    <div class="back-page-colophon">
+      <p>The Agentic Designer</p>
+      <p>Version 0.1.0 - May 2026</p>
+      <p>Written by Mehran Mozaffari</p>
+      <p>License: CC BY-NC-SA 4.0</p>
+    </div>
+  </div>
+  </section>
+</main>
+</body>
+</html>

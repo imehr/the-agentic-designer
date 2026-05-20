@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-20T04:25:18.952Z",
+  "generatedAt": "2026-05-20T05:10:25.012Z",
   "pass": true,
-  "totalPass": 58,
-  "totalChecks": 58,
+  "totalPass": 57,
+  "totalChecks": 57,
   "sections": {
     "pdf": [
       {
@@ -23,7 +23,7 @@
       {
         "name": "PDF file size > 0",
         "pass": true,
-        "detail": "12410.4 KB"
+        "detail": "36010.6 KB"
       },
       {
         "name": "PDF is valid (readable)",
@@ -43,7 +43,7 @@
       {
         "name": "PDF subject/description metadata",
         "pass": true,
-        "detail": "A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design."
+        "detail": "Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems"
       },
       {
         "name": "PDF creator metadata",
@@ -53,7 +53,7 @@
       {
         "name": "PDF has pages",
         "pass": true,
-        "detail": "110 pages"
+        "detail": "293 pages"
       },
       {
         "name": "PDF page dimensions",
@@ -78,7 +78,7 @@
       {
         "name": "PDF source images render correctly",
         "pass": true,
-        "detail": "75 images resolved via file:// (PDF will include them)"
+        "detail": "65 images resolved via file:// (PDF will include them)"
       }
     ],
     "html": [
@@ -95,12 +95,12 @@
       {
         "name": "HTML path exists",
         "pass": true,
-        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output"
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer"
       },
       {
         "name": "HTML entry file exists",
         "pass": true,
-        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer.html"
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer/index.html"
       },
       {
         "name": "HTML lang attribute",
@@ -110,7 +110,7 @@
       {
         "name": "HTML title metadata",
         "pass": true,
-        "detail": "The Agentic Designer"
+        "detail": "Table of Contents - The Agentic Designer"
       },
       {
         "name": "HTML author metadata",
@@ -120,7 +120,7 @@
       {
         "name": "HTML description metadata",
         "pass": true,
-        "detail": "A comprehensive guide to designing with AI agents — from first principles to production systems. Covers AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, and production UI generation."
+        "detail": "A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design."
       },
       {
         "name": "HTML schema.org Book JSON-LD",
@@ -130,12 +130,7 @@
       {
         "name": "MANIFEST, page markers, or reader pages found",
         "pass": true,
-        "detail": "Page structure detected"
-      },
-      {
-        "name": "All MANIFEST pages exist as files",
-        "pass": true,
-        "detail": "21 pages inlined in single-file HTML"
+        "detail": "Reader site directory detected"
       },
       {
         "name": "Styles present",
@@ -145,17 +140,17 @@
       {
         "name": "Paged media CSS contract",
         "pass": true,
-        "detail": "Inline Paged Media CSS"
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer/shared/paged-media.css"
       },
       {
         "name": "Paged.js runtime available for HTML/PDF",
         "pass": true,
-        "detail": "Inline or remote Paged.js runtime reference found"
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer/shared/paged.polyfill.js"
       },
       {
         "name": "HTML paged preview hook",
         "pass": true,
-        "detail": "Inline Paged.js preview hook found"
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer/shared/paged-preview.js"
       },
       {
         "name": "tokens.css available",
@@ -165,22 +160,22 @@
       {
         "name": "Additional HTML pages",
         "pass": true,
-        "detail": "2 page files"
+        "detail": "21 page files"
       },
       {
         "name": "HTML local asset links resolve",
         "pass": true,
-        "detail": "168 checked"
+        "detail": "174 checked"
       },
       {
         "name": "Expected book images preserved in HTML",
         "pass": true,
-        "detail": "168/75 image refs found; state/screenshots/image-catalog.json"
+        "detail": "130/65 image refs found; state/drafts image references"
       },
       {
         "name": "HTML images render correctly",
         "pass": true,
-        "detail": "75 images loaded"
+        "detail": "65 images loaded"
       }
     ],
     "epub": [
@@ -202,7 +197,7 @@
       {
         "name": "ePub file size > 0",
         "pass": true,
-        "detail": "36554.0 KB"
+        "detail": "35219.9 KB"
       },
       {
         "name": "ePub is a valid ZIP archive",
@@ -267,17 +262,17 @@
       {
         "name": "Chapter XHTML files present",
         "pass": true,
-        "detail": "21 chapter files"
+        "detail": "19 chapter files"
       },
       {
         "name": "ePub chapter image links resolve",
         "pass": true,
-        "detail": "85 image refs checked"
+        "detail": "65 image refs checked"
       },
       {
         "name": "Expected book images preserved in ePub",
         "pass": true,
-        "detail": "85/75 image refs found; state/screenshots/image-catalog.json"
+        "detail": "65/65 image refs found; state/drafts image references"
       },
       {
         "name": "stylesheet.css present",

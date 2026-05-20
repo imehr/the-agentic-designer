@@ -10,6 +10,24 @@
 
 ### Artifacts
 
+- HTML: `01.html`
+- HTML: `02.html`
+- HTML: `03.html`
+- HTML: `04.html`
+- HTML: `05.html`
+- HTML: `06.html`
+- HTML: `07.html`
+- HTML: `08.html`
+- HTML: `09.html`
+- HTML: `10.html`
+- HTML: `11.html`
+- HTML: `12.html`
+- HTML: `13.html`
+- HTML: `14.html`
+- HTML: `A.html`
+- HTML: `B.html`
+- HTML: `C.html`
+- HTML: `front-matter.html`
 - ePub: `the-agentic-designer.epub`
 - HTML: `the-agentic-designer.html`
 - PDF: `the-agentic-designer.pdf`

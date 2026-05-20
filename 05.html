@@ -1,0 +1,622 @@
+<section class="content" id="chapter-05">
+  <h2 class="section-title"><span class="num">05</span> Paper and Pencil</h2>
+  <p class="section-en">Connected canvas tools, MCP setup, and design-to-code workflows</p>
+  <p class="section-intro">
+    Two tools dominate the connected canvas space: Paper for HTML/CSS design and Pencil for vector design inside the IDE. This chapter walks through MCP server setup for each, real design-to-code workflows, and a complete pipeline from canvas design to production website. Every code block is copy-paste ready.
+  </p>
+
+  <h3 id="05.1">Paper: Connected HTML/CSS Canvas for Teams</h3>
+
+  <p>Paper (paper.design) is a connected HTML/CSS canvas for teams shipping with AI agents. Built by the Paper team, it exposes a rich MCP server that lets agents read designs, export JSX, and write HTML back to the canvas. The key differentiator: design-to-code and code-to-design in the same loop.</p>
+<figure class="figure--full" id="ch05-fig-01">
+  <img src="../screenshots/ch05-fig-01--print.png" alt="Paper design editor showing an HTML CSS canvas with design elements, a layers panel on the left, and toolbar options demonstrating the connected canvas workflow" loading="lazy" />
+  <figcaption>Paper editor canvas with HTML/CSS design surface, layers panel, and connected tools</figcaption>
+</figure>
+
+
+  <p>As of May 2026, designers at Vercel, Perplexity, Lovable, PostHog, Tailwind, Dub, Replicate, Zed, and Attio use Paper in production. The product lineup includes Paper Web (app.paper.design), Paper Desktop, Paper MCP, Paper Snapshot, and Paper Shaders.</p>
+
+  <p>Paper's design surface is HTML/CSS. The design artifact is HTML. The export is HTML. There is no translation layer between what you see on canvas and what ships in production. This makes Paper particularly effective for agent-driven workflows: an agent reads the HTML, modifies it, and writes it back. The canvas updates. No round-trip through a proprietary format.</p>
+
+  <p>Paper Desktop unlocks the MCP workflow. It connects to Cursor, Claude Code, Codex, Copilot, OpenCode, Zed, iTerm, VS Code, GitHub, Windsurf, Notion, Cline, and Continue. When you open Paper Desktop and load a file, the MCP server starts automatically at <code>http://127.0.0.1:29979/mcp</code>.</p>
+
+  <p>The architecture is straightforward. Paper Desktop runs a local HTTP server that implements the MCP protocol. Agents connect to this server and call tools like <code>get_screenshot</code>, <code>get_jsx</code>, <code>write_html</code>, and <code>export</code>. The server communicates with Paper's canvas in real time. Changes appear on canvas within seconds of an agent writing them.</p>
+
+  <h3 id="05.2">Setting Up the Paper MCP Server</h3>
+
+  <p>The Paper MCP server runs locally at <code>http://127.0.0.1:29979/mcp</code>. It starts automatically when Paper Desktop is open and a file is loaded. The setup differs by agent platform.</p>
+<figure class="figure--full" id="ch05-fig-02">
+  <img src="../screenshots/ch05-fig-02--print.png" alt="Terminal output showing the Paper MCP server configuration commands for Claude Code and OpenCode with successful connection verification at port 29979" loading="lazy" />
+  <figcaption>Paper MCP server setup showing configuration for Claude Code and OpenCode</figcaption>
+</figure>
+
+
+  <p><strong>Claude Code</strong> has two methods. The manual approach:</p>
+
+  <pre><code>$ claude mcp add paper --transport http http://127.0.0.1:29979/mcp --scope user</code></pre>
+
+  <p>The plugin approach (recommended for Claude Code users):</p>
+
+  <pre><code>$ /plugin marketplace add paper-design/agent-plugins
+$ /plugin install paper-desktop@paper</code></pre>
+
+  <p><strong>OpenCode</strong> uses the <code>opencode.json</code> config file:</p>
+
+  <pre><code>{
+  "mcp": {
+    "paper": {
+      "type": "remote",
+      "url": "http://127.0.0.1:29979/mcp",
+      "enabled": true
+    }
+  }
+}</code></pre>
+
+  <p><strong>Copilot (VS Code)</strong> needs a <code>.vscode/mcp.json</code> in the project root:</p>
+
+  <pre><code>{
+  "servers": {
+    "paper": {
+      "type": "http",
+      "url": "http://127.0.0.1:29979/mcp"
+    }
+  }
+}</code></pre>
+
+  <p><strong>Codex CLI</strong> uses Settings > MCP Servers > "Streamable HTTP" tab. Enter the name "paper" and the URL.</p>
+
+  <p><strong>Claude Desktop</strong> requires the <code>mcp-remote</code> package:</p>
+
+  <pre><code>{
+  "mcpServers": {
+    "paper": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://127.0.0.1:29979/mcp"]
+    }
+  }
+}</code></pre>
+
+  <p><strong>Cursor</strong> uses a plugin command:</p>
+
+  <pre><code>$ /add-plugin paper-desktop</code></pre>
+
+  <p>After setup, verify the connection by asking your agent to create a simple element. Something like: "Create a red rectangle in Paper." If the rectangle appears on canvas, the MCP server is working.</p>
+
+  <p>If the rectangle doesn't appear, check the troubleshooting table:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Symptom</th>
+        <th>Cause</th>
+        <th>Fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Agent says "Paper tools not found"</td>
+        <td>MCP server not connected</td>
+        <td>Verify Paper Desktop is open with a file loaded. Check MCP config path.</td>
+      </tr>
+      <tr>
+        <td>Agent stops responding to Paper tools mid-session</td>
+        <td>Long-running session lost connection</td>
+        <td>Restart the agent session. Paper's MCP connection can drop after extended idle periods.</td>
+      </tr>
+      <tr>
+        <td>Connection refused on <code>127.0.0.1:29979</code></td>
+        <td>Paper Desktop not running or no file loaded</td>
+        <td>Open Paper Desktop and load a file. The server only starts when a file is active.</td>
+      </tr>
+      <tr>
+        <td>Connection refused on Windows WSL</td>
+        <td>WSL networking can't reach Windows localhost</td>
+        <td>Enable mirrored mode networking in <code>.wslconfig</code>, or use the Windows host IP.</td>
+      </tr>
+      <tr>
+        <td>Rate limit errors after upgrading Paper Desktop</td>
+        <td>MCP rate limits didn't reset after upgrade</td>
+        <td>Update to the latest Paper Desktop version. Restart Paper Desktop and the agent.</td>
+      </tr>
+      <tr>
+        <td>Agent hallucinates tool parameters</td>
+        <td>LLM fabricating MCP tool signatures</td>
+        <td>Re-add the MCP server. Check that the agent sees the correct tool list. Try a shorter prompt.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    <p><strong>Warning:</strong> Paper Desktop is macOS and Windows only as of May 2026. Linux users cannot run the MCP server locally. The web version (app.paper.design) does not expose an MCP endpoint. This is the most significant limitation of the Paper workflow.</p>
+  </div>
+
+  <p>Paper's MCP server exposes 22 tools. Here are the most important ones for design-to-code workflows:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Purpose</th>
+        <th>Key Parameters</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>get_screenshot</code></td>
+        <td>Capture a node as a base64 image</td>
+        <td>Node ID, scale (1x or 2x)</td>
+      </tr>
+      <tr>
+        <td><code>get_jsx</code></td>
+        <td>Export a node as JSX (Tailwind or inline styles)</td>
+        <td>Node ID, format preference</td>
+      </tr>
+      <tr>
+        <td><code>write_html</code></td>
+        <td>Parse HTML and add or replace nodes</td>
+        <td>HTML string, mode (insert or replace)</td>
+      </tr>
+      <tr>
+        <td><code>export</code></td>
+        <td>Export nodes as PNG, JPG, SVG, MP4</td>
+        <td>Node IDs, format, scale</td>
+      </tr>
+      <tr>
+        <td><code>create_artboard</code></td>
+        <td>Create a new artboard</td>
+        <td>Name, width, height</td>
+      </tr>
+      <tr>
+        <td><code>update_styles</code></td>
+        <td>Update CSS styles on nodes</td>
+        <td>Node IDs, style properties</td>
+      </tr>
+      <tr>
+        <td><code>get_computed_styles</code></td>
+        <td>Read computed CSS styles for nodes</td>
+        <td>Node IDs (batch supported)</td>
+      </tr>
+      <tr>
+        <td><code>get_tree_summary</code></td>
+        <td>Compact hierarchy of a node's subtree</td>
+        <td>Node ID, optional depth limit</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The full tool set includes <code>get_basic_info</code>, <code>get_selection</code>, <code>get_node_info</code>, <code>get_children</code>, <code>get_fill_image</code>, <code>get_font_family_info</code>, <code>get_guide</code>, <code>set_text_content</code>, <code>rename_nodes</code>, <code>duplicate_nodes</code>, <code>move_nodes</code>, and <code>finish_working_on_nodes</code>. Appendix B covers every tool in detail.</p>
+
+  <h3 id="05.3">Paper Workflows: Design-to-Code and Code-to-Design</h3>
+
+  <p>Paper supports two primary workflows: design-to-code (export from canvas to code) and code-to-design (write code back to canvas). The MCP server makes both possible within a single agent session.</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <strong>Design in Paper</strong>
+      <p>HTML/CSS canvas</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Agent reads via MCP</strong>
+      <p>Screenshot + JSX + styles</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Agent generates code</strong>
+      <p>React + Tailwind project</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <strong>Agent writes HTML back</strong>
+      <p>Via <code>write_html</code> tool</p>
+    </div>
+  </div>
+
+  <p><strong>Workflow 1: Syncing tokens from Figma to Paper.</strong> Run both the Figma MCP server and the Paper MCP server in the same agent session. Here's the step-by-step process:</p>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-content">
+      <p><strong>Start both MCP servers.</strong> Open Figma in a browser with the Figma MCP plugin running. Open Paper Desktop with a file loaded. Both servers should appear in your agent's MCP tool list.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-content">
+      <p><strong>Select the source element in Figma.</strong> Select an element with a variable or style applied. Tell the agent:</p>
+      <pre><code>Read the selected element in Figma and create a matching
+design system in Paper. Use the same colors, spacing,
+and typography tokens.</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-content">
+      <p><strong>Agent reads and translates.</strong> The agent reads the Figma styles via the Figma MCP server, translates them to Paper-compatible CSS, and writes them using <code>write_html</code> or <code>update_styles</code>. The output lands on the Paper canvas immediately.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">4</span>
+    <div class="step-content">
+      <p><strong>Verify and iterate.</strong> Check the Paper canvas. Compare with the Figma source. Ask the agent to fix any discrepancies.</p>
+    </div>
+  </div>
+
+  <p>Gotchas: SVG fills may come through as images rather than vector fills. Spacer elements in Figma are often ignored. Some Figma-specific design patterns don't translate cleanly. Large nested designs can error out on the MCP read. Code-connected components in Figma are unreliable for cross-tool sync.</p>
+
+  <p><strong>Workflow 2: Pulling real content from Notion into designs.</strong> Connect both Notion MCP and Paper MCP. Ask the agent to pull testimonials, articles, or data from Notion and populate a Paper design. This lets you test designs with real content — including different languages.</p>
+
+  <pre><code>Pull the testimonials from our Notion database and populate
+the testimonial cards in my Paper design. Use the first 3 entries.</code></pre>
+
+  <p>The agent reads the Notion database, extracts the content, and uses <code>write_html</code> to populate the Paper cards. The result is a design filled with real copy instead of lorem ipsum.</p>
+
+  <p><strong>Workflow 3: Building a website from a Paper design.</strong> This is the most powerful workflow. Select the hero frame in Paper. Ask the agent:</p>
+
+  <pre><code>I'd like you to build a website in this folder using the hero section
+I have selected in Paper. Use React and Tailwind for the styling.</code></pre>
+
+  <p>The agent reads the design via MCP (screenshot + JSX + computed styles), creates a project folder, generates the React components with Tailwind classes, and commits the result. Here's what the agent does internally:</p>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-content">
+      <p><strong>Read.</strong> Calls <code>get_screenshot</code> to see the design visually. Calls <code>get_jsx</code> to get the Tailwind markup. Calls <code>get_computed_styles</code> to get exact spacing and color values.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-content">
+      <p><strong>Generate.</strong> Creates a React component file with the JSX from Paper. Adds Tailwind classes. Sets up the project structure (package.json, tailwind config, etc.).</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-content">
+      <p><strong>Commit.</strong> Stages and commits the generated code.</p>
+      <pre><code>$ git add . && git commit -m "feat: hero section from Paper design"</code></pre>
+    </div>
+  </div>
+
+  <p>Best results come when the Paper design uses flex layouts and container-based structure rather than absolute positioning.</p>
+
+  <p>Start small — a hero section first. Then add responsive breakpoints:</p>
+
+  <pre><code>Can you add some responsive breakpoints to the website based on the
+frames I have selected in Paper? Each frame is a different breakpoint.</code></pre>
+
+  <p>The agent reads each frame as a breakpoint variant and generates the corresponding media queries. Chapter 12 covers the full production pipeline.</p>
+
+  <div class="callout">
+    <p><strong>My take:</strong> Paper's <code>get_jsx</code> tool is the single most time-saving feature in the agentic design ecosystem. Translating a design to JSX by hand takes 30-60 minutes per component. <code>get_jsx</code> does it in seconds. The output is clean Tailwind markup that's often production-ready. The limitation: Paper Desktop must be running, which excludes Linux users as of May 2026.</p>
+  </div>
+
+  <h3 id="05.4">Pencil: Vector Design Inside Your IDE</h3>
+
+  <p>Pencil (pencil.dev) takes a different approach. It's a vector design tool that integrates directly into your IDE. The tagline: "Design on canvas. Land in code." Unlike Paper's HTML/CSS canvas, Pencil provides a native vector design experience — layers, paths, boolean operations, the works — but it lives inside the development environment, not in a separate browser tab.</p>
+<figure class="figure--full" id="ch05-fig-03">
+  <img src="../screenshots/ch05-fig-03--print.png" alt="VS Code with Pencil extension showing a vector design canvas with editable elements, a hierarchical design tree panel, and a properties inspector for the selected component" loading="lazy" />
+  <figcaption>Pencil vector design canvas inside VS Code with the design tree and component inspector</figcaption>
+</figure>
+
+
+  <p>Pencil bridges design and development by putting both in the same environment. The key concepts:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Concept</th>
+        <th>What It Does</th>
+        <th>Design-as-Code Benefit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>.pen files</strong></td>
+        <td>Design artifacts stored in the repo</td>
+        <td>Diffable, versionable, reviewable</td>
+      </tr>
+      <tr>
+        <td><strong>Variables</strong></td>
+        <td>Design tokens with theme values</td>
+        <td>Tokens live in the design file</td>
+      </tr>
+      <tr>
+        <td><strong>Components</strong></td>
+        <td>Reusable design elements</td>
+        <td>Design system consistency</td>
+      </tr>
+      <tr>
+        <td><strong>Slots</strong></td>
+        <td>Component composition mechanism</td>
+        <td>Flexible component variants</td>
+      </tr>
+      <tr>
+        <td><strong>Code on Canvas</strong></td>
+        <td>Run code within the design surface</td>
+        <td>Design and code in one view</td>
+      </tr>
+      <tr>
+        <td><strong>Design Libraries</strong></td>
+        <td>Shared design system collections</td>
+        <td>Cross-project consistency</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Chapter 04 covered the mental model behind these concepts. Pencil makes them tangible inside VS Code or Cursor. You open a <code>.pen</code> file in the editor. A canvas appears. You design on the canvas. The file saves to disk. Git tracks the changes. An agent reads the file via MCP and modifies it. The canvas updates.</p>
+
+  <p>The integration with the development workflow is tighter than Paper's. Pencil doesn't just connect to your IDE — it runs <em>inside</em> it. The canvas is a tab in your editor. You can see your code and your design side by side. When the agent modifies the <code>.pen</code> file, the canvas updates in real time, and the diff appears in your editor's SCM panel.</p>
+
+  <p>Components in Pencil work like React components. You define a component once, then instantiate it everywhere. Slots let you swap content inside a component — the same card component can hold different text, images, or even other components. When you update the master component, every instance updates. This is the same pattern as React props, but it operates on the visual canvas.</p>
+
+  <p>Variables add another layer. Define your brand colors, spacing scale, and typography as variables in the <code>.pen</code> file. Apply them to components. When the agent changes a variable value, every component that references it updates across the entire design. This is how you maintain design system consistency without manually updating each component.</p>
+
+  <p>Code on Canvas is Pencil's bridge between visual design and live code. You can embed code that runs inside the design surface — generating data visualizations, rendering dynamic content, or displaying API responses directly on the canvas. The agent can write and modify this embedded code, creating designs that respond to real data rather than static mockups.</p>
+
+  <h3 id="05.5">The .pen File Format and Pencil CLI</h3>
+
+  <p>The <code>.pen</code> file format is Pencil's native design-as-code format. It's structured, parseable, and designed for git. The format supports all of Pencil's core concepts: nodes, styles, components, variables, and layout rules.</p>
+<figure class="figure--half-right" id="ch05-fig-04">
+  <img src="../screenshots/ch05-fig-04--print.png" alt="Pencil inspector panel showing a selected component with its child nodes, layout properties, and design token references for colors and typography" loading="lazy" />
+  <figcaption>Pencil node tree inspector showing component structure and design token bindings</figcaption>
+</figure>
+
+
+  <p>A simplified conceptual view of a <code>.pen</code> file structure:</p>
+
+  <pre><code>{
+  "variables": {
+    "color-primary": {
+      "type": "color",
+      "values": {
+        "default": "#0066CC",
+        "dark": "#3399FF"
+      }
+    },
+    "spacing-unit": {
+      "type": "dimension",
+      "values": {
+        "default": "4px"
+      }
+    }
+  }
+}</code></pre>
+
+  <p>Variables can hold different values per theme. Light mode gets <code>#0066CC</code>. Dark mode gets <code>#3399FF</code>. When the agent reads the file with <code>resolveVariables: true</code>, it gets the computed value for the active theme. This is the same pattern as CSS custom properties with media query overrides, but it lives in the design file.</p>
+
+  <p>Pencil CLI provides command-line access to <code>.pen</code> files. This is useful for CI pipelines, batch operations, and agent-driven workflows that don't need a GUI:</p>
+
+  <pre><code># Validate tokens and components
+$ pencil validate design.pen
+
+# Export assets for production
+$ pencil export design.pen --format svg
+
+# Export tokens as CSS custom properties
+$ pencil tokens design.pen --format css</code></pre>
+
+  <p>In a CI pipeline, you can validate that all design tokens are correctly defined and that no component references a missing variable:</p>
+
+  <pre><code># .github/workflows/design-ci.yml (conceptual)
+name: Design CI
+on: [push]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pencil validate design.pen
+      - run: pencil tokens design.pen --format css --output tokens.css</code></pre>
+
+  <p>Design Libraries extend this further. A library is a collection of components, variables, and styles shared across projects. Your team can maintain a single design library that every <code>.pen</code> file references. When the library updates, every design file that depends on it gets the changes. This works the same way as an npm package — your design system is versioned, shared, and consumed as a dependency.</p>
+
+  <p>Import and export capabilities round out the format. Pencil can import SVG, PNG, and Figma files. Export targets include SVG, PNG, PDF, and code generation. The Figma import is useful for migrating existing designs: open the <code>.fig</code> file in Pencil, and it converts the layers, styles, and components into the <code>.pen</code> format. The conversion isn't perfect — some Figma-specific features like auto-layout translate differently — but it preserves the structure well enough to continue designing.</p>
+
+  <h3 id="05.6">Design-to-Code Sync with Pencil</h3>
+
+  <p>Pencil's design-to-code sync is bidirectional. Design changes propagate to code. Code changes propagate to design. The sync happens through the <code>.pen</code> file format and Pencil's MCP integration.</p>
+
+  <p>The sync workflow, with concrete agent prompts at each step:</p>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-content">
+      <p><strong>Design in Pencil.</strong> Open a <code>.pen</code> file in the IDE. Design on the canvas using Pencil's vector tools. Variables and components are defined in the file.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-content">
+      <p><strong>Agent reads the design.</strong> Via Pencil's MCP server, the agent reads the <code>.pen</code> file, extracts component structures, reads variable values, and understands the layout hierarchy. The prompt:</p>
+      <pre><code>Read the design file landing.pen and generate a React component
+for the hero section. Map .pen variables to CSS custom properties.</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-content">
+      <p><strong>Agent generates code.</strong> The agent produces React components, Tailwind classes, or HTML/CSS that matches the design. Design variables map to CSS custom properties:</p>
+      <pre><code>:root {
+  --color-primary: #0066CC;    /* from .pen variable color-primary */
+  --spacing-unit: 4px;         /* from .pen variable spacing-unit */
+  --radius-sm: 4px;            /* from .pen variable radius-sm */
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">4</span>
+    <div class="step-content">
+      <p><strong>Agent writes code changes back.</strong> Via the MCP server, the agent can update the <code>.pen</code> file directly. The prompt:</p>
+      <pre><code>Update the button component in landing.pen to use a larger
+corner radius (12px instead of 8px) and add a hover state.</code></pre>
+      <p>The agent modifies the <code>.pen</code> file. The canvas updates. The diff appears in your editor's SCM panel. This closes the loop: code changes reflect in the design canvas.</p>
+    </div>
+  </div>
+
+  <p>The bidirectional sync means the design file stays in sync with the implementation. No more design files rotting in Figma while the codebase diverges. The <code>.pen</code> file is the source of truth for both design and code.</p>
+
+  <h3 id="05.7">Building a Real Workflow: Paper to Production</h3>
+
+  <p>This section walks through a complete workflow: designing in Paper, generating code with an agent, and deploying to production.</p>
+<figure class="figure--grid-2" id="ch05-fig-05">
+  <img src="../screenshots/ch05-fig-05--print.png" alt="Side-by-side comparison of Paper HTML CSS canvas and Pencil vector canvas showing identical button components rendered in each tool with different design approaches" loading="lazy" />
+  <figcaption>Paper and Pencil side-by-side showing the same component in each design format</figcaption>
+</figure>
+
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <div class="step-content">
+      <p><strong>Design the hero section in Paper.</strong> Open Paper Desktop. Create a new file. Design the hero section with a headline, subhead, CTA button, and a feature image. Use flex layouts for structure. Name the artboard "Hero".</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <div class="step-content">
+      <p><strong>Connect the agent.</strong> Ensure Paper MCP is configured in your agent (section 05.2). Open a terminal in the project folder. Start a new agent session. Verify the connection:</p>
+      <pre><code>Create a small test rectangle in Paper to verify the MCP connection.</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <div class="step-content">
+      <p><strong>Generate the hero component.</strong> Select the Hero artboard in Paper. Ask the agent to build it:</p>
+      <pre><code>Build a React + Tailwind hero component from the Hero artboard
+I have selected in Paper. Use semantic HTML and add hover states
+to the CTA button.</code></pre>
+      <p>The agent calls <code>get_screenshot</code> to see the design, <code>get_jsx</code> to get the Tailwind markup, and <code>get_computed_styles</code> to get exact values. Then it generates a <code>Hero.tsx</code> component with responsive styles and hover interactions.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">4</span>
+    <div class="step-content">
+      <p><strong>Design the remaining sections.</strong> In Paper, design the Features section, Testimonials section, and Footer. Each section gets its own artboard. Use the same design tokens across all sections.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">5</span>
+    <div class="step-content">
+      <p><strong>Generate the full page.</strong> Ask the agent to build each section and compose them into a single page:</p>
+      <pre><code>Now build the Features, Testimonials, and Footer sections from
+the artboards I've selected. Compose all sections into a single
+page component with responsive breakpoints.</code></pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="step-num">6</span>
+    <div class="step-content">
+      <p><strong>Commit and deploy.</strong> Have the agent commit the changes:</p>
+      <pre><code>$ git add . && git commit -m "feat: landing page from Paper design"</code></pre>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>Tool</th>
+        <th>Agent Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Design hero</td>
+        <td>Paper Desktop</td>
+        <td>None — human designs</td>
+      </tr>
+      <tr>
+        <td>2. Connect agent</td>
+        <td>Paper MCP</td>
+        <td>None — configuration</td>
+      </tr>
+      <tr>
+        <td>3. Generate hero</td>
+        <td>Paper MCP + Agent</td>
+        <td>Read design, generate code</td>
+      </tr>
+      <tr>
+        <td>4. Design remaining</td>
+        <td>Paper Desktop</td>
+        <td>None — human designs</td>
+      </tr>
+      <tr>
+        <td>5. Generate full page</td>
+        <td>Paper MCP + Agent</td>
+        <td>Read sections, compose page</td>
+      </tr>
+      <tr>
+        <td>6. Commit and deploy</td>
+        <td>Git + Agent</td>
+        <td>Commit, optionally deploy</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The total time for this workflow: 30-90 minutes depending on design complexity. The agent handles the tedious parts — translating layouts, writing responsive breakpoints, mapping tokens to CSS custom properties. You focus on design direction. The agent handles execution.</p>
+
+  <p>Paper and Pencil solve overlapping problems from different angles. Here's how they compare:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Paper</th>
+        <th>Pencil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Design surface</strong></td>
+        <td>HTML/CSS canvas</td>
+        <td>Vector canvas in IDE</td>
+      </tr>
+      <tr>
+        <td><strong>File format</strong></td>
+        <td>HTML (in Paper's cloud)</td>
+        <td><code>.pen</code> (in your repo)</td>
+      </tr>
+      <tr>
+        <td><strong>Agent connection</strong></td>
+        <td>MCP server (HTTP)</td>
+        <td>MCP server + file system</td>
+      </tr>
+      <tr>
+        <td><strong>Code export</strong></td>
+        <td><code>get_jsx</code> → Tailwind/JSX</td>
+        <td><code>.pen</code> → code generation</td>
+      </tr>
+      <tr>
+        <td><strong>Best for</strong></td>
+        <td>Web designs, landing pages</td>
+        <td>Component libraries, design systems</td>
+      </tr>
+      <tr>
+        <td><strong>Linux support</strong></td>
+        <td>No (Desktop required)</td>
+        <td>Yes (VS Code extension)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>My take:</strong> The Paper-to-production workflow is the most practical agentic design workflow I've used. It's not perfect — the agent sometimes misinterprets complex layouts, and you need to review the generated code carefully. But it eliminates the most tedious part of front-end development: translating a finished design into working code. Start with a small section, validate the output, then scale up.</p>
+  </div>
+
+  <div class="callout tip">
+    <p><strong>Next:</strong> Chapter 06 covers the open-source alternatives: Open Design (43k+ stars, 31 skills) and OpenPencil (3k+ stars, concurrent Agent Teams). If Paper and Pencil are the commercial options, Open Design and OpenPencil are the community-driven counterparts — with different trade-offs and capabilities.</p>
+  </div>
+</section>

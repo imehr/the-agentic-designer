@@ -9,6 +9,24 @@ Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex C
 
 | Format | File |
 |--------|------|
+| HTML | [01.html](01.html) |
+| HTML | [02.html](02.html) |
+| HTML | [03.html](03.html) |
+| HTML | [04.html](04.html) |
+| HTML | [05.html](05.html) |
+| HTML | [06.html](06.html) |
+| HTML | [07.html](07.html) |
+| HTML | [08.html](08.html) |
+| HTML | [09.html](09.html) |
+| HTML | [10.html](10.html) |
+| HTML | [11.html](11.html) |
+| HTML | [12.html](12.html) |
+| HTML | [13.html](13.html) |
+| HTML | [14.html](14.html) |
+| HTML | [A.html](A.html) |
+| HTML | [B.html](B.html) |
+| HTML | [C.html](C.html) |
+| HTML | [front-matter.html](front-matter.html) |
 | ePub | [the-agentic-designer.epub](the-agentic-designer.epub) |
 | HTML | [the-agentic-designer.html](the-agentic-designer.html) |
 | PDF | [the-agentic-designer.pdf](the-agentic-designer.pdf) |
@@ -40,6 +58,22 @@ product designers, design engineers, and creative technologists who want to buil
 Mehran Mozaffari
 
 
+
+## Credits
+
+| Role | Credit |
+|------|--------|
+| Author | Mehran Mozaffari |
+| Editorial review | Multi-model AI review pipeline |
+| Technical reviewers | Claude Opus 4.6, Gemini 3.1 Pro |
+| Design and production | Agentic publishing pipeline (OpenCode) |
+
+## Contact the Author
+
+- Blog: [https://piazr.github.io/applied-ai/](https://piazr.github.io/applied-ai/)
+- GitHub: [https://github.com/imehr](https://github.com/imehr)
+
+For corrections, errata, or licensing inquiries, please open an issue on this repository or contact the author through the channels above.
 
 ## Version
 
