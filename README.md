@@ -1,71 +1,51 @@
 # The Agentic Designer
 
-> A comprehensive guide to designing with AI agents — from first principles to production systems.
+> How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design · by Mehran Mozaffari
 
-**Author:** [Mehran Mozaffari](https://github.com/imehr)
-**Version:** 1.0.0
-**Date:** May 2026
-**Pages:** 251
-**Words:** ~54,000
 
-## About
+Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems
 
-This book covers the emerging field of agentic design — how designers and developers use AI coding agents (Claude Code, Codex, OpenCode, Gemini) to produce professional visual output. From understanding what agents are, through teaching them design systems, to orchestrating multi-agent design teams for production UI.
+## Download
 
----
+| Format | File |
+|--------|------|
+| ePub | [the-agentic-designer.epub](the-agentic-designer.epub) |
+| HTML | [the-agentic-designer.html](the-agentic-designer.html) |
+| PDF | [the-agentic-designer.pdf](the-agentic-designer.pdf) |
 
-## Front Cover
+## What This Book Covers
 
-![Front Cover](cover-front.png)
+Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems
 
----
+17 chapters are included in this release.
 
-## Table of Contents
+## Who Is This For
 
-- **Chapter 1:** The Agentic Design Paradigm
-- **Chapter 2:** Your Agent Toolkit
-- **Chapter 3:** Teaching Agents to Design
-- **Chapter 4:** Design-as-Code
-- **Chapter 5:** Paper and Pencil
-- **Chapter 6:** Open Design and OpenPencil
-- **Chapter 7:** Huashu Design
-- **Chapter 8:** Design Systems and Tokens
-- **Chapter 9:** Motion and Video
-- **Chapter 10:** MCP Integrations
-- **Chapter 11:** Multi-Agent Design Teams
-- **Chapter 12:** Production UI from Design
-- **Chapter 13:** Real-World Case Studies
-- **Chapter 14:** The Future of Agentic Design
-- **Chapter 15:** Building Agent Pipelines for Design
-- **Chapter 16:** DESIGN.md: Portable Design Systems
-- **Appendix A:** Tool Comparison Matrix
-- **Appendix B:** MCP Server Reference
-- **Appendix C:** Prompt Library for Design Tasks
+product designers, design engineers, and creative technologists who want to build autonomous design workflows using AI coding agents and specialized design tools
 
----
+## Repository Contents
 
-## Downloads
+| Path | Purpose |
+|------|---------|
+| `README.md` | Public landing page for the book repository |
+| `CHANGELOG.md` | Version-by-version release notes |
+| `LICENSE.md` | Book license |
+| `cover.png` / `banner.png` | Public book artwork when available |
+| `assets/` | Public supporting assets |
+| `screenshots/` | Public screenshots used by the book |
+| `*.pdf` / `*.epub` / `*.html` | Published book artifacts |
 
-| Format | File | Size |
-|--------|------|------|
-| PDF | [book.pdf](book.pdf) | 2.0 MB |
-| ePub | [book.epub](book.epub) | 170 KB |
-| HTML | [Web Version](web/) | — |
+## About the Author
 
----
+Mehran Mozaffari
 
-## Changelog
 
-### v1.0.0 — May 2026
 
-- Initial release
-- 16 chapters + 3 appendices
-- 251 pages, ~47,000 words
-- 80+ annotated screenshots
-- Islamic geometric cover art
+## Version
+
+- **v0.1.0** — May 2026
+- AI tools evolve rapidly; check the official project documentation for current product behavior.
 
 ## License
 
-This work is licensed under a Personal Use License. Free for personal, non-commercial use. Commercial use, redistribution for profit, and team/business use require written permission.
-
-See [LICENSE](LICENSE) for full terms. For commercial licensing, contact [Mehran Mozaffari](https://github.com/imehr).
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — free to share and adapt with attribution, non-commercial use only, under the same license.

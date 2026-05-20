@@ -1,0 +1,279 @@
+{
+  "generatedAt": "2026-05-20T00:26:22.340Z",
+  "pass": true,
+  "totalPass": 53,
+  "totalChecks": 53,
+  "sections": {
+    "pdf": [
+      {
+        "name": "Canonical publication metadata complete",
+        "pass": true,
+        "detail": "Required publication metadata present"
+      },
+      {
+        "name": "Publication metadata advisory warnings",
+        "pass": true,
+        "detail": "publicationDate: Publication date should use YYYY-MM-DD for machine-readable output metadata.; publisher: Publisher or imprint is recommended for publication metadata."
+      },
+      {
+        "name": "PDF file exists",
+        "pass": true,
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer.pdf"
+      },
+      {
+        "name": "PDF file size > 0",
+        "pass": true,
+        "detail": "2349.5 KB"
+      },
+      {
+        "name": "PDF is valid (readable)",
+        "pass": true,
+        "detail": "Parsed successfully"
+      },
+      {
+        "name": "PDF title metadata",
+        "pass": true,
+        "detail": "The Agentic Designer"
+      },
+      {
+        "name": "PDF author metadata",
+        "pass": true,
+        "detail": "Mehran Mozaffari"
+      },
+      {
+        "name": "PDF subject/description metadata",
+        "pass": true,
+        "detail": "A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design."
+      },
+      {
+        "name": "PDF creator metadata",
+        "pass": true,
+        "detail": "agentic-book-writer"
+      },
+      {
+        "name": "PDF has pages",
+        "pass": true,
+        "detail": "285 pages"
+      },
+      {
+        "name": "PDF page dimensions",
+        "pass": true,
+        "detail": "8.3\" x 11.7\" (595pt x 842pt)"
+      },
+      {
+        "name": "PDF header signature",
+        "pass": true,
+        "detail": "%PDF-1.7"
+      },
+      {
+        "name": "qpdf external validator",
+        "pass": true,
+        "detail": "qpdf not installed; skipped external validator"
+      },
+      {
+        "name": "verapdf external validator",
+        "pass": true,
+        "detail": "verapdf not installed; skipped external validator"
+      }
+    ],
+    "html": [
+      {
+        "name": "Canonical publication metadata complete",
+        "pass": true,
+        "detail": "Required publication metadata present"
+      },
+      {
+        "name": "Publication metadata advisory warnings",
+        "pass": true,
+        "detail": "publicationDate: Publication date should use YYYY-MM-DD for machine-readable output metadata.; publisher: Publisher or imprint is recommended for publication metadata."
+      },
+      {
+        "name": "HTML path exists",
+        "pass": true,
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output"
+      },
+      {
+        "name": "HTML entry file exists",
+        "pass": true,
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer.html"
+      },
+      {
+        "name": "HTML lang attribute",
+        "pass": true,
+        "detail": "en"
+      },
+      {
+        "name": "HTML title metadata",
+        "pass": true,
+        "detail": "The Agentic Designer"
+      },
+      {
+        "name": "HTML author metadata",
+        "pass": true,
+        "detail": "Mehran Mozaffari"
+      },
+      {
+        "name": "HTML description metadata",
+        "pass": true,
+        "detail": "A comprehensive guide to designing with AI agents — from first principles to production systems. Covers AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, and production UI generation."
+      },
+      {
+        "name": "HTML schema.org Book JSON-LD",
+        "pass": true,
+        "detail": "Book JSON-LD"
+      },
+      {
+        "name": "MANIFEST, page markers, or reader pages found",
+        "pass": true,
+        "detail": "Page structure detected"
+      },
+      {
+        "name": "All MANIFEST pages exist as files",
+        "pass": true,
+        "detail": "21 pages inlined in single-file HTML"
+      },
+      {
+        "name": "Styles present",
+        "pass": true,
+        "detail": "Inline <style> found"
+      },
+      {
+        "name": "Paged media CSS contract",
+        "pass": true,
+        "detail": "Inline Paged Media CSS"
+      },
+      {
+        "name": "Paged.js runtime available for HTML/PDF",
+        "pass": true,
+        "detail": "Inline or remote Paged.js runtime reference found"
+      },
+      {
+        "name": "HTML paged preview hook",
+        "pass": true,
+        "detail": "Inline Paged.js preview hook found"
+      },
+      {
+        "name": "tokens.css available",
+        "pass": true,
+        "detail": "Not found (inline styles may compensate)"
+      },
+      {
+        "name": "Additional HTML pages",
+        "pass": true,
+        "detail": "1 page file"
+      },
+      {
+        "name": "HTML local asset links resolve",
+        "pass": true,
+        "detail": "75 checked"
+      }
+    ],
+    "epub": [
+      {
+        "name": "Canonical publication metadata complete",
+        "pass": true,
+        "detail": "Required publication metadata present"
+      },
+      {
+        "name": "Publication metadata advisory warnings",
+        "pass": true,
+        "detail": "publicationDate: Publication date should use YYYY-MM-DD for machine-readable output metadata.; publisher: Publisher or imprint is recommended for publication metadata."
+      },
+      {
+        "name": "ePub file exists",
+        "pass": true,
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer.epub"
+      },
+      {
+        "name": "ePub file size > 0",
+        "pass": true,
+        "detail": "193.4 KB"
+      },
+      {
+        "name": "ePub is a valid ZIP archive",
+        "pass": true,
+        "detail": "PK header found"
+      },
+      {
+        "name": "mimetype file present",
+        "pass": true,
+        "detail": "Found"
+      },
+      {
+        "name": "mimetype content correct",
+        "pass": true,
+        "detail": "application/epub+zip"
+      },
+      {
+        "name": "META-INF/container.xml present",
+        "pass": true,
+        "detail": "Found"
+      },
+      {
+        "name": "content.opf present",
+        "pass": true,
+        "detail": "OEBPS/content.opf"
+      },
+      {
+        "name": "ePub dc:title matches config",
+        "pass": true,
+        "detail": "The Agentic Designer"
+      },
+      {
+        "name": "ePub dc:creator matches config",
+        "pass": true,
+        "detail": "Mehran Mozaffari"
+      },
+      {
+        "name": "ePub dc:language matches config",
+        "pass": true,
+        "detail": "en"
+      },
+      {
+        "name": "ePub rights metadata present",
+        "pass": true,
+        "detail": "Copyright (c) 2026 Mehran Mozaffari. All rights reserved."
+      },
+      {
+        "name": "ePub dcterms:modified present",
+        "pass": true,
+        "detail": "OPF modified metadata"
+      },
+      {
+        "name": "toc.ncx present",
+        "pass": true,
+        "detail": "Found"
+      },
+      {
+        "name": "toc.xhtml (EPUB3 nav) present",
+        "pass": true,
+        "detail": "Found"
+      },
+      {
+        "name": "Chapter XHTML files present",
+        "pass": true,
+        "detail": "21 chapter files"
+      },
+      {
+        "name": "stylesheet.css present",
+        "pass": true,
+        "detail": "Found"
+      },
+      {
+        "name": "ePub reflow pagination CSS",
+        "pass": true,
+        "detail": "EPUB uses reflow-safe break/orphan/widow rules"
+      },
+      {
+        "name": "ePub landmarks nav present",
+        "pass": true,
+        "detail": "landmarks nav found"
+      },
+      {
+        "name": "epubcheck external validator",
+        "pass": true,
+        "detail": "epubcheck not installed; skipped external validator"
+      }
+    ]
+  }
+}
