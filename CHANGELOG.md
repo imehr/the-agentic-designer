@@ -10,7 +10,6 @@
 
 ### Artifacts
 
-- HTML: `the-agentic-designer.debug.html`
 - ePub: `the-agentic-designer.epub`
 - HTML: `the-agentic-designer.html`
 - PDF: `the-agentic-designer.pdf`

@@ -9,7 +9,6 @@ Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex C
 
 | Format | File |
 |--------|------|
-| HTML | [the-agentic-designer.debug.html](the-agentic-designer.debug.html) |
 | ePub | [the-agentic-designer.epub](the-agentic-designer.epub) |
 | HTML | [the-agentic-designer.html](the-agentic-designer.html) |
 | PDF | [the-agentic-designer.pdf](the-agentic-designer.pdf) |

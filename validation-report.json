@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T01:23:10.032Z",
+  "generatedAt": "2026-05-20T04:25:18.952Z",
   "pass": true,
   "totalPass": 58,
   "totalChecks": 58,
@@ -23,7 +23,7 @@
       {
         "name": "PDF file size > 0",
         "pass": true,
-        "detail": "12410.5 KB"
+        "detail": "12410.4 KB"
       },
       {
         "name": "PDF is valid (readable)",
@@ -43,7 +43,7 @@
       {
         "name": "PDF subject/description metadata",
         "pass": true,
-        "detail": "Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems"
+        "detail": "A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design."
       },
       {
         "name": "PDF creator metadata",
