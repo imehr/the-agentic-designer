@@ -880,6 +880,200 @@ back-page.html | Back Page | back-page
   <p class="cover-disclaimer">This book was written with the assistance of AI tools. All tool references and code examples reflect capabilities as of May 2026. The agentic design tool ecosystem evolves rapidly; check official documentation for the latest features and integrations.</p>
 </div>
 
+<section class="front-matter" id="front-matter">
+
+  <div class="fm-title-block">
+    <h1 class="fm-title">The Agentic Designer</h1>
+    <p class="fm-subtitle">How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design</p>
+  </div>
+
+  <div class="fm-section fm-copyright">
+    <p class="fm-copy-line">Copyright &copy; 2026 Mehran Mozaffari. All rights reserved.</p>
+
+    <p class="fm-edition">First Edition: May 2026</p>
+
+    <h3 class="fm-heading">Personal Use License</h3>
+    <p>This book is free for personal, non-commercial use. You may read, share, and reference it for individual study, education, and research.</p>
+    <p>No part of this publication may be sold, rented, or redistributed for commercial purposes without written permission from the author.</p>
+    <p>For permissions and licensing inquiries:<br />
+      <a href="https://github.com/imehr">https://github.com/imehr</a>
+    </p>
+  </div>
+
+  <div class="fm-section fm-ai-disclosure">
+    <h3 class="fm-heading">Written with AI Assistance</h3>
+    <p>This book was written with the assistance of AI tools. The author directed, reviewed, and approved all content. AI tools were used for drafting, research, and editing. All opinions and analyses are the author's own.</p>
+    <p>All tool references and code examples reflect capabilities as of May 2026. The agentic design tool ecosystem evolves rapidly; check official documentation for the latest features and integrations.</p>
+  </div>
+
+  <div class="fm-section fm-trademarks">
+    <h3 class="fm-heading">Trademarks</h3>
+    <p>Product names, logos, and brands mentioned in this book are the property of their respective owners. Use in this book is for identification and educational purposes only and does not imply endorsement.</p>
+    <p>Claude Code and Claude Design are products of Anthropic. OpenAI, Codex, and ChatGPT are products of OpenAI. Gemini is a product of Google. Figma is a product of Figma, Inc. Miro is a product of Miro. GitHub Copilot is a product of GitHub, Inc. Vercel and v0 are products of Vercel, Inc. Bolt.new and WebContainers are products of StackBlitz. Lovable is a product of Lovable AB. Remotion is a product of Remotion GmbH. shadcn/ui is a product of shadcn. Supabase is a product of Supabase Inc. tldraw is a product of tldraw GmbH. Paper is a product of Paper Design Inc. Pencil is a product of Pencil.dev. Kiro is a product of Amazon Web Services. Hyperframes is a product of HeyGen. OpenCode is a product of OpenCode AI. ElevenLabs is a product of ElevenLabs Inc. Playwright is a project of the Microsoft team.</p>
+  </div>
+
+  <div class="fm-section fm-disclaimer">
+    <h3 class="fm-heading">Disclaimer</h3>
+    <p>This book is provided for informational and educational purposes only. Nothing in this book constitutes legal, financial, tax, or professional advice. The author makes no warranties about the accuracy or completeness of the information.</p>
+    <p>Tool capabilities, pricing, API availability, and feature sets described in this book may have changed since publication. Always consult the official documentation for each tool or platform for current information.</p>
+    <p>Code examples are provided for educational purposes and should be tested in your own environment before use in production.</p>
+  </div>
+
+  <div class="fm-section fm-edition-details">
+    <h3 class="fm-heading">Edition and Publisher Details</h3>
+    <p>Published by the author<br />
+      San Francisco, CA</p>
+    <p>Edition: First Edition, May 2026<br />
+      Version: 1.0<br />
+      Book pipeline: OpenCode agentic publishing system</p>
+  </div>
+
+  <div class="fm-section fm-credits">
+    <h3 class="fm-heading">Credits</h3>
+    <p>
+      <strong>Author:</strong> Mehran Mozaffari<br />
+      <strong>Editorial review:</strong> Multi-model AI review pipeline<br />
+      <strong>Technical reviewers:</strong> Claude Opus 4.6, Gemini 3.1 Pro<br />
+      <strong>Design and production:</strong> Agentic publishing pipeline (OpenCode)
+    </p>
+  </div>
+
+  <div class="fm-section fm-oss">
+    <h3 class="fm-heading">Open Source Acknowledgments</h3>
+    <p>This book references and describes the following open-source and source-available projects. The author gratefully acknowledges the contributions of their maintainers and communities:</p>
+    <ul>
+      <li>Open Design (nexu-io) &mdash; MIT License</li>
+      <li>OpenPencil (ZSeven-W) &mdash; MIT License</li>
+      <li>Huashu Design (alchaincyf) &mdash; MIT License</li>
+      <li>Remotion (remotion-dev) &mdash; Remotion License</li>
+      <li>tldraw &mdash; Apache License 2.0</li>
+      <li>ComfyUI &mdash; GPL-3.0 License</li>
+      <li>CLI-Anything (HKUDS) &mdash; MIT License</li>
+      <li>OpenCode (anomalyco) &mdash; MIT License</li>
+    </ul>
+    <p>This book does not distribute source code from any of these projects. References are descriptive and educational.</p>
+  </div>
+
+  <div class="fm-section fm-contact">
+    <h3 class="fm-heading">Contact the Author</h3>
+    <p>
+      Blog: <a href="https://piazr.github.io/applied-ai/">https://piazr.github.io/applied-ai/</a><br />
+      GitHub: <a href="https://github.com/imehr">https://github.com/imehr</a>
+    </p>
+    <p>For corrections, errata, or licensing inquiries, please open an issue on the book's repository or contact the author through the channels above.</p>
+  </div>
+
+</section>
+
+<style>
+  .front-matter {
+    padding: 0 var(--margin-sides, 55px);
+    font-family: var(--body-font, 'Inter', -apple-system, system-ui, sans-serif);
+    font-size: var(--body-size, 10.5pt);
+    line-height: var(--line-height, 1.8);
+    color: var(--text, #1E293B);
+  }
+
+  .fm-title-block {
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--primary, #1E40AF);
+  }
+
+  .fm-title {
+    font-family: var(--display-font, 'Source Serif 4', 'Inter', serif);
+    font-size: 24pt;
+    font-weight: var(--display-weight, 800);
+    line-height: 1.2;
+    color: var(--text, #1E293B);
+    margin-bottom: 10px;
+  }
+
+  .fm-subtitle {
+    font-family: var(--body-font, 'Inter', -apple-system, system-ui, sans-serif);
+    font-size: 11pt;
+    font-weight: 300;
+    color: var(--text-secondary, #64748B);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  .fm-copy-line {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .fm-edition {
+    font-style: italic;
+    color: var(--text-secondary, #64748B);
+    margin-bottom: 16px;
+  }
+
+  .fm-section {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border, #E2E8F0);
+    page-break-inside: avoid;
+  }
+
+  .fm-heading {
+    font-family: var(--display-font, 'Source Serif 4', 'Inter', serif);
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--text, #1E293B);
+    margin-bottom: 8px;
+    margin-top: 0;
+    letter-spacing: -0.2px;
+  }
+
+  .fm-section p {
+    margin-bottom: 8px;
+    font-size: 9.5pt;
+    line-height: 1.7;
+  }
+
+  .fm-section a {
+    color: var(--primary, #1E40AF);
+    text-decoration: none;
+  }
+
+  .fm-section a:hover {
+    text-decoration: underline;
+  }
+
+  .fm-section strong {
+    font-weight: 600;
+    color: var(--text, #1E293B);
+  }
+
+  .fm-section ul {
+    margin: 6px 0 12px 20px;
+    font-size: 9.5pt;
+    line-height: 1.7;
+  }
+
+  .fm-section li {
+    margin-bottom: 2px;
+  }
+
+  .fm-copyright {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  @media print {
+    .front-matter {
+      page-break-after: always;
+    }
+
+    .fm-section {
+      page-break-inside: avoid;
+    }
+  }
+</style>
+
+
 <div class="toc">
   <h2>Contents</h2>
   <p class="toc-sub">The Agentic Designer &mdash; 14 chapters + 3 appendices</p>
@@ -921,7 +1115,7 @@ back-page.html | Back Page | back-page
 
 <!--===== chapter-01.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">01</span> The Agentic Design Paradigm</h2>
+<h2 class="section-title"><span class="num">01</span> The Agentic Design Paradigm</h2>
   <p class="section-en">Why AI agents are becoming the new design tool interface</p>
   <p class="section-intro">The way software gets designed is changing. AI coding agents --- tools built to write and ship code --- are now operating design tools, generating visual artifacts, and closing the loop from design intent to production output. This chapter explains why that shift happened, what enables it, and what it means for anyone who designs software for a living.</p>
 
@@ -1272,7 +1466,7 @@ back-page.html | Back Page | back-page
   </div>
 <!--===== chapter-02.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">02</span> Your Agent Toolkit</h2>
+<h2 class="section-title"><span class="num">02</span> Your Agent Toolkit</h2>
   <p class="section-en">Claude Code, Codex CLI, OpenCode, and Gemini CLI compared</p>
   <p class="section-intro">Four agent platforms dominate the landscape as of May 2026. This chapter covers each one in detail --- installation, authentication, model access, MCP support, skill systems, and CLI ergonomics --- then closes with a decision framework for choosing the right agent for design work.</p>
 
@@ -1345,12 +1539,12 @@ back-page.html | Back Page | back-page
         <td>No (requires subscription)</td>
         <td>API credits</td>
         <td>Yes (BYO key)</td>
-        <td>Yes (1K req/day)</td>
+        <td>Yes (1K req/day, as of May 2026)</td>
       </tr>
     </tbody>
   </table>
 
-  <p>All data in this table is current as of May 2026. The ecosystem moves fast --- verify before making purchasing decisions. Appendix A contains an extended comparison matrix with pricing details.</p>
+  <p>All data in this table is current as of May 2026. <em>Pricing and plan details are current as of May 2026 and may change. Check each platform's website for the latest information.</em> The ecosystem moves fast --- verify before making purchasing decisions. Appendix A contains an extended comparison matrix with pricing details.</p>
 
   <p>Three of the four agents are open source. Only Claude Code is proprietary. This has practical implications: open-source agents can be self-hosted, audited, and modified. Claude Code runs on Anthropic's infrastructure and requires their subscription. For individual designers, this distinction matters less than it does for enterprise teams with compliance requirements.</p>
 
@@ -1473,7 +1667,7 @@ $ claude --model claude-haiku-3-20250414</code></pre>
 
   <h4 id="02.3.2">Authentication</h4>
 
-  <p>Sign in with a ChatGPT account. This simplifies the setup --- no API key management. Plus users get $5 in free API credits per month. Pro users get $50. Direct API keys also work (source: <a href="https://openai.com/index/introducing-codex/">Introducing Codex</a>, retrieved 2026-05-18).</p>
+  <p>Sign in with a ChatGPT account. This simplifies the setup --- no API key management. Plus users get $5 in free API credits per month (as of May 2026). Pro users get $50 (as of May 2026). Direct API keys also work (source: <a href="https://openai.com/index/introducing-codex/">Introducing Codex</a>, retrieved 2026-05-18).</p>
 
   <pre><code># First run prompts ChatGPT sign-in
 $ codex
@@ -1533,7 +1727,7 @@ $ codex "fix the auth bug"</code></pre>
         <td>codex-mini-latest</td>
         <td>o4-mini</td>
         <td>CLI default</td>
-        <td>$1.50/1M input, $6/1M output</td>
+        <td>$1.50/1M input, $6/1M output (as of May 2026)</td>
       </tr>
     </tbody>
   </table>
@@ -1550,7 +1744,7 @@ $ codex --model o3 "refactor the entire auth module"</code></pre>
 
   <h3 id="02.4">OpenCode (Open-Source)</h3>
 
-  <p>OpenCode is the open-source AI coding agent. 160K GitHub stars. 900 contributors. 7.5M monthly developers (source: <a href="https://opencode.ai">OpenCode</a>, retrieved 2026-05-18). It supports 75+ LLM providers through Models.dev and is cross-compatible with Claude Code conventions.</p>
+  <p>OpenCode is the open-source AI coding agent. 160K GitHub stars, 900 contributors, 7.5M monthly developers (as of May 2026; source: <a href="https://opencode.ai">OpenCode</a>, retrieved 2026-05-18). It supports 75+ LLM providers through Models.dev and is cross-compatible with Claude Code conventions.</p>
 <figure class="figure--full" id="ch02-fig-03">
   <img src="screenshots/ch02-fig-03--print.png" alt="OpenCode terminal session demonstrating the plan mode with a detailed multi-step design generation plan awaiting user approval before execution" loading="lazy" />
   <figcaption>OpenCode plan mode showing a step-by-step design plan before execution</figcaption>
@@ -1559,7 +1753,7 @@ $ codex --model o3 "refactor the entire auth module"</code></pre>
 
   <p>OpenCode is what I recommend to anyone who wants model flexibility or open-source tooling. Its cross-compatibility with Claude Code conventions means design skills transfer between both platforms without modification. This is not a minor feature --- it means the configuration effort you invest in writing SKILL.md files and AGENTS.md documents pays off across multiple agent platforms.</p>
 
-  <p>The scale of OpenCode's community is worth noting. 160K GitHub stars and 900 contributors mean the project moves fast. Bugs get fixed quickly. New features land regularly. The skill ecosystem grows with each release. As of May 2026, OpenCode's momentum shows no sign of slowing. For designers who value a large community and frequent updates, OpenCode delivers.</p>
+  <p>The scale of OpenCode's community is worth noting. 160K GitHub stars and 900 contributors (as of May 2026) mean the project moves fast. Bugs get fixed quickly. New features land regularly. The skill ecosystem grows with each release. As of May 2026, OpenCode's momentum shows no sign of slowing. For designers who value a large community and frequent updates, OpenCode delivers.</p>
 
   <h4 id="02.4.1">Installation</h4>
 
@@ -1759,6 +1953,8 @@ $ gcloud auth application-default login</code></pre>
 
   <h4 id="02.5.4">Pricing</h4>
 
+  <p><em>All prices and usage limits below are as of May 2026 and may change.</em></p>
+
   <table>
     <thead>
       <tr>
@@ -1790,9 +1986,9 @@ $ gcloud auth application-default login</code></pre>
     </tbody>
   </table>
 
-  <p>The free tier is generous enough for design work. 1,000 CLI requests per day is more than enough for typical design iteration cycles. The IDE free tier (6,000 code requests/day) covers inline suggestions and chat. For individual designers who do not want to pay for an agent subscription, Gemini CLI is the most capable free option available.</p>
+  <p>The free tier is generous enough for design work. 1,000 CLI requests per day (as of May 2026) is more than enough for typical design iteration cycles. The IDE free tier (6,000 code requests/day as of May 2026) covers inline suggestions and chat. For individual designers who do not want to pay for an agent subscription, Gemini CLI is the most capable free option available.</p>
 
-  <p>The paid tiers unlock higher limits and additional features. The Standard tier at $19/user/month (annual billing) raises CLI limits to 1,500 requests/day. The Enterprise tier at $45/user/month (annual billing) goes to 2,000. For teams that have standardized on Google Cloud infrastructure, the integration points --- Cloud Shell, Vertex AI, BigQuery --- make Gemini Code Assist a natural choice even before considering the agent capabilities.</p>
+  <p>The paid tiers unlock higher limits and additional features. The Standard tier at $19/user/month (annual billing, as of May 2026) raises CLI limits to 1,500 requests/day. The Enterprise tier at $45/user/month (annual billing, as of May 2026) goes to 2,000. For teams that have standardized on Google Cloud infrastructure, the integration points --- Cloud Shell, Vertex AI, BigQuery --- make Gemini Code Assist a natural choice even before considering the agent capabilities.</p>
 
   <p>What Gemini CLI lacks as of May 2026 is a skill system. There is no equivalent to SKILL.md. There is no auto memory. The agent relies on its training data and the current session context. For one-off design tasks, this is fine. For sustained design work that needs consistent output across sessions, the absence of persistent configuration is a real limitation. I expect this to change --- a skill system is an obvious addition --- but as of this writing, it is the primary reason Gemini CLI is a complement rather than a primary design agent.</p>
 
@@ -1883,7 +2079,7 @@ $ gcloud auth application-default login</code></pre>
     <tbody>
       <tr>
         <td>Agent license</td>
-        <td>Claude subscription ($20-200/mo)</td>
+        <td>Claude subscription ($20-200/mo, as of May 2026)</td>
         <td>Free (open source)</td>
         <td>Free (open source)</td>
         <td>Free (open source)</td>
@@ -1891,9 +2087,9 @@ $ gcloud auth application-default login</code></pre>
       <tr>
         <td>Model cost</td>
         <td>Included in subscription</td>
-        <td>$1.50-6/1M tokens</td>
+        <td>$1.50-6/1M tokens (as of May 2026)</td>
         <td>BYO key (varies by provider)</td>
-        <td>Free tier or $19-54/user/mo</td>
+        <td>Free tier or $19-54/user/mo (as of May 2026)</td>
       </tr>
       <tr>
         <td>Design tool integrations</td>
@@ -1919,7 +2115,7 @@ $ gcloud auth application-default login</code></pre>
   </div>
 <!--===== chapter-03.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">03</span> Teaching Agents to Design</h2>
+<h2 class="section-title"><span class="num">03</span> Teaching Agents to Design</h2>
   <p class="section-en">Configuration files, skill systems, and design harnesses</p>
   <p class="section-intro">An unconfigured agent produces generic output. A well-configured agent produces output that matches your brand, follows your design system, and respects your constraints. This chapter shows how to teach agents to design through configuration files, skills, and custom harnesses.</p>
 
@@ -2419,7 +2615,7 @@ Output a single HTML file with embedded CSS.
   </div>
 <!--===== chapter-04.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">04</span> Design-as-Code</h2>
+<h2 class="section-title"><span class="num">04</span> Design-as-Code</h2>
   <p class="section-en">The mental model behind .pen files, HTML canvas, and design tokens</p>
   <p class="section-intro">
     Design files are becoming code artifacts. This chapter explains the paradigm shift: from binary blobs that decay in cloud storage to text-based formats that live in your repo, diff in your pull requests, and respond to your agent's edits. Understanding this mental model is the foundation for every workflow in chapters 05 through 12.
@@ -2669,7 +2865,7 @@ $ pencil tokens design.pen --format css</code></pre>
     </tbody>
   </table>
 
-  <p>Paper (paper.design) makes this concrete. It's a connected HTML/CSS canvas used by designers at Vercel, Perplexity, PostHog, Tailwind, and other teams shipping with AI agents. The design lives as HTML. The export is HTML. There is no translation layer.</p>
+  <p>Paper (paper.design) makes this concrete. It's a connected HTML/CSS canvas; Paper's published case studies feature teams at companies including Vercel, Perplexity, PostHog, and Tailwind, among others shipping with AI agents. The design lives as HTML. The export is HTML. There is no translation layer.</p>
 
   <p>Here's what an agent actually sees when it reads a Paper design via MCP. The <code>get_jsx</code> tool returns production-ready Tailwind markup:</p>
 
@@ -2937,7 +3133,7 @@ $ pencil tokens design.pen --format css</code></pre>
   </div>
 <!--===== chapter-05.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">05</span> Paper and Pencil</h2>
+<h2 class="section-title"><span class="num">05</span> Paper and Pencil</h2>
   <p class="section-en">Connected canvas tools, MCP setup, and design-to-code workflows</p>
   <p class="section-intro">
     Two tools dominate the connected canvas space: Paper for HTML/CSS design and Pencil for vector design inside the IDE. This chapter walks through MCP server setup for each, real design-to-code workflows, and a complete pipeline from canvas design to production website. Every code block is copy-paste ready.
@@ -3559,7 +3755,7 @@ page component with responsive breakpoints.</code></pre>
   </div>
 <!--===== chapter-06.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">06</span> Open Design and OpenPencil</h2>
+<h2 class="section-title"><span class="num">06</span> Open Design and OpenPencil</h2>
   <p class="section-en">Open-source design frameworks, 31 skills, and agent-powered canvas</p>
   <p class="section-intro">
     Open Design (43k+ stars) and OpenPencil (3k+ stars) are the open-source alternatives to the commercial tools covered in chapter 05. Open Design provides 31 composable skills and 129 design systems that run on any of 16 agent CLIs. OpenPencil is the first open-source AI-native vector design tool with concurrent Agent Teams. This chapter walks through setup, skill selection, and real workflows for both.
@@ -4218,7 +4414,7 @@ Include links, social icons, and copyright."</code></pre>
   </div>
 <!--===== chapter-07.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">07</span> Huashu Design</h2>
+<h2 class="section-title"><span class="num">07</span> Huashu Design</h2>
   <p class="section-en">HTML-native design, 20 philosophies, and 5-dimension review</p>
   <p class="section-intro">
     Huashu Design (14.1k GitHub stars as of May 2026) is the most opinionated design skill in the agent ecosystem. It treats HTML as the design surface, not the export target. This chapter walks through installing it, understanding its workflow, and producing real artifacts --- prototypes, slide decks, motion design --- with an AI agent as your junior designer.
@@ -4432,7 +4628,7 @@ Include links, social icons, and copyright."</code></pre>
 
   <p>The hardest rule in the skill. When your task involves a specific brand, the agent must follow a 5-step process before writing a single line of HTML.</p>
 
-  <p>The problem the protocol solves: agents default to generic visuals. Without real brand assets, an iPhone prototype looks like every other phone. A Tesla slide deck looks like a generic car pitch. The Core Asset Protocol forces the agent to gather real assets first.</p>
+  <p>The problem the protocol solves: agents default to generic visuals. Without real brand assets, an iPhone prototype looks like every other phone. A Volta Motors slide deck looks like a generic car pitch. The Core Asset Protocol forces the agent to gather real assets first.</p>
 
   <div class="step">
     <span class="step-num">1</span>
@@ -4512,30 +4708,30 @@ Include links, social icons, and copyright."</code></pre>
 
   <p>The frozen brand spec looks like this:</p>
 
-  <pre><code># Tesla · Brand Spec
+  <pre><code># Volta Motors · Brand Spec
 &gt; Collected: 2026-05-18
-&gt; Sources: tesla.com/press, tesla.com/design
+&gt; Sources: voltamotors.com/press, voltamotors.com/design
 &gt; Completeness: complete
 
 ## Core Assets
 ### Logo
-- Main: assets/tesla-brand/logo.svg
-- Inverted: assets/tesla-brand/logo-white.svg
+- Main: assets/volta-brand/logo.svg
+- Inverted: assets/volta-brand/logo-white.svg
 
 ### Product Images
-- Hero: assets/tesla-brand/model-s-hero.png (2000x1500)
-- Detail: assets/tesla-brand/model-s-interior.png
+- Hero: assets/volta-brand/volta-ev-hero.png (2000x1500)
+- Detail: assets/volta-brand/volta-ev-interior.png
 
 ## Color Palette
-- Primary: #CC0000
+- Primary: #0066CC
 - Background: #FFFFFF
 - Ink: #000000
 - Surface: #F5F5F5
-- Forbidden: never use blue tones
+- Forbidden: never use red tones
 
 ## Typography
-- Display: 'Tesla TT Commons', 'Inter', sans-serif, 700
-- Body: 'Tesla TT Commons', 'Inter', sans-serif, 400
+- Display: 'Volta Sans', 'Inter', sans-serif, 700
+- Body: 'Volta Sans', 'Inter', sans-serif, 400
 - Mono: 'JetBrains Mono', monospace, 400</code></pre>
 
   <h3 id="07.5">Design Direction Advisor: 5 Schools x 20 Philosophies</h3>
@@ -4777,7 +4973,7 @@ function ProductReveal() {
   </div>
 <!--===== chapter-08.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">08</span> Design Systems and Tokens</h2>
+<h2 class="section-title"><span class="num">08</span> Design Systems and Tokens</h2>
   <p class="section-en">Maintaining design systems with agents across tools and codebases</p>
   <p class="section-intro">
     Design tokens are the connective tissue between design tools, codebases, and AI agents. This chapter covers the DESIGN.md schema that makes design systems machine-readable, the 129-system library in Open Design, token syncing between Figma, Paper, Pencil, and code, and how to write your own design system that agents can actually use.
@@ -4804,25 +5000,25 @@ function ProductReveal() {
     <li><strong>Anti-patterns</strong> --- what not to do, forbidden combinations</li>
   </ol>
 
-  <pre><code># Stripe Design System
+  <pre><code># Payflow Design System
 
 ## Color
-- Primary: #635BFF
-- Secondary: #0A2540
+- Primary: #4F46E5
+- Secondary: #1E293B
 - Background: #FFFFFF
-- Surface: #F6F9FC
-- Text Primary: #0A2540
-- Text Secondary: #425466
-- Accent: #00D4FF
-- Error: #DF1B41
-- Success: #30B566
+- Surface: #F8FAFC
+- Text Primary: #1E293B
+- Text Secondary: #64748B
+- Accent: #06B6D4
+- Error: #EF4444
+- Success: #22C55E
 - Forbidden: never use pure black #000000 for text
 
 ## Typography
-- Display: 'Stripe Segoe UI', -apple-system, sans-serif, 700
-- Heading: 'Stripe Segoe UI', -apple-system, sans-serif, 600
-- Body: 'Stripe Segoe UI', -apple-system, sans-serif, 400
-- Mono: 'Stripe Code', 'SF Mono', monospace, 400
+- Display: 'Payflow Sans', -apple-system, sans-serif, 700
+- Heading: 'Payflow Sans', -apple-system, sans-serif, 600
+- Body: 'Payflow Sans', -apple-system, sans-serif, 400
+- Mono: 'Payflow Mono', 'SF Mono', monospace, 400
 
 ## Spacing
 - xs: 4px
@@ -4853,7 +5049,7 @@ function ProductReveal() {
 
 ## Brand
 - Logo: always on white/dark backgrounds, minimum 24px height
-- Imagery: isometric illustrations, no stock photography
+- Imagery: abstract geometric patterns, no stock photography
 
 ## Anti-patterns
 - Never use gradient fills on text
@@ -5034,21 +5230,21 @@ is selected in Figma."</code></pre>
   <p><strong>Figma to Code</strong> is simpler. The agent reads Figma variables via the Figma MCP and generates CSS custom properties directly.</p>
 
   <pre><code>:root {
-  --color-primary: #635BFF;
-  --color-secondary: #0A2540;
+  --color-primary: #4F46E5;
+  --color-secondary: #1E293B;
   --color-background: #FFFFFF;
-  --color-surface: #F6F9FC;
-  --color-text: #0A2540;
-  --color-text-secondary: #425466;
-  --color-accent: #00D4FF;
+  --color-surface: #F8FAFC;
+  --color-text: #1E293B;
+  --color-text-secondary: #64748B;
+  --color-accent: #06B6D4;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  --font-display: 'Stripe Segoe UI', -apple-system, sans-serif;
-  --font-body: 'Stripe Segoe UI', -apple-system, sans-serif;
-  --font-mono: 'Stripe Code', 'SF Mono', monospace;
+  --font-display: 'Payflow Sans', -apple-system, sans-serif;
+  --font-body: 'Payflow Sans', -apple-system, sans-serif;
+  --font-mono: 'Payflow Mono', 'SF Mono', monospace;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
@@ -5084,7 +5280,7 @@ file that matches the Paper design exactly."</code></pre>
   <pre><code>// .pen file variable structure (JSON)
 {
   "variables": {
-    "color-primary": "#635BFF",
+    "color-primary": "#4F46E5",
     "color-background": "#FFFFFF",
     "spacing-md": 16,
     "radius-lg": 12
@@ -5099,15 +5295,15 @@ file that matches the Paper design exactly."</code></pre>
 
   <pre><code>{
   "variables": {
-    "color-primary": { "type": "color", "value": "#635BFF" },
-    "color-secondary": { "type": "color", "value": "#0A2540" },
+    "color-primary": { "type": "color", "value": "#4F46E5" },
+    "color-secondary": { "type": "color", "value": "#1E293B" },
     "spacing-md": { "type": "number", "value": 16 },
     "font-body": { "type": "string", "value": "Inter, sans-serif" }
   },
   "themes": {
     "mode": {
       "Light": { "color-background": "#FFFFFF" },
-      "Dark": { "color-background": "#0A2540" }
+      "Dark": { "color-background": "#1E293B" }
     },
     "density": {
       "Compact": { "spacing-md": 12 },
@@ -5126,8 +5322,8 @@ file that matches the Paper design exactly."</code></pre>
 }
 
 [data-theme="Dark"] {
-  --color-background: #0A2540;
-  --color-text: #F6F9FC;
+  --color-background: #1E293B;
+  --color-text: #F8FAFC;
 }
 
 [data-density="Compact"] {
@@ -5187,10 +5383,10 @@ file that matches the Paper design exactly."</code></pre>
   <p><strong>Huashu Design</strong> (Chapter 07): The Core Asset Protocol freezes brand knowledge into <code>brand-spec.md</code>. All generated HTML references <code>var(--brand-*)</code> CSS variables exclusively. The anti-slop rules prevent fallback to generic defaults.</p>
 
   <pre><code>:root {
-  --brand-primary: #635BFF;
+  --brand-primary: #4F46E5;
   --brand-background: #FFFFFF;
-  --brand-ink: #0A2540;
-  --brand-accent: #00D4FF;
+  --brand-ink: #1E293B;
+  --brand-accent: #06B6D4;
 }
 
 /* All generated HTML uses var(--brand-*) — never hardcoded values.
@@ -5282,7 +5478,7 @@ file that matches the Paper design exactly."</code></pre>
   <div class="step">
     <span class="step-num">4</span>
     <div class="step-content">
-      <p><strong>Map every token to a CSS variable.</strong> The agent needs <code>--color-primary</code>, not just <code>#635BFF</code>. The variable name is the contract between the design system and generated code.</p>
+      <p><strong>Map every token to a CSS variable.</strong> The agent needs <code>--color-primary</code>, not just <code>#4F46E5</code>. The variable name is the contract between the design system and generated code.</p>
     </div>
   </div>
   <div class="step">
@@ -5451,7 +5647,7 @@ file that matches the Paper design exactly."</code></pre>
   </table>
 
   <div class="callout">
-    <p><strong>My take:</strong> The variable reference pattern is the foundation everything else builds on. If your generated code hardcodes <code>#635BFF</code> instead of <code>var(--color-primary)</code>, no amount of DESIGN.md discipline will save you. Start there. Add MCP chaining or CI verification on top if your team size warrants it.</p>
+    <p><strong>My take:</strong> The variable reference pattern is the foundation everything else builds on. If your generated code hardcodes <code>#4F46E5</code> instead of <code>var(--color-primary)</code>, no amount of DESIGN.md discipline will save you. Start there. Add MCP chaining or CI verification on top if your team size warrants it.</p>
   </div>
 
   <p>The direction system provides a fallback when no brand design system exists. Open Design's 5 curated directions --- Editorial Monocle, Modern Minimal, Warm Soft, Tech Utility, Brutalist Experimental --- each with deterministic OKLch palettes, give agents a consistent starting point. The key word is deterministic: the same direction always produces the same palette, which means the same prompt generates visually consistent output across sessions.</p>
@@ -5461,7 +5657,7 @@ file that matches the Paper design exactly."</code></pre>
   </div>
 <!--===== chapter-09.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">09</span> Motion and Video</h2>
+<h2 class="section-title"><span class="num">09</span> Motion and Video</h2>
   <p class="section-en">Remotion, Hyperframes, and programmatic video for agents</p>
   <p class="section-intro">
     Video is becoming a first-class output of AI agent workflows. Two frameworks dominate: Remotion (47.1k stars) makes videos with React components. Hyperframes (19k stars) makes videos with HTML and GSAP, built specifically for agents. This chapter walks through both, compares them honestly, and shows you how to integrate programmatic video into your agent design workflow.
@@ -6073,7 +6269,7 @@ $ npx hyperframes render --output final.mp4        # Hyperframes: custom output<
   </div>
 <!--===== chapter-10.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">10</span> MCP Integrations</h2>
+<h2 class="section-title"><span class="num">10</span> MCP Integrations</h2>
   <p class="section-en">Connecting Figma, Miro, MagicPattern, and other tools via MCP</p>
   <p class="section-intro">MCP (Model Context Protocol) is the connective tissue between AI agents and design tools. This chapter covers every MCP server that matters for agentic design: how to configure them across agent platforms, how to chain them for multi-tool workflows, and what to do when they break.</p>
 
@@ -6692,7 +6888,7 @@ cursor://anysphere.cursor-deeplink/mcp/install?name=Figma&amp;config=...</code><
   </div>
 <!--===== chapter-11.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">11</span> Multi-Agent Design Teams</h2>
+<h2 class="section-title"><span class="num">11</span> Multi-Agent Design Teams</h2>
   <p class="section-en">Concurrent agents, task delegation, and orchestration patterns</p>
   <p class="section-intro">A single agent can handle most design tasks. But some tasks are too large, too varied, or too time-sensitive for one agent to complete efficiently. This chapter covers when and how to run multiple agents in parallel on a single design, the orchestration patterns that make it work, and the complexity tax that makes it expensive.</p>
 
@@ -6952,7 +7148,7 @@ cursor://anysphere.cursor-deeplink/mcp/install?name=Figma&amp;config=...</code><
   </div>
 <!--===== chapter-12.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">12</span> Production UI from Design</h2>
+<h2 class="section-title"><span class="num">12</span> Production UI from Design</h2>
   <p class="section-en">The design-to-production code pipeline with agents</p>
   <p class="section-intro">Design artifacts are not production code. The gap between a canvas design and a deployed UI involves responsive breakpoints, accessibility attributes, performance optimization, and iterative review. This chapter covers the complete pipeline, showing how agents handle the tedious parts while humans focus on design direction.</p>
 
@@ -7358,7 +7554,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
   </div>
 <!--===== chapter-13.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">13</span> Real-World Case Studies</h2>
+<h2 class="section-title"><span class="num">13</span> Real-World Case Studies</h2>
   <p class="section-en">Four detailed examples of agentic design workflows in production</p>
   <p class="section-intro">Theory is useful. Practice is essential. This chapter walks through four real agentic design workflows, each using a different combination of tools and targeting a different output. Every case study covers the workflow, the tools, the time spent, and an honest assessment of what worked and what fell apart.</p>
 
@@ -7410,7 +7606,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <h3 id="13.1">Case Study 1: Startup Marketing Site with Paper and Claude Code</h3>
 
-  <p>The setup: a design engineer at a 10-person SaaS startup needs to ship a marketing site. The company has a Figma file with brand tokens, a Notion database with customer testimonials, and a tight deadline. The old approach would be: export designs from Figma, hand off to a developer, wait days for a first build, iterate via Slack. The new approach: Paper as the design surface, Claude Code as the builder, MCP as the glue.</p>
+  <p>The setup: a designer at a small SaaS startup needs to ship a marketing site. The company has a Figma file with brand tokens, a Notion database with customer testimonials, and a tight deadline. The old approach would be: export designs from Figma, hand off to a developer, wait days for a first build, iterate via Slack. The new approach: Paper as the design surface, Claude Code as the builder, MCP as the glue.</p>
 <figure class="figure--full" id="ch13-fig-01">
   <img src="screenshots/ch13-fig-01--print.png" alt="Architecture diagram for the startup marketing site case study showing Figma brand tokens flowing into Paper design canvas, Claude Code agent building via MCP connection, and final deployment to Vercel with a four-hour timeline" loading="lazy" />
   <figcaption>Case Study 1 architecture: Paper + Claude Code + MCP pipeline from Figma tokens to deployed site</figcaption>
@@ -7492,7 +7688,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <p><strong>What worked:</strong> The Paper-to-code loop was tight. Because Paper uses real HTML and CSS, the agent's translation was nearly lossless. No "this looks different in code than in the design" complaints. The MCP chaining between Notion and Paper for testimonials was a genuine "aha" moment --- the designer pulled real customer quotes directly into the build without copy-pasting. Git checkpoints saved the session twice when the agent produced broken layouts.</p>
 
-  <p><strong>What didn't:</strong> The agent occasionally hallucinated MCP tool names. When the session ran longer than 90 minutes, the MCP connection dropped once and required a restart. The agent struggled with the more complex pricing table layout --- the designer had to break it into two smaller prompts instead of one big one. As Paper's own documentation notes: "The larger the thing you're trying to build, the more likely the agent will get stuff wrong."</p>
+  <p><strong>What didn't:</strong> The agent occasionally hallucinated MCP tool names. When the session ran longer than 90 minutes, the MCP connection dropped once and required a restart. The agent struggled with the more complex pricing table layout --- the designer had to break it into two smaller prompts instead of one big one. As noted in Paper's documentation: "The larger the thing you're trying to build, the more likely the agent will get stuff wrong."<sup class="footnote-ref"><a href="#fn-ch13-1">1</a></sup></p>
 
   <div class="callout">
     <p><strong>My take:</strong> Paper's <code>get_jsx</code> tool is the single most polished design-to-code bridge I have used. The fact that Paper's canvas IS HTML means zero translation loss. But the MCP connection stability issues are real. I restart my agent session every 60 minutes now as a precaution. The Paper team is aware of this and has it on their roadmap.</p>
@@ -7500,7 +7696,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <h3 id="13.2">Case Study 2: Brand-Consistent Pitch Deck with Open Design</h3>
 
-  <p>The setup: a product team at a Series A company is preparing a pitch deck for their next funding round. They have a brand guide (colors, typography, logo), a rough content outline, and a deadline. The old approach: a designer spends a week in Figma or Google Slides, iterating on layout and typography. The new approach: Open Design handles the visual execution while the team focuses on content and narrative.</p>
+  <p>The setup: a product team at an early-stage company is preparing a pitch deck for their next funding round. They have a brand guide (colors, typography, logo), a rough content outline, and a deadline. The old approach: a designer spends a week in Figma or Google Slides, iterating on layout and typography. The new approach: Open Design handles the visual execution while the team focuses on content and narrative.</p>
 
   <p>The team lead installs Open Design and launches it with the prompt: "Make me a magazine-style pitch deck for our Series A raise. Brand: fintech, professional, trustworthy. Use our logo and color palette."</p>
 
@@ -7551,13 +7747,13 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <p><strong>What worked:</strong> The question form and direction picker eliminated the "I don't know what I want but I'll know it when I see it" problem. The deterministic palettes prevented the agent from producing garish color combinations. The self-critique gave the team a concrete reason to ask for a second iteration rather than accepting mediocre output. Total time from prompt to exportable deck: under 90 minutes.</p>
 
-  <p><strong>What didn't:</strong> Open Design is honest about its limitations in its README: "We are iterating fast on main." The tool has rough edges. The PPTX export lost some typographic fidelity --- the fonts shifted in PowerPoint. The brand-from-zero experience (no assets provided) dropped to 58 points on the self-critique, confirming what the Huashu Design team observed: "Open Design is an 80-point skill, not a 100-point product." The team with no brand assets ended up abandoning the agent output and starting over in Figma.</p>
+  <p><strong>What didn't:</strong> Open Design is honest about its limitations, as described in the project's README: "We are iterating fast on main."<sup class="footnote-ref"><a href="#fn-ch13-2">2</a></sup> The tool has rough edges. The PPTX export lost some typographic fidelity --- the fonts shifted in PowerPoint. The brand-from-zero experience (no assets provided) dropped to 58 points on the self-critique, confirming what the Huashu Design skill documentation observes: "Open Design is an 80-point skill, not a 100-point product."<sup class="footnote-ref"><a href="#fn-ch13-3">3</a></sup> The team with no brand assets ended up abandoning the agent output and starting over in Figma.</p>
 
   <h3 id="13.3">Case Study 3: Product Launch Video with Huashu Design and Hyperframes</h3>
 
-  <p>The setup: a creative technologist at a consumer app company needs a 60-second product launch video. The company has brand assets (logo, color palette, app screenshots), a script outline, and a launch date. Two approaches are tested: Huashu Design for a motion-design-style animation and Hyperframes for an HTML-native video composition.</p>
+  <p>The setup: a creative technologist at a consumer technology company needs a 60-second product launch video. The company has brand assets (logo, color palette, app screenshots), a script outline, and a launch date. Two approaches are tested: Huashu Design for a motion-design-style animation and Hyperframes for an HTML-native video composition.</p>
 
-  <p><strong>The Huashu Design approach.</strong> The technologist installs the Huashu Design skill and prompts: "Turn this product launch into a 60-second animation. Use our brand colors (#0066FF primary, #1A1A2E dark). Export MP4 and GIF."</p>
+  <p><strong>The Huashu Design approach.</strong> The technologist installs the Huashu Design skill and prompts: "Turn this product launch into a 60-second animation. Use our brand colors (a vivid blue primary, dark navy background). Export MP4 and GIF."</p>
 
   <p>Huashu Design enforces its Core Asset Protocol first. The protocol requires: ask for assets, search official channels, download with three fallback paths, verify and extract, then freeze to spec. This prevents the agent from inventing fake logos or using placeholder icons. The technologist provides the real logo file and app screenshots. The skill locks them in.</p>
 
@@ -7720,7 +7916,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 </figure>
 
 
-  <p><strong>Start small, build up.</strong> Every successful workflow began with a small piece --- one hero section, one slide, one scene, one button. The agent produced good output for small, well-scoped tasks. Quality degraded as scope increased. Paper's documentation puts it plainly: start with a small part, then build up. This pattern held across all four cases.</p>
+  <p><strong>Start small, build up.</strong> Every successful workflow began with a small piece --- one hero section, one slide, one scene, one button. The agent produced good output for small, well-scoped tasks. Quality degraded as scope increased. Paper's documentation puts it plainly<sup class="footnote-ref"><a href="#fn-ch13-1">1</a></sup>: start with a small part, then build up. This pattern held across all four cases.</p>
 
   <p><strong>Git checkpoints are non-negotiable.</strong> In every case study, the human asked the agent to commit after each working section. When the agent went wrong --- and it always went wrong at some point --- the rollback was clean. Teams that skipped this step regretted it.</p>
 
@@ -7795,9 +7991,18 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
   <div class="callout tip">
     <p><strong>Next:</strong> These case studies show where agentic design is today. <a href="#14">Chapter 14</a> looks at where it is heading --- the trends, predictions, and risks that will shape the next two years.</p>
   </div>
+
+  <section class="footnotes">
+    <h3>Notes</h3>
+    <ol>
+      <li id="fn-ch13-1">Paper documentation, "Working with Agents" guide. Quoted text reflects guidance from the Paper docs on scoping agent tasks. The recommendation to start small and build incrementally is a core principle of the Paper agent workflow.</li>
+      <li id="fn-ch13-2">Open Design README, GitHub repository. The quoted text is from the project status section of the Open Design README, describing the project's current development phase.</li>
+      <li id="fn-ch13-3">Huashu Design skill documentation (<code>SKILL.md</code>). The quoted assessment appears in the Huashu Design skill's self-evaluation framework, where skills are rated on a 100-point scale across five dimensions.</li>
+    </ol>
+  </section>
 <!--===== chapter-14.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">14</span> The Future of Agentic Design</h2>
+<h2 class="section-title"><span class="num">14</span> The Future of Agentic Design</h2>
   <p class="section-en">Trends, predictions, and what comes after the current tools</p>
   <p class="section-intro">This book covers tools and workflows that exist right now, in May 2026. But the agentic design ecosystem is moving fast. This chapter maps the four major trends shaping what comes next, makes specific predictions for 2027 and 2028, and examines the risks that could undermine the whole trajectory.</p>
 
@@ -7810,15 +8015,15 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 </figure>
 
 
-  <p>Paper launched its Desktop app in February 2026, becoming the first connected design canvas with an MCP server that works with any agent: Claude Code, Codex CLI, Cursor, GitHub Copilot, OpenCode, Windsurf, Cline, and Continue. Production users include Vercel, Perplexity, PostHog, Tailwind CSS, Dub, Replicate, Zed, and Attio.</p>
+  <p>Paper launched its Desktop app in February 2026, becoming the first connected design canvas with an MCP server that works with any agent: Claude Code, Codex CLI, Cursor, GitHub Copilot, OpenCode, Windsurf, Cline, and Continue. According to Paper's published case studies and marketing materials, production users include Vercel, Perplexity, PostHog, Tailwind CSS, Dub, Replicate, Zed, and Attio.</p>
 
-  <p>Open Design hit 43.6k GitHub stars in under two weeks after launch --- the fastest-growing open-source design tool ever. It supports 16 CLI agents and ships 129 design systems as portable Markdown files.</p>
+  <p>Open Design hit 43.6k GitHub stars in under two weeks after launch, according to public GitHub data --- reportedly the fastest growth for an open-source design tool. It supports 16 CLI agents and ships 129 design systems as portable Markdown files.</p>
 
   <p>OpenPencil shipped Concurrent Agent Teams: multiple AI agents working on different sections of the same canvas simultaneously. It is the first open-source vector design tool built around the agent as the primary user. At 3.1k stars as of May 2026, it is smaller but evolving fast.</p>
 
-  <p>Huashu Design relicensed to MIT on May 14, 2026, signaling that the open-source design skill ecosystem is maturing. At 14.1k stars, it remains the most specialized tool in the stack --- an HTML-native design skill with anti-AI-slop enforcement and a 5-dimension self-critique system.</p>
+  <p>Huashu Design relicensed to MIT on May 14, 2026, signaling that the open-source design skill ecosystem is maturing. At 14.1k stars as of May 2026 (according to public GitHub data), it remains the most specialized tool in the stack --- an HTML-native design skill with anti-AI-slop enforcement and a 5-dimension self-critique system.</p>
 
-  <p>Hyperframes (19k stars, by HeyGen) and Remotion (47.1k stars) represent the two poles of agent-driven video production. Hyperframes is HTML-native and agent-first. Remotion is React-based and mature.</p>
+  <p>Hyperframes (19k stars as of May 2026, by HeyGen) and Remotion (47.1k stars according to public GitHub data) represent the two poles of agent-driven video production. Hyperframes is HTML-native and agent-first. Remotion is React-based and mature.</p>
 
   <p>Four major agent platforms compete: Claude Code, Codex CLI, OpenCode, and Gemini CLI. All four support MCP. MCP itself has become the universal connector between agents and design tools --- Paper, Pencil, OpenPencil, Figma, Miro, and MagicPattern all ship MCP servers as of May 2026.</p>
 
@@ -7826,7 +8031,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
     <thead>
       <tr>
         <th>Tool</th>
-        <th>Stars (May 2026)</th>
+        <th>Stars (May 2026, per public GitHub data)</th>
         <th>Key Milestone</th>
         <th>Agent-Native?</th>
       </tr>
@@ -7887,7 +8092,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <p>Paper's bi-directional workflow closes the loop. A designer changes a token value in Paper. The agent reads the change via MCP and updates the CSS custom properties in the codebase. A developer changes a spacing value in Tailwind config. The agent reads the change in Git and updates the Paper design. No manual sync. No drift.</p>
 
-  <p>The trajectory is clear. GitHub's design team has already stated their position: "The design team is quickly adapting. We'll stop maintaining separate component libraries and treat the codebase as the single source of truth." Ismael Canal at GitHub puts it more bluntly: "Translate code components to design: just one prompt."</p>
+  <p>The trajectory is clear. Based on publicly available information, GitHub's design team has reportedly signaled a shift away from maintaining separate component libraries, moving toward treating the codebase as the single source of truth. The direction is unambiguous: translating code components to design is becoming a single-prompt operation.</p>
 
   <p>The vision for 2027: design systems that auto-detect token drift between design and code, flag the discrepancy, and offer to auto-fix. The human approves or rejects. The agent handles the mechanical synchronization that currently eats hours of design systems team time every sprint.</p>
 
@@ -7911,7 +8116,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <p>Paper is the clearest example. Paper's canvas is built on real HTML and CSS. When you design in Paper, you are writing HTML and CSS. There is no translation layer. The <code>get_jsx</code> tool does not convert a proprietary format into JSX --- it extracts JSX from a surface that is already HTML. The <code>write_html</code> tool goes the other direction, but it is writing to the same format.</p>
 
-  <p>This is different from Figma's model. Figma stores designs in a proprietary WebGL format. Developers and agents need to translate that format into production code. Paper's founder, Agu Segui, states the difference directly: "Figma stores designs in a proprietary WebGL format that developers and AI agents need to translate into production code. Paper is a native, agent-friendly format that is closer to your production code."</p>
+  <p>This is different from Figma's model. Figma stores designs in a proprietary WebGL format. Developers and agents need to translate that format into production code. Paper's approach is the inverse: its native format is already close to production code, making it inherently agent-friendly. There is no translation step because the design surface speaks the same language as the output.</p>
 
   <p>Pencil's .pen files and OpenPencil's .op files are intermediate steps on the same path. They are code artifacts --- plain text, diffable, version-controllable. A pull request can include changes to a .pen file alongside changes to a .tsx file. The reviewer sees both the design change and the code change in the same diff. But .pen and .op files are still separate formats that need translation to production code.</p>
 
@@ -7959,7 +8164,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
 
   <p>The end state: a world where there is no "design file" and "code file." There is one file. It renders visually in a canvas tool and compiles to production code. The distinction between designer and developer roles blurs because the artifact is the same.</p>
 
-  <p>Ben South at Variant captures this: "The future of code is design." Jordan Singer at Mainframe adds: "The best design work I've ever done came from a canvas." Agu Segui frames the constraint: "Code is a terrible interface for spatial problems, and chat is a terrible interface for systemic decisions." The canvas --- not the code editor, not the chat window --- is the correct interface for design work. But the canvas must produce code, not pixels.</p>
+  <p>Multiple voices in the ecosystem are converging on this idea. The future of code is design, and the best design work emerges from a canvas --- not a code editor. At the same time, code is a poor interface for spatial problems, and chat is a poor interface for systemic decisions. The canvas --- not the code editor, not the chat window --- is the correct interface for design work. But the canvas must produce code, not pixels.</p>
 
   <div class="callout">
     <p><strong>My take:</strong> The design-code convergence is inevitable, but the timeline is uncertain. Paper's HTML-native approach is the most pragmatic path I see. Proprietary canvas formats (Figma, Sketch) will either open up or become liabilities. The .pen and .op formats are stepping stones --- useful now, but ultimately unnecessary if the design surface speaks the same language as production code.</p>
@@ -8034,7 +8239,7 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
         <td>Figma either opens its format or loses market share to agent-native alternatives</td>
         <td>By 2028</td>
         <td>Low-Medium</td>
-        <td>Community switching to Paper; Vercel/Perplexity/PostHog using Paper</td>
+        <td>Community reportedly switching to Paper; Paper's case studies list Vercel/Perplexity/PostHog</td>
       </tr>
       <tr>
         <td>Video production becomes a standard design skill, not a specialist discipline</td>
@@ -8046,40 +8251,40 @@ finish_working_on_nodes({ nodeIds: ["hero-frame", "features-frame"] })</code></p
         <td>The designer role shifts from pixel-pusher to agent director and design system architect</td>
         <td>Ongoing through 2028</td>
         <td>High</td>
-        <td>Already happening in teams using Paper and Open Design</td>
+        <td>Reportedly already happening in teams using Paper and Open Design</td>
       </tr>
     </tbody>
   </table>
 
-  <p>The prediction I am most confident about: MCP becomes universal by late 2026. Every design tool that wants to remain relevant will ship an MCP server. The ones that do not will become niche. This is not a bold prediction --- it is an observation of a trend that is already well underway.</p>
+  <p>The prediction I am most confident about: MCP becomes universal by late 2026. Every design tool that wants to remain relevant will ship an MCP server. The ones that do not will become niche. This is not a bold prediction --- it is an observation of a trend that is already well underway at the time of writing.</p>
 
-  <p>The prediction I am least confident about: Figma's trajectory. Figma has enormous institutional momentum, deep enterprise contracts, and a generation of designers trained on its interface. Its MCP server shows awareness of the agent trend. But its proprietary canvas format is a growing liability in an agent-native world. Whether Figma opens its format or doubles down on proprietary lock-in will determine its trajectory.</p>
+  <p>The prediction I am least confident about: Figma's trajectory. Figma has enormous institutional momentum, deep enterprise contracts, and a generation of designers trained on its interface. Its MCP server, shipped in early 2026, shows awareness of the agent trend. But its proprietary canvas format is a growing liability in an agent-native world. Whether Figma opens its format or doubles down on proprietary lock-in will determine its trajectory.</p>
 
   <h3 id="14.7">Risks: Homogenization, Over-Reliance, and the Designer's Role</h3>
 
   <p>The trends are real. The predictions are grounded in observable signals. But the trajectory is not guaranteed. Several risks could undermine the whole ecosystem.</p>
 
-  <p><strong>Quality homogenization.</strong> This is the risk I hear about most from design leaders. Karri Saarinen at Linear puts it bluntly: "The more I see companies talk about coding with agents and designing in code, the worse their UX seems to be." Jordan Singer at Mainframe agrees: "If you're building software meant to be consumed by humans, take the time to actually design it. AI has a design smell because it's 'designing' via code."</p>
+  <p><strong>Quality homogenization.</strong> This is the risk I hear about most from design leaders. A prominent design executive puts it bluntly: the more companies talk about coding with agents and designing in code, the worse their UX tends to be. A design tool founder agrees: if you are building software meant to be consumed by humans, take the time to actually design it. AI has a design smell because it is "designing" via code, not through spatial reasoning.</p>
 
   <p>The "AI design smell" is real. Huashu Design's anti-slop rules list the specific patterns: purple gradients, emoji icons, rounded-corner-plus-left-border-accent, SVG humans, Inter-as-display-font. When every agent generates from the same model weights without constraint, the output converges. Every startup's landing page starts to look the same.</p>
 
   <p>The mitigation is clear but not easy. Strong design systems with custom tokens. Agent skills with anti-slop enforcement. Human creative direction at every step. The tools that bake these constraints into the workflow --- Huashu Design, Open Design --- will matter more than the tools that leave output quality to the model.</p>
 
-  <p><strong>Over-reliance on agents.</strong> Paper's founder, Agu Segui, issues a direct warning: "If you're a designer who thinks AI will design for you, you're like a little fucked." Dann Petty is more concise: "Great design still demands a designer."</p>
+  <p><strong>Over-reliance on agents.</strong> The warning from experienced practitioners is consistent: no agent replaces design judgment. Tools can accelerate execution, but the craft of design --- the spatial reasoning, the taste, the ability to hold ambiguity --- remains human. When designers treat agents as creative substitutes rather than execution engines, the quality drops.</p>
 
   <p>Agents cannot read between the lines. They cannot hold ambiguity. They cannot make judgment calls about what matters and what does not. They execute instructions. When the instructions are clear and specific, the output is good. When the instructions are vague or absent, the output is generic.</p>
 
-  <p>The risk is not that agents replace designers. The risk is that designers lose craft skills as agents handle more execution. Agu Segui frames it precisely: "When execution becomes cheap, we tend to skip the 'spatial' phase of thinking. The bottleneck has moved up. It's our mind now." The designer's value shifts from execution to spatial thinking, creative direction, and taste. But if designers stop practicing spatial thinking because agents handle the rendering, the taste atrophies.</p>
+  <p>The risk is not that agents replace designers. The risk is that designers lose craft skills as agents handle more execution. When execution becomes cheap, the temptation is to skip the spatial phase of thinking entirely. The bottleneck moves upstream --- it becomes a question of mind, not mechanics. The designer's value shifts from execution to spatial thinking, creative direction, and taste. But if designers stop practicing spatial thinking because agents handle the rendering, the taste atrophies.</p>
 
   <div class="callout">
     <p><strong>My take:</strong> The homogenization risk is the one I worry about most. I have seen agent-generated designs that are technically correct and aesthetically empty. The tools will get better at avoiding AI slop, but the underlying problem is cultural: when execution becomes free, the temptation to skip thinking is overwhelming. The designers who thrive in this new landscape will be the ones who treat agents as execution engines, not creative partners. The creative work stays human.</p>
   </div>
 
-  <p><strong>The designer's changing role.</strong> Steve Ruiz at tldraw: "If you're a designer then you should be racing to get as close to the product as possible." The role is shifting from pixel-pusher to agent director, design system architect, and quality curator.</p>
+  <p><strong>The designer's changing role.</strong> A creative tool founder frames it directly: designers should be racing to get as close to the product as possible. The role is shifting from pixel-pusher to agent director, design system architect, and quality curator.</p>
 
   <p>This shift creates opportunity and anxiety in equal measure. The designers who embrace agentic workflows gain leverage --- they produce more output, iterate faster, and ship with higher consistency. The designers who resist or ignore the shift find their skills depreciating as the industry moves to agent-native tools.</p>
 
-  <p>Gabe, quoted by Paper, captures the human advantage: "If AI can think better and software can scale wider, then the scarce thing is the particular, messy way a human mind cares about something." Agents do not care. They execute. The caring --- the judgment about what is good, what is worth building, what matters to users --- stays human.</p>
+  <p>A design engineer captures the human advantage: if AI can think better and software can scale wider, then the scarce thing is the particular, messy way a human mind cares about something. Agents do not care. They execute. The caring --- the judgment about what is good, what is worth building, what matters to users --- stays human.</p>
 
   <p><strong>Other risks worth watching.</strong> Vendor lock-in: tools that require specific agents or models create dependency. Cost: API token usage for agent-driven workflows adds up, especially for video generation and multi-agent teams. Reliability: agents hallucinate tool calls, lose MCP connections on long sessions, and degrade on large tasks. Security: agents with write access to design files and code repositories need permission models, and those models are still immature. Accessibility: if agents generate code without a11y enforcement, digital exclusion worsens.</p>
 
@@ -9285,8 +9490,12 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
 
 <!--===== appendix-a.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">Appendix A</span> Tool Comparison Matrix</h2>
+<h2 class="section-title"><span class="num">Appendix A</span> Tool Comparison Matrix</h2>
   <p class="section-intro">Side-by-side feature comparisons for every tool covered in this book. One table per category, verified as of May 2026. Use these tables for quick lookups; the corresponding chapters provide the detailed walkthroughs.</p>
+
+  <div class="callout disclaimer">
+    <p><strong>Note:</strong> Pricing and feature details reflect publicly listed rates as of May 2026. Verify current pricing on each tool's website before making purchasing decisions.</p>
+  </div>
 
   <h3 id="appendix-A.1">Agent Platforms Compared</h3>
 
@@ -9388,7 +9597,7 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
   <p>Gemini CLI's strength is multimodal input. If your design workflow starts with screenshots, photos, or whiteboard captures, Gemini's vision capabilities give it an edge for the initial design-to-prompt translation. Its skill ecosystem is the thinnest of the four, but Google is investing heavily here.</p>
 
   <div class="callout">
-    <p><strong>My take:</strong> For design work specifically, Claude Code is the most complete option today. The Paper plugin alone --- read designs, export JSX, write HTML back to canvas --- eliminates half the friction in a design-to-code workflow. But if you work across multiple model providers or need to run parallel agents with different models, OpenCode's BYOK architecture is the right call. The $200/month price tag on Codex CLI is hard to justify for design work when the skill ecosystem is still growing.</p>
+    <p><strong>My take:</strong> For design work specifically, Claude Code is the most complete option today. The Paper plugin alone --- read designs, export JSX, write HTML back to canvas --- eliminates half the friction in a design-to-code workflow. But if you work across multiple model providers or need to run parallel agents with different models, OpenCode's BYOK architecture is the right call. In the author's experience, the $200/month price tag on Codex CLI is hard to justify for design work when the skill ecosystem is still growing.</p>
   </div>
 
   <p>Chapter 02 covers each platform in depth with installation and configuration details.</p>
@@ -9496,7 +9705,7 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
   <p>OpenPencil's Agent Teams feature --- where multiple agents work different regions of the canvas simultaneously --- is the most architecturally interesting approach in the space. Each agent claims a spatial region, works independently, and the canvas merges the results. Chapter 11 covers this pattern in depth.</p>
 
   <div class="callout">
-    <p><strong>My take:</strong> Paper wins on collaboration and color fidelity --- sRGB + P3 + OkLCH is the most complete color support of any design tool, period. Pencil wins on IDE integration and diffability. OpenPencil wins on openness and multi-agent architecture. I use all three depending on the task. For solo design-to-code work, Pencil lives inside my IDE and I never leave my terminal. For team projects with stakeholders who need to see and comment on designs, Paper is the obvious choice. OpenPencil's Agent Teams feature is the most interesting architectural experiment in the space right now.</p>
+    <p><strong>My take:</strong> Paper wins on collaboration and color fidelity --- sRGB + P3 + OkLCH is, as of this writing, the most complete color support of any design tool in this comparison. Pencil wins on IDE integration and diffability. OpenPencil wins on openness and multi-agent architecture. I use all three depending on the task. For solo design-to-code work, Pencil lives inside my IDE and I never leave my terminal. For team projects with stakeholders who need to see and comment on designs, Paper is the strongest option in the author's experience. OpenPencil's Agent Teams feature is the most interesting architectural experiment in the space right now.</p>
   </div>
 
   <h3 id="appendix-A.3">Design Skill Frameworks Compared</h3>
@@ -9579,7 +9788,7 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
 
   <p>The architectural difference matters in practice. Open Design runs a local web daemon and proxies API calls through your own keys. It detects which agent CLI you have installed and adjusts its output accordingly. This is powerful but requires a running process. Huashu Design is a single SKILL.md file that you drop into your project. No daemon, no proxy, no running process. The agent reads the file and follows the instructions. Simpler setup, but less infrastructure for managing multi-step workflows.</p>
 
-  <p>For output formats, the key differentiator is video. Huashu Design can export HTML animations to MP4 and GIF with 60fps interpolation and background music mixing. Open Design focuses on static and interactive outputs --- HTML, PDF, PPTX. If your design workflow includes motion, Huashu Design has the edge. If you need 129 pre-built design systems to choose from, Open Design has no equal.</p>
+  <p>For output formats, the key differentiator is video. Huashu Design can export HTML animations to MP4 and GIF with 60fps interpolation and background music mixing. Open Design focuses on static and interactive outputs --- HTML, PDF, PPTX. If your design workflow includes motion, Huashu Design has the edge. If you need 129 pre-built design systems to choose from, Open Design is, in the author's experience, unmatched in this category.</p>
 
   <p>Chapters 06 and 07 cover Open Design and Huashu Design in depth, respectively.</p>
 
@@ -9668,7 +9877,7 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
   <p>Distributed rendering is the area where Remotion is clearly ahead. Lambda-based rendering means you can parallelize frame computation across hundreds of instances. Hyperframes renders on a single machine today. For long-form video (10+ minutes) or batch rendering, this is a meaningful gap.</p>
 
   <div class="callout">
-    <p><strong>My take:</strong> For agent-driven design work, Hyperframes is the more practical choice. The no-build-step model aligns with how agents work --- generate a file, render it, iterate. The Apache-2.0 license removes the compliance question entirely. Remotion is the better tool for production video teams that need distributed rendering and frame-accurate control, but that describes a different workflow than what this book covers.</p>
+    <p><strong>My take:</strong> For agent-driven design work, Hyperframes is, in the author's experience, the more practical choice. The no-build-step model aligns with how agents work --- generate a file, render it, iterate. The Apache-2.0 license removes the compliance question entirely. Remotion is, as of this writing, the stronger tool for production video teams that need distributed rendering and frame-accurate control, but that describes a different workflow than what this book covers.</p>
   </div>
 
   <p>Chapter 09 covers both tools in depth, including setup, animation composition, and rendering.</p>
@@ -9759,14 +9968,15 @@ mapped to DESIGN.md tokens, not hardcoded values.</code></pre>
   <p>Chapter 10 covers MCP integrations in depth, including configuration, chaining, and troubleshooting. Appendix B provides a complete reference for every MCP tool available in each server.</p>
 <!--===== appendix-b.html =====-->
 
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">Appendix B</span> MCP Server Reference</h2>
+<h2 class="section-title"><span class="num">Appendix B</span> MCP Server Reference</h2>
   <p class="section-intro">Every MCP server covered in this book, every tool it exposes, and the configuration snippets to connect it to your agent. Verified as of May 2026.</p>
+  <div class="callout"><p><strong>Note:</strong> Configuration snippets are illustrative examples. Refer to each tool's official documentation for current setup instructions.</p></div>
 
   <h3 id="appendix-B.1">Paper MCP Server Tools</h3>
 
-  <p>Paper's MCP server runs locally when Paper Desktop is open. It listens on <code>http://127.0.0.1:29979/mcp</code> and exposes 23 tools split into read, write, and export categories. This is the most polished MCP server in the design tool ecosystem as of May 2026.</p>
+  <p>Paper's MCP server runs locally when Paper Desktop is open. It listens on <code>http://127.0.0.1:29979/mcp</code> and exposes 22 tools split into read, write, and export categories. This is the most polished MCP server in the design tool ecosystem as of May 2026.</p>
 <figure class="figure--full" id="chB-fig-02">
-  <img src="screenshots/chB-fig-02--print.png" alt="Reference grid listing all MCP tools per server: Paper with 23 tools including get_jsx, write_html, and export; Figma with design reading tools; Miro with whiteboard tools; and MagicPattern with generative pattern tools, each with parameter summaries" loading="lazy" />
+  <img src="screenshots/chB-fig-02--print.png" alt="Reference grid listing all MCP tools per server: Paper with 22 tools including get_jsx, write_html, and export; Figma with design reading tools; Miro with whiteboard tools; and MagicPattern with generative pattern tools, each with parameter summaries" loading="lazy" />
   <figcaption>MCP server tool reference showing Paper, Figma, Miro, and MagicPattern tool inventories</figcaption>
 </figure>
 
@@ -10103,12 +10313,13 @@ codegen_clean       → clean temporary files</code></pre>
       "args": [
         "-y",
         "figma-developer-mcp",
-        "--figma-api-key=&lt;KEY&gt;",
+        "--figma-api-key=$FIGMA_API_KEY",
         "--stdio"
       ]
     }
   }
 }</code></pre>
+  <div class="callout warning"><p><strong>Security:</strong> Never commit API keys to version control. Use environment variables or a secrets manager.</p></div>
 
   <h3 id="appendix-B.5">Miro MCP Server Tools</h3>
 
@@ -10169,7 +10380,7 @@ codegen_clean       → clean temporary files</code></pre>
   <p>API key-based authentication. Compatible with Claude Code. Free and paid tiers available.</p>
 
   <div class="callout">
-    <p><strong>My take:</strong> Paper's 23-tool MCP server is the gold standard. Every other server in this appendix is either read-only (Figma), limited-write (Miro), or single-purpose (MagicPattern). The design tools that win the agent era will be the ones that give agents full read-write access with well-documented tools. If you're evaluating a new design tool for agent workflows, MCP tool count and write access are the two metrics that matter most.</p>
+    <p><strong>My take:</strong> Paper's 22-tool MCP server is the gold standard. Every other server in this appendix is either read-only (Figma), limited-write (Miro), or single-purpose (MagicPattern). The design tools that win the agent era will be the ones that give agents full read-write access with well-documented tools. If you're evaluating a new design tool for agent workflows, MCP tool count and write access are the two metrics that matter most.</p>
   </div>
 
   <h3 id="appendix-B.7">Configuration Reference by Agent Platform</h3>
@@ -10279,7 +10490,7 @@ URL: http://127.0.0.1:29979/mcp</code></pre>
     </tbody>
   </table>
 <!--===== appendix-c.html =====-->
-<h2 class="section-title" style="string-set: chapter-title content()"><span class="num">Appendix C</span> Prompt Library for Design Tasks</h2>
+<h2 class="section-title"><span class="num">Appendix C</span> Prompt Library for Design Tasks</h2>
   <p class="section-intro">Battle-tested prompts for common agentic design tasks. Copy them into your agent session, swap the bracketed values, and ship. Verified as of May 2026.</p>
 
   <h3 id="appendix-C.1">Prototyping Prompts</h3>

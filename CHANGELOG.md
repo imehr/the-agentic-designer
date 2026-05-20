@@ -5,7 +5,7 @@
 ### Release Summary
 
 - Initial public repository package for **The Agentic Designer**.
-- Chapters included: 17.
+- Chapters included: 18.
 - License: CC BY-NC-SA 4.0.
 
 ### Artifacts

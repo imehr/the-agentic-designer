@@ -17,7 +17,7 @@ Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex C
 
 Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems
 
-17 chapters are included in this release.
+18 chapters are included in this release.
 
 ## Who Is This For
 
