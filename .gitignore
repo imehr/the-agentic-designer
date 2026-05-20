@@ -2,7 +2,6 @@
 node_modules/
 *.tmp
 *.log
-*.debug.html
 review.db*
 review/
 reviews/
