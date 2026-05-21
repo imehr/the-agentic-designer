@@ -10,24 +10,6 @@ Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex C
 
 | Format | File |
 |--------|------|
-| HTML | [01.html](01.html) |
-| HTML | [02.html](02.html) |
-| HTML | [03.html](03.html) |
-| HTML | [04.html](04.html) |
-| HTML | [05.html](05.html) |
-| HTML | [06.html](06.html) |
-| HTML | [07.html](07.html) |
-| HTML | [08.html](08.html) |
-| HTML | [09.html](09.html) |
-| HTML | [10.html](10.html) |
-| HTML | [11.html](11.html) |
-| HTML | [12.html](12.html) |
-| HTML | [13.html](13.html) |
-| HTML | [14.html](14.html) |
-| HTML | [A.html](A.html) |
-| HTML | [B.html](B.html) |
-| HTML | [C.html](C.html) |
-| HTML | [front-matter.html](front-matter.html) |
 | Paged HTML Preview | [the-agentic-designer-paged.html](the-agentic-designer-paged.html) |
 | ePub | [the-agentic-designer.epub](the-agentic-designer.epub) |
 | HTML | [the-agentic-designer.html](the-agentic-designer.html) |
@@ -51,9 +33,7 @@ product designers, design engineers, and creative technologists who want to buil
 | `CHANGELOG.md` | Version-by-version release notes |
 | `LICENSE.md` | Book license |
 | `cover.png` / `banner.png` | Public book artwork when available |
-| `assets/` | Public supporting assets |
-| `screenshots/` | Public screenshots used by the book |
-| `*.pdf` / `*.epub` / `*.html` | Published book artifacts |
+| `<slug>.pdf` / `<slug>.epub` / `<slug>.html` / `<slug>-paged.html` | Final published book artifacts |
 
 ## About the Author
 
