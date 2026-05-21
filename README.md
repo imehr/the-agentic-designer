@@ -2,6 +2,8 @@
 
 > How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design · by Mehran Mozaffari
 
+<img src="cover.png" alt="The Agentic Designer cover" width="360">
+
 Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems
 
 ## Download
@@ -30,6 +32,7 @@ product designers, design engineers, and creative technologists who want to buil
 | `README.md` | Public landing page for the book repository |
 | `CHANGELOG.md` | Version-by-version release notes |
 | `LICENSE.md` | Book license |
+| `cover.png` | Public cover image generated from the same HTML cover used by the book artifacts |
 | `<slug>.pdf` / `<slug>.epub` / `<slug>.html` / `<slug>-paged.html` | Final published book artifacts |
 
 ## About the Author
