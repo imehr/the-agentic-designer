@@ -28,6 +28,7 @@
 - HTML: `B.html`
 - HTML: `C.html`
 - HTML: `front-matter.html`
+- Paged HTML Preview: `the-agentic-designer-paged.html`
 - ePub: `the-agentic-designer.epub`
 - HTML: `the-agentic-designer.html`
 - PDF: `the-agentic-designer.pdf`

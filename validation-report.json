@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-20T06:16:04.435Z",
+  "generatedAt": "2026-05-21T07:12:44.180Z",
   "pass": true,
-  "totalPass": 57,
-  "totalChecks": 57,
+  "totalPass": 69,
+  "totalChecks": 69,
   "sections": {
     "pdf": [
       {
@@ -23,7 +23,7 @@
       {
         "name": "PDF file size > 0",
         "pass": true,
-        "detail": "35986.3 KB"
+        "detail": "36111.8 KB"
       },
       {
         "name": "PDF is valid (readable)",
@@ -153,6 +153,56 @@
         "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer/shared/paged-preview.js"
       },
       {
+        "name": "Paged HTML artifact exists",
+        "pass": true,
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer-paged.html"
+      },
+      {
+        "name": "Paged HTML uses inline Paged.js runtime",
+        "pass": true,
+        "detail": "Inline local Paged.js runtime found"
+      },
+      {
+        "name": "Paged HTML includes one/two page controls",
+        "pass": true,
+        "detail": "Single-page and two-page viewer controls"
+      },
+      {
+        "name": "Paged HTML header/footer contract",
+        "pass": true,
+        "detail": "Running headers, footers, page numbers, and cross-references present"
+      },
+      {
+        "name": "Paged HTML local asset links resolve",
+        "pass": true,
+        "detail": "All local assets checked"
+      },
+      {
+        "name": "Flat public HTML artifact exists",
+        "pass": true,
+        "detail": "/Users/mehran/Documents/github/book-writer/books/the-agentic-designer/output/the-agentic-designer.html"
+      },
+      {
+        "name": "Flat public HTML uses publication shell",
+        "pass": true,
+        "detail": "book-publication shell found"
+      },
+      {
+        "name": "Flat public HTML fixed-width layout CSS",
+        "pass": true,
+        "detail": "Fixed width, centered margin, and side padding found"
+      },
+      {
+        "name": "Flat public HTML avoids content class collision",
+        "pass": true,
+        "detail": "No legacy content wrapper"
+      },
+      {
+        "name": "Flat public HTML visual layout bounds",
+        "pass": true,
+        "detail": "shell x=230 width=980 padding=64/64 textWidth=742"
+      },
+      {
         "name": "tokens.css available",
         "pass": true,
         "detail": "Not found (inline styles may compensate)"
@@ -197,7 +247,7 @@
       {
         "name": "ePub file size > 0",
         "pass": true,
-        "detail": "35219.8 KB"
+        "detail": "36953.0 KB"
       },
       {
         "name": "ePub is a valid ZIP archive",
@@ -250,6 +300,11 @@
         "detail": "OPF modified metadata"
       },
       {
+        "name": "ePub cover image declared",
+        "pass": true,
+        "detail": "cover.png"
+      },
+      {
         "name": "toc.ncx present",
         "pass": true,
         "detail": "Found"
@@ -265,14 +320,19 @@
         "detail": "19 chapter files"
       },
       {
+        "name": "ePub XHTML/XML files parse correctly",
+        "pass": true,
+        "detail": "23 XML/XHTML files checked"
+      },
+      {
         "name": "ePub chapter image links resolve",
         "pass": true,
-        "detail": "65 image refs checked"
+        "detail": "66 image refs checked"
       },
       {
         "name": "Expected book images preserved in ePub",
         "pass": true,
-        "detail": "65/65 image refs found; state/drafts image references"
+        "detail": "66/65 image refs found; state/drafts image references"
       },
       {
         "name": "stylesheet.css present",

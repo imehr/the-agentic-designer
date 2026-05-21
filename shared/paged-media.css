@@ -128,7 +128,7 @@
 
 @page cover-page {
   size: A4;
-  margin: 14mm 14mm 18mm 14mm;
+  margin: 0;
 
   @top-left {
     content: string(book-title);
@@ -235,6 +235,7 @@
 }
 
 .book-page-cover {
+  page: cover-page;
   break-after: page;
 }
 

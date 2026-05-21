@@ -19,6 +19,100 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"The Agentic Designer","alternateName":"How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design","description":"A comprehensive guide to agentic design workflows, covering AI coding agents, design-as-code formats, MCP integrations, multi-agent teams, production UI generation, presentation tools, and the future of design.","author":{"@type":"Person","name":"Mehran Mozaffari","url":"https://github.com/imehr"},"publisher":{"@type":"Organization","name":"Applied AI Press"},"datePublished":"2026-05-20","inLanguage":"en","version":"0.1.0","copyrightYear":"2026","copyrightHolder":{"@type":"Person","name":"Mehran Mozaffari"},"license":"all-rights-reserved"}</script>
 <style>
 
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f6f7f9;
+  color: var(--text, #1a1a1a);
+}
+
+.book-publication {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 0 64px 88px;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.book-publication .book-page {
+  padding: 56px 0;
+}
+
+.book-publication .book-page + .book-page {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.book-publication .book-page-cover {
+  margin-left: -64px;
+  margin-right: -64px;
+  padding: 0;
+  border-top: 0;
+}
+
+.book-publication .book-page-cover + .book-page {
+  border-top: 0;
+}
+
+.book-publication .book-page-cover .cover {
+  min-height: 100vh;
+}
+
+.book-publication img,
+.book-publication figure {
+  max-width: 100%;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  .book-publication {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .book-publication .book-page {
+    padding: 0;
+    border-top: 0;
+  }
+
+  .book-publication .book-page-cover {
+    margin: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .book-publication {
+    width: 100%;
+    padding: 0 24px 56px;
+  }
+
+  .book-publication .book-page {
+    padding: 36px 0;
+  }
+
+  .book-publication .book-page-cover {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+}
+</style>
+<style>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,12 +131,199 @@
     figure { break-inside: avoid; margin: 1.5rem 0; }
   
   
+
+    :root {
+      --primary: #1E40AF;
+      --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
+    }
   
   
+
+    :root {
+      --primary: #1E40AF;
+      --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
+    }
   
   
+
+    :root {
+      --primary: #1E40AF;
+      --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
+    }
   
   
+
+    :root {
+      --primary: #1E40AF;
+      --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
+    }
+  
+  
+
+    :root {
+      --primary: #1E40AF;
+      --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
+    }
+  
+  
+
+    :root {
+      --primary: #1E40AF;
+      --cover-gradient: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 25%, #FFFFFF 100%);
+    }
+  
+
+    /* book-writer-cover-styles:start */
+    .cover.cover--poster {
+      position: relative;
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      text-align: left;
+      overflow: hidden;
+      padding: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 84% 18%, rgba(30, 64, 175, 0.18) 0, rgba(30, 64, 175, 0.08) 24%, rgba(30, 64, 175, 0) 45%),
+        linear-gradient(132deg, #EFF6FF 0%, #DBEAFE 42%, #ffffff 100%);
+    }
+    .cover.cover--poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(30, 64, 175, 0.95) 0 14px, transparent 14px),
+        linear-gradient(180deg, rgba(30, 64, 175, 0.08), transparent 38%);
+      pointer-events: none;
+    }
+    .cover.cover--poster::after {
+      content: "";
+      position: absolute;
+      right: -9%;
+      bottom: -8%;
+      width: 52%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(30, 64, 175, 0.26);
+      transform: rotate(22deg);
+      background:
+        repeating-linear-gradient(90deg, rgba(30, 64, 175, 0.12) 0 1px, transparent 1px 28px),
+        repeating-linear-gradient(0deg, rgba(30, 64, 175, 0.08) 0 1px, transparent 1px 28px);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .cover--poster .cover-topbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 58px;
+      padding: 0 58px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.78rem;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .cover--poster .cover-poster-main {
+      position: relative;
+      z-index: 1;
+      width: min(86%, 980px);
+      margin-top: 14vh;
+      padding: 0 58px 40px;
+    }
+    .cover--poster .cover-meta {
+      margin: 0 0 28px;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .cover--poster .cover-title {
+      max-width: 980px;
+      margin: 0;
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: clamp(5.2rem, 10.2vw, 8.6rem);
+      line-height: 0.88;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+    .cover--poster .cover-title em {
+      display: block;
+      color: var(--primary);
+      font-style: normal;
+    }
+    .cover--poster .cover-subtitle {
+      max-width: 760px;
+      margin: 34px 0 0;
+      color: var(--text);
+      font-size: clamp(1.35rem, 2.5vw, 1.95rem);
+      line-height: 1.35;
+      font-weight: 500;
+    }
+    .cover--poster .cover-poster-rule {
+      width: 160px;
+      height: 9px;
+      margin-top: 50px;
+      background: var(--primary);
+    }
+    .cover--poster .cover-poster-footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: max-content max-content;
+      align-items: center;
+      justify-content: start;
+      column-gap: 54px;
+      padding: 0;
+      text-align: left;
+    }
+    .cover--poster .cover-author,
+    .cover--poster .cover-date {
+      margin: 0;
+      color: var(--text);
+    }
+    .cover--poster .cover-author {
+      font-size: 1.25rem;
+      font-weight: 800;
+      white-space: nowrap;
+      text-align: left;
+      justify-self: start;
+    }
+    .cover--poster .cover-date {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    @media (max-width: 680px) {
+      .cover--poster .cover-topbar,
+      .cover--poster .cover-poster-main,
+      .cover--poster .cover-poster-footer {
+        padding-left: 34px;
+        padding-right: 34px;
+      }
+      .cover--poster .cover-title {
+        font-size: 3.8rem;
+      }
+      .cover--poster .cover-poster-footer {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+    /* book-writer-cover-styles:end */
   
   
 </style>
@@ -50,10 +331,25 @@
 <script src="shared/paged-preview.js" defer></script>
 </head>
 <body>
-<main class="content">
+<main class="book-publication">
   <section id="cover" class="book-page book-page-cover" data-source="cover.html">
 <span class="book-title-setter">The Agentic Designer</span>
-<div class="cover"><img src="cover.png" alt="The Agentic Designer" style="width:100%;height:auto;display:block;"></div>
+<div class="cover cover--poster">
+    <div class="cover-topbar">
+      <span>Approach: Agentic Design Workflows</span>
+      <span>0.1.0</span>
+    </div>
+    <div class="cover-poster-main">
+      <p class="cover-meta">Approach: Agentic Design Workflows</p>
+      <h1 class="cover-title"><em>The Agentic</em> Designer</h1>
+      <p class="cover-subtitle">How AI Agents, Claude Design, Open Design, and the New Design Tool Ecosystem Are Transforming Product Design</p>
+      <div class="cover-poster-rule" aria-hidden="true"></div>
+      <div class="cover-poster-footer">
+        <p class="cover-author">Mehran Mozaffari</p>
+        <p class="cover-date">May 2026</p>
+      </div>
+    </div>
+  </div>
   </section>
 
   <section id="front-matter" class="book-page book-page-content" data-source="front-matter.html">
