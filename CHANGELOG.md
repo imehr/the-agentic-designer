@@ -23,9 +23,9 @@
 
 ### Validation
 
-- Publication preflight report included.
+- Publication preflight and image audit should pass before publishing; internal validation reports remain in the book-writer build output, not in this public book repo.
 - Confirm all public download links work.
-- Confirm all image links resolve inside the public repository.
+- Confirm final HTML/PDF/ePub assets open correctly.
 - Confirm required copyright, license, AI disclosure, trademark notice, and permissions/credits are present.
 
 ### Known Issues
