@@ -6,6 +6,12 @@
 
 Full breadth: the agentic design paradigm, agent platforms (Claude Code, Codex CLI, OpenCode, Gemini CLI), design-for-agents harnesses (CLAUDE.md, AGENTS.md, skill files), design tool ecosystem (Claude Design, Open Design, OpenPencil, Huashu Design), design-as-code workflows, motion and video design (Remotion, Hyperframes), MCP integrations (Figma, Miro, MagicPattern), multi-agent design teams, real-world case studies, and the future of autonomous design systems
 
+## Read Online
+
+[<img src="website-preview.png" alt="The Agentic Designer website preview" width="720">](https://piazr.github.io/the-agentic-designer/index.html)
+
+Read the book online on the dedicated website: [piazr.github.io/the-agentic-designer](https://piazr.github.io/the-agentic-designer/index.html). The web version is the best place to browse chapters, read in the browser, and share the book with others.
+
 ## Download
 
 | Format | File |
@@ -33,6 +39,7 @@ product designers, design engineers, and creative technologists who want to buil
 | `CHANGELOG.md` | Version-by-version release notes |
 | `LICENSE.md` | Book license |
 | `cover.png` | Public cover image generated from the same HTML cover used by the book artifacts |
+| `website-preview.png` | Screenshot of the dedicated book website linked from this README |
 | `<slug>.pdf` / `<slug>.epub` / `<slug>.html` / `<slug>-paged.html` | Final published book artifacts |
 
 ## About the Author
