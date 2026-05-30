@@ -59,7 +59,7 @@ For corrections, errata, or licensing inquiries, please open an issue on this re
 
 ## Version
 
-- **v0.1.0** — May 2026
+- **v0.1.1** — May 2026
 - AI tools evolve rapidly; check the official project documentation for current product behavior.
 
 ## License
